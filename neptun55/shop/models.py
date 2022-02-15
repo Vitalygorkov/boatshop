@@ -34,6 +34,7 @@ class Boat(models.Model):
     boat_model = models.CharField('Модель', max_length=150) # название
     boat_manufacturer = models.CharField('Производитель',max_length=30) # производитель лодки.
     description = models.TextField('Описание', blank=True) # описание
+    category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True) # цена
     type_boat = models.ForeignKey(Type_boat, on_delete=models.PROTECT, verbose_name='Тип лодки') # тип лодки гребная или моторная
     TYPE_MOTORS = (
@@ -70,3 +71,16 @@ class Boat(models.Model):
     class Meta:
         verbose_name = 'Лодка'
         verbose_name_plural = 'Лодки'
+
+class Photo_boat(models.Model):
+    title = models.CharField("Заголовок", max_length=100)
+    description = models.TextField("Описание")
+    image = models.ImageField("Изображение", upload_to="photo/")
+    boat = models.ForeignKey(Boat, verbose_name="Лодка", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Фото лодки"
+        verbose_name_plural = "Фото Лодок"
