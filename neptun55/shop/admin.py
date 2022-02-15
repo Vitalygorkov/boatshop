@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Type_boat, Color, Boat
+from .models import Type_boat, Color, Boat, Photo_boat, Category
+
+
+class Photo_boatInline(admin.StackedInline):
+    model = Photo_boat
 
 @admin.register(Boat)
 class BoatAdmin(admin.ModelAdmin):
@@ -8,6 +12,7 @@ class BoatAdmin(admin.ModelAdmin):
     list_display_links = ("boat_model",)
     list_filter = ("boat_manufacturer", "type_boat", "type_motor", "price", "boat_model")
     search_fields = ("boat_model","boat_manufacturer")
+    inlines = [Photo_boatInline]
     # readonly_fields = ('get_image',) #вывод фотки в поле редактирования
 
     #функция Для вывода картинки в админ панели
@@ -15,6 +20,11 @@ class BoatAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.image.url} width="160 height="180"')
 
     get_image.short_description = "Изображение"
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "description")
+    list_display_links = ("name",)
 
 
 

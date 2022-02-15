@@ -4,7 +4,8 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField("Описание")
-    url = models.SlugField(max_length=160, unique=True)
+    url = models.SlugField(max_length=160, unique=True, verbose_name='слаг на английском, например "Category"')
+
 
     def __str__(self):
         return self.name
@@ -36,6 +37,7 @@ class Boat(models.Model):
     description = models.TextField('Описание', blank=True) # описание
     category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True) # цена
+
     type_boat = models.ForeignKey(Type_boat, on_delete=models.PROTECT, verbose_name='Тип лодки') # тип лодки гребная или моторная
     TYPE_MOTORS = (
         ('VINT', 'Винт'),
