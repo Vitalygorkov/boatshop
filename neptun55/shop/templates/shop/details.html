@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+{{ last_category }}
+<div class="search-menu">
+	<p align="center">Фильтр товаров</p>
+	<p>Цена:</p>
+	<input type="text" value="От">
+	<input type="text" value="До">
+	<p>Производитель</p>
+	<select>
+  		<option>Аквилон</option>
+  		<option>Пункт 2</option>
+	</select></p>
+		<p>Длина лодки (мм)</p>
+	<select>
+  		<option>2400</option>
+  		<option>Пункт 2</option>
+	</select></p>
+		<p>Ширина лодки (мм)</p>
+	<select>
+  		<option>1200</option>
+  		<option>Пункт 2</option>
+	</select></p>
+	<p>Вес:</p>
+	<input type="text" value="От">
+	<input type="text" value="До">
+	<input type="submit" value="Показать">
+</div>
+<div class="block-results">
+	<div class="sort_filter">
+	<a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>
+
+	</div>
+	{% for product in category_products %}
+	<div class="product-display">
+		<p><a href="{{ product.slug }}">{{ product.name }}</a></p>
+		{% for prodimg in product.prodimg.all %}
+		<a href="{{ product.slug }}"><img class="product-display-img" src="{{ prodimg.image.url }}" alt="продукт"></a>
+		{% endfor %}
+		<p>Производитель: {{ product.manufacturer }}</p>
+		<p>Цена: {{ product.price }} руб.</p>
+		<p><input type="submit" value="Купить"><input type="submit" value="Сравнить"></p>
+
+
+	</div>
+	{% endfor %}
+
+</div>
+
+{% endblock %}

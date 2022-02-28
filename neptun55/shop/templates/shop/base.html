@@ -1,0 +1,37 @@
+{% load static %}
+{% load mptt_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'shop/css/font-awesome.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/style.css'%}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+    <title>Нептун55</title>
+</head>
+<body>
+<header>
+	<nav class="dws-menu">
+		<ul>
+			{% recursetree category_list %}
+				<li class="menu-li">
+					<a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+					{% if not node.is_leaf_node %}
+                		<ul>
+                   			 {{ children }}
+                		</ul>
+					{% endif %}
+
+				</li>
+			{% endrecursetree %}
+			<li><a href="#"><i class="fa fa-envelope-open"></i>Контакты</a></li>
+		</ul>
+	</nav>
+</header>
+
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
+

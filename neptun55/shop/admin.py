@@ -1,13 +1,20 @@
+from mptt.admin import MPTTModelAdmin
 from django.contrib import admin
+from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
-from .models import Type_boat, Color, Boat, Photo_boat, Category, Type_bottom, Manufacturer, Reviews,VideosBoats
+from .models import Color, Boat, Photo_product, Category, Product, Manufacturer, Reviews,VideosProducts
 
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "description")
-    list_display_links = ("name",)
+# @admin.register(Category)
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ("name", "description")
+#     list_display_links = ("name",)
 
+# class CategoryAdmin(admin.ModelAdmin):
+#     fields = ['name', 'parent']
+
+admin.site.register(Category, MPTTModelAdmin)
 
 class ReviewInline(admin.StackedInline):
     """Отзывы на странице лодки"""
@@ -16,8 +23,8 @@ class ReviewInline(admin.StackedInline):
     extra = 1
     # readonly_fields = ("name", "email")
 
-class Photo_boatInline(admin.StackedInline):
-    model = Photo_boat
+class Photo_productInline(admin.StackedInline):
+    model = Photo_product
     extra = 1
     readonly_fields = ("get_image",)
 
@@ -27,19 +34,38 @@ class Photo_boatInline(admin.StackedInline):
     get_image.short_description = "Изображение"
 
 class VideosInline(admin.StackedInline):
-    model = VideosBoats
+    model = VideosProducts
     extra = 1
+
+class DescriptionAdminForm(forms.ModelForm):
+    description = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Product
+        fields = '__all__'
 
 @admin.register(Boat)
 class BoatAdmin(admin.ModelAdmin):
-    list_display = ("boat_model", "boat_manufacturer", "type_boat", "type_motor", "price", )
-    list_display_links = ("boat_model",)
-    list_filter = ("boat_manufacturer", "type_boat", "type_motor", "price", "boat_model")
-    search_fields = ("boat_model","boat_manufacturer")
-    inlines = [VideosInline, Photo_boatInline, ReviewInline,]
+    form = DescriptionAdminForm
+    list_display = ("name", "manufacturer", "type_motor", "price", )
+    list_display_links = ("name",)
+    list_filter = ("manufacturer", "type_motor", "price", "name")
+    search_fields = ("name","manufacturer")
+    inlines = [VideosInline, Photo_productInline, ReviewInline,]
     save_on_top = True
     save_as = True
 
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    form = DescriptionAdminForm
+    list_display = ("name", "manufacturer", "price", )
+    list_display_links = ("name",)
+    list_filter = ("manufacturer", "price", "name")
+    search_fields = ("name","manufacturer")
+    inlines = [VideosInline, Photo_productInline, ReviewInline,]
+    save_on_top = True
+    save_as = True
 
 
 @admin.register(Reviews)
@@ -48,9 +74,9 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "parent", "product", "id")
     # readonly_fields = ("name", "email")
 
-@admin.register(Photo_boat)
-class Photo_boatAdmin(admin.ModelAdmin):
-    list_display = ("title", "description", "get_image", "boat",)
+@admin.register(Photo_product)
+class Photo_productAdmin(admin.ModelAdmin):
+    list_display = ("title", "description", "get_image", "product",)
     list_display_links = ("title",)
     readonly_fields = ("get_image",)
 
@@ -59,16 +85,12 @@ class Photo_boatAdmin(admin.ModelAdmin):
 
     get_image.short_description = "Изображение"
 
-@admin.register(VideosBoats)
+@admin.register(VideosProducts)
 class VideosAdmin(admin.ModelAdmin):
-    list_display = ("video", "boat")
+    list_display = ("video", "product")
 
-admin.site.register(Type_boat)
+
 admin.site.register(Manufacturer)
-admin.site.register(Type_bottom)
-
-
-# admin.site.register(Boat, BoatAdmin)
 admin.site.register(Color)
 
 admin.site.site_title = "Магазин"

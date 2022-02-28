@@ -1,0 +1,16 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+{{ product.name }}
+<div>
+{% for img in product.prodimg.all %}
+<img class="" src="{{ img.image.url }}" alt="продукт">
+{% endfor %}
+</div>
+{{ product.description|safe }}
+<div>
+
+</div>
+
+{% endblock %}
