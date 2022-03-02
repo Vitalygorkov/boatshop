@@ -100,12 +100,43 @@ background: white;
  }
 
 .product-display-img{
-height: 100px;
+width: 200px;
+}
+
+.product-display-img-lodki{
+width: 200px;
 }
 
 .product-display{
-display: inline-block;
+display: block;
 width: 250px;
 height: 300px;
 
+}
+
+.product-display-lodki{
+background:#f1f1f1;
+border:2px solid silver;
+
+}
+
+.prod-display-lodki-inside-img{
+display: inline-block;
+}
+.prod-display-lodki-inside-text{
+display: inline-block;
+}
+.prod-display-lodki-inside-price{
+display: inline-block;
+}
+
+.cat-tags-block{
+padding: 20px 20px;
+display: block;
+}
+
+.cat-tag{
+padding: 5px 10px;
+display: inline;
+border:2px solid silver; width: 10%
 }

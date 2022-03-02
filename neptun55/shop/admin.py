@@ -47,6 +47,7 @@ class DescriptionAdminForm(forms.ModelForm):
 @admin.register(Boat)
 class BoatAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
+    prepopulated_fields = {'slug': ('name',),}
     list_display = ("name", "manufacturer", "type_motor", "price", )
     list_display_links = ("name",)
     list_filter = ("manufacturer", "type_motor", "price", "name")
@@ -59,6 +60,7 @@ class BoatAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
+    prepopulated_fields = {'slug': ('name',), }
     list_display = ("name", "manufacturer", "price", )
     list_display_links = ("name",)
     list_filter = ("manufacturer", "price", "name")

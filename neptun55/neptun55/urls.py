@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('', include("contact_form.urls")), # Добавил по https://fixmypc.ru/post/sozdaem-formu-obratnoi-sviazi-v-django-s-pochtovym-uvedomleniem/
     path("", include("shop.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
