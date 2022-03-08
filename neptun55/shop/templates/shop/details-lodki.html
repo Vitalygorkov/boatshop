@@ -1,32 +1,37 @@
-<h1>НЕПТУН 55</h1>
+<h1 align="center">НЕПТУН 55</h1>
 {% extends 'shop/base.html' %}
 
 {% block content %}
 {{ last_category }}
 <div class="search-menu">
-	<p align="center">Фильтр товаров</p>
-	<p>Цена:</p>
-	<input type="text" value="От">
-	<input type="text" value="До">
-	<p>Производитель</p>
-	<select>
-  		<option>Аквилон</option>
-  		<option>Пункт 2</option>
-	</select></p>
-		<p>Длина лодки (мм)</p>
-	<select>
-  		<option>2400</option>
-  		<option>Пункт 2</option>
-	</select></p>
-		<p>Ширина лодки (мм)</p>
-	<select>
-  		<option>1200</option>
-  		<option>Пункт 2</option>
-	</select></p>
-	<p>Вес:</p>
-	<input type="text" value="От">
-	<input type="text" value="До">
-	<input type="submit" value="Показать">
+<!--	<p align="center">Фильтр товаров</p>-->
+<!--	<p>Цена:</p>-->
+<!--	<input type="text" value="От">-->
+<!--	<input type="text" value="До">-->
+<!--	<p>Производитель</p>-->
+<!--	<select>-->
+<!--  		<option>Аквилон</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--		<p>Длина лодки (мм)</p>-->
+<!--	<select>-->
+<!--  		<option>2400</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--		<p>Ширина лодки (мм)</p>-->
+<!--	<select>-->
+<!--  		<option>1200</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--	<p>Вес:</p>-->
+<!--	<input type="text" value="От">-->
+<!--	<input type="text" value="До">-->
+<!--	<input type="submit" value="Показать">-->
+	<form action="/search" method="get">
+	<br><button type="submit">Показать</button>
+	{{ filter.form.as_p }}
+	<button type="submit">Показать</button>
+	</form>
 </div>
 <div class="block-results">
 
@@ -35,13 +40,17 @@
 		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>
 		{% endfor %}
 	</div>
-
+	<div class="cat-tags-block">
+		{% for cat in cat_url_list %}
+		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/{{ cat.name }}</a></div>
+		{% endfor %}
+	</div>
 	<div class="sort_filter">
-	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>
+<!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
 	</div>
 
 
-	{% for product in category_products %}
+	{% for product in filter.qs %}
 	<div class="product-display-lodki">
 		<div class="prod-display-lodki-inside-img">
 					{% for prodimg in product.prodimg.all %}
@@ -49,14 +58,38 @@
 					{% endfor %}
 		</div>
 
-		<div class="prod-display-lodki-inside-text"><p><a href="{{ product.slug }}">{{ product.name }}</a></p>
-		<p>Производитель: {{ product.manufacturer }}</p>
-		<p>Длинна (см): {{ product.length }}</p>
-		<p>Ширина (см): {{ product.width }}</p>
-		<p>Длинна кокпита: {{ product.cockpit_length }}</p>
+		<div class="prod-display-lodki-inside-text">
+			<div class="product-lodki-text1">
+			<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+			<h3>Характеристики:</h3>
+		Производитель: {{ product.manufacturer }}
+		<br>Тип дна: {{ product.category }}
+		<br>Длинна (см): {{ product.length }}
+		<br>Ширина (см): {{ product.width }}
+		<br>Длинна кокпита (см): {{ product.cockpit_length }}
+		<br>Ширина кокпита (см): {{ product.cockpit_width }}
+		<br>Диаметр борта (см): {{ product.cylinder_diameter }}
+		<br>Плотность ткани борта (г/м²): {{ product.fabric_thickness_side }}
+		<br>Плотность ткани дна (г/м²): {{ product.fabric_thickness_bottom }}
+			</div>
+			<div class = "product-lodki-text2">
+		<br>Кол-во надувных отсеков: {{ product.inflatable_compartments }}
+		<br>Грузоподъемность (кг) (см): {{ product.load_capacity }}
+		<br>Пассожировместимость (чел): {{ product.passenger_capacity }}
+		<br>Макс мощность мотора (лс): {{ product.maximum_motor_power }}
+		<br>Вес лодки (кг): {{ product.boat_weight }}
+		<br>Вес полного комплекта кг: {{ product.complete_set_weight }}
+		<br>Фальшборт: {{ product.bulwark }}
+		<br>Киль: {{ product.keel }}
+		<br>Габариты упаковки(Д*Ш*В): {{ product.upak }}
+			</div>
 		</div>
-		<div class="prod-display-lodki-inside-price"><p>Цена: {{ product.price }} руб.</p>
-		<p><input type="submit" value="Купить"><input type="submit" value="Сравнить"></p>
+
+		<div class="prod-display-lodki-inside-price">
+			<p>Цена: {{ product.price }} руб.</p>
+			<form action="/contacts/">
+			<input type="submit" value="Заказать">
+			</form>
 		</div>
 
 

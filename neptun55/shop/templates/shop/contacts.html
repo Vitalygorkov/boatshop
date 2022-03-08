@@ -1,9 +1,12 @@
-<h1>НЕПТУН 55</h1>
-
+<h1 align="center">НЕПТУН 55</h1>
 {% extends 'shop/base.html' %}
 {% block content %}
-<h1>ТЕЛЕФОН: </h1>
-<h1>ПОЧТА: </h1>
+{% load contact_tags %}
+<h1 align="center">ТЕЛЕФОН: +79039274690 </h1>
+<h1 align="center">ПОЧТА: 9039274690@mail.ru</h1>
+
+{% contact_form %}
+
 {% endblock %}
 
 

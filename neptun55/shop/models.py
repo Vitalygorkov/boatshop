@@ -3,6 +3,8 @@ from mptt.models import MPTTModel, TreeForeignKey
 import mptt
 
 
+
+
 class Category(MPTTModel):
     name = models.CharField("Категория",max_length=150)
     description = models.TextField("Описание")
@@ -58,6 +60,7 @@ class Color(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
+    short_description =  models.CharField(max_length=350)
     description = models.TextField('Описание', blank=True)  # описание
     manufacturer = models.ForeignKey(Manufacturer, verbose_name="Производитель", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
@@ -101,12 +104,13 @@ class Boat(Product):
 
     # type_boat = models.ForeignKey(Type_boat, on_delete=models.PROTECT, verbose_name='Тип лодки') # тип лодки гребная или моторная
     # type_bottom = models.ForeignKey(Type_bottom, on_delete=models.PROTECT, verbose_name='Тип дна')  # тип л
-    TYPE_MOTORS = (
-        ('VINT', 'Винт'),
-        ('VODOMET', 'Водомет'),
-        ('NET', 'Нет'),
-    )
-    type_motor = models.CharField("Тип мотора", max_length=7, choices=TYPE_MOTORS, blank=True) # вид мотора водомет или винт
+
+    # TYPE_MOTORS = (
+    #     ('VINT', 'Винт'),
+    #     ('VODOMET', 'Водомет'),
+    #     ('NET', 'Нет'),
+    # )
+    # type_motor = models.CharField("Тип мотора", max_length=7, choices=TYPE_MOTORS, blank=True) # вид мотора водомет или винт
     # transom =  # транец  Вклеенный,Крепление под навесной,Нет
     # floor =  # Надувное днище низкого давления,Надувное многобаллонное высокого давления,ПВХ,ПВХ+разборный пайол
     # series =  # серия, модельный ряд
@@ -126,6 +130,7 @@ class Boat(Product):
     complete_set_weight = models.IntegerField("Вес полного комплекта кг", blank=True, null=True) # Вес полного комплекта кг
     bulwark = models.BooleanField("Фальшборт", default=False, blank=True) # фальшборт по дефолту нет.
     keel = models.BooleanField("Киль", default=False, blank=True) # Киль есть\нет, по дефолту нет
+    upak = models.CharField("Габариты упаковки(Д*Ш*В)", max_length=100,blank=True)
     # image = models.ImageField('Изображение', upload_to="boats/",blank=True) # фото  https://qna.habr.com/q/218059
     # видео
 
@@ -154,7 +159,7 @@ class Reviews(models.Model):
     parent = models.ForeignKey(
         'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
     )
-    product = models.ForeignKey(Product, verbose_name="Лодка", on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, verbose_name="Лодка", related_name='prodreviews', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} - {self.product}"
@@ -164,8 +169,9 @@ class Reviews(models.Model):
         verbose_name_plural = "Отзывы"
 
 class VideosProducts(models.Model):
-    video = models.CharField("Ссылка на видеоролик", max_length=100)
-    product = models.ForeignKey(Product, verbose_name="Товар", on_delete= models.CASCADE, null=True)
+    video = models.CharField("Ссылка на видеоролик, например https://www.youtube.com/watch?v=QBkUCVVpyGE убрать всё до знака = и оставить QBkUCVVpyGE ", max_length=100)
+    product = models.ForeignKey(Product, verbose_name="Товар", related_name='prodvideos',on_delete= models.CASCADE, null=True)
+
     class Meta:
         verbose_name = "Видео"
         verbose_name_plural = "Видео"

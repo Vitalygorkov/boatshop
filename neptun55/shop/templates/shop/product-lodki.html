@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2 align="center">{{ product.name }}</h2>
-<div>
+<div class="product-page-topblock">
     <div class="product_page_img">
     {% for img in product.prodimg.all %}
     <img class="" src="{{ img.image.url }}" alt="продукт">
@@ -18,8 +18,6 @@
 			</form>
     </div>
 </div>
-
-
 <div class="content">
     <div class="tabs">
         <nav class="tabs__items">
@@ -32,28 +30,35 @@
             <div id="tab_01" class="tabs__block">
                     Характеристики:
                 <br> Производитель: {{ product.manufacturer }}
-
+                <br> Длинна см: {{ product.length }}
+                <br> Ширина см: {{ product.width }}
             </div>
             <div id="tab_02" class="tabs__block">
                 {{ product.description|safe }}
             </div>
             <div id="tab_03" class="tabs__block">
                 {% for review in product.prodreviews.all %}
-                {{ review.name }}
-                {{ review.text }}
-                {{ review.product }}
+                <br>{{ review.name }}
+                <br>{{ review.text }}
+                <br>{{ review.product }}
+                <br>
                 {% endfor %}
             </div>
             <div id="tab_04" class="tabs__block">
                 {% for videos in product.prodvideos.all %}
-                    <iframe src="{{ videos.video }}">
-                    </iframe>
+                <iframe frameborder="0" height="360" width="640" src="https://www.youtube.com/embed/{{ videos.video }}">
+                </iframe>
                 {% endfor %}
             </div>
 
         </div>
     </div>
 
+</div>
+
+<div>
+<!--    Описание:-->
+<!--{{ product.description|safe }}-->
 </div>
 
 {% endblock %}

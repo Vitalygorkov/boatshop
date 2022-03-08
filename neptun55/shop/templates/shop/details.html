@@ -1,37 +1,36 @@
-<h1>НЕПТУН 55</h1>
+<h1 align="center">НЕПТУН 55</h1>
 {% extends 'shop/base.html' %}
 
 {% block content %}
 {{ last_category }}
 <div class="search-menu">
-	<p align="center">Фильтр товаров</p>
-	<p>Цена:</p>
-	<input type="text" value="От">
-	<input type="text" value="До">
-	<p>Производитель</p>
-	<select>
-  		<option>Аквилон</option>
-  		<option>Пункт 2</option>
-	</select></p>
-		<p>Длина лодки (мм)</p>
-	<select>
-  		<option>2400</option>
-  		<option>Пункт 2</option>
-	</select></p>
-		<p>Ширина лодки (мм)</p>
-	<select>
-  		<option>1200</option>
-  		<option>Пункт 2</option>
-	</select></p>
-	<p>Вес:</p>
-	<input type="text" value="От">
-	<input type="text" value="До">
-	<input type="submit" value="Показать">
+<!--	<p align="center">Фильтр товаров</p>-->
+<!--	<p>Цена:</p>-->
+<!--	<input type="text" value="От">-->
+<!--	<input type="text" value="До">-->
+<!--	<p>Производитель</p>-->
+<!--	<select>-->
+<!--  		<option>Аквилон</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--		<p>Длина лодки (мм)</p>-->
+<!--	<select>-->
+<!--  		<option>2400</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--		<p>Ширина лодки (мм)</p>-->
+<!--	<select>-->
+<!--  		<option>1200</option>-->
+<!--  		<option>Пункт 2</option>-->
+<!--	</select></p>-->
+<!--	<p>Вес:</p>-->
+<!--	<input type="text" value="От">-->
+<!--	<input type="text" value="До">-->
+<!--	<input type="submit" value="Показать">-->
 </div>
 <div class="block-results">
 	<div class="sort_filter">
-	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>
-
+<!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
 	</div>
 	{% for product in category_products %}
 	<div class="product-display">

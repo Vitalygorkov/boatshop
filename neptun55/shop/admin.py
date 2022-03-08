@@ -48,9 +48,9 @@ class DescriptionAdminForm(forms.ModelForm):
 class BoatAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',),}
-    list_display = ("name", "manufacturer", "type_motor", "price", )
+    list_display = ("name", "manufacturer", "price", )
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "type_motor", "price", "name")
+    list_filter = ("manufacturer", "price", "name")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline, ReviewInline,]
     save_on_top = True

@@ -1,0 +1,15 @@
+
+
+<form action="{% url 'contact_view' %}" method="post" class="form_contact">
+        <h2>Оставьте свои контакты и пожелания для покупки </h2>
+    <h2>с помощью формы снизу и мы обязательно вам перезвоним!</h2>
+{% csrf_token %}
+<!--    {{ contact_form.first_name }}-->
+    <p>{{ contact_form.first_name }}</p>
+    <p>{{ contact_form.last_name }}</p>
+    <p>{{ contact_form.email }}</p>
+    <p>{{ contact_form.phone }}</p>
+    <p>{{ contact_form.locality }}</p>
+    <p>{{ contact_form.message }}</p>
+<input type="submit">
+</form>
