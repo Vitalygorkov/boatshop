@@ -11,7 +11,7 @@ def email(subject, content):
     print("Отправка сообщения")
     print(subject)
     print(content)
-    send_mail(subject, content, 'auto-message@neptun55.ru', ['vet55omsk@gmail.com'])
+    send_mail(subject, content, 'auto-message@neptun55.ru', ['9039274690@mail.ru'])
 
 class ContactFormView(CreateView):
     model = Contact
