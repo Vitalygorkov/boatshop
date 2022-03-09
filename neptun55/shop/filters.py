@@ -2,6 +2,8 @@ from .models import Boat,Category
 import django_filters
 class BoatFilter(django_filters.FilterSet):
     # Category.objects.filter(url='lodki').get_descendants(include_self=False)
+    keel = django_filters.BooleanFilter(field_name='keel', label='Киль')
+    bulwark = django_filters.BooleanFilter(field_name='bulwark', label='Фальшборт')
     category = django_filters.ModelChoiceFilter(queryset=Category.objects.filter(url='lodki').get_descendants(include_self=False), label='Тип дна:')
     price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='Цена(руб) от:')
     price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='Цена(руб) до:')
@@ -36,4 +38,4 @@ class BoatFilter(django_filters.FilterSet):
     class Meta:
         model = Boat
 
-        fields = ['manufacturer', 'bulwark', 'keel']
+        fields = ['manufacturer',]
