@@ -175,10 +175,18 @@ width: 1000px;
 height: 350px;
 }
 
-.product_page_img{
+.product_page_carusel{
 display: inline-block;
-width: 450px;
-height: 450px;
+width: 400px;
+height: 400px;
+}
+
+.li-img-product{
+display: inline-block;
+}
+.img-carusel{
+max-width: 300px;
+max-height: 300px;
 }
 .product_page_short_description_price{
 display: inline-block;

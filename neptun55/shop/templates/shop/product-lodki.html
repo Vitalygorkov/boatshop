@@ -4,10 +4,12 @@
 
 <h2 align="center">{{ product.name }}</h2>
 <div class="product-page-topblock">
-    <div class="product_page_img">
-    {% for img in product.prodimg.all %}
-    <img class="" src="{{ img.image.url }}" alt="продукт">
-    {% endfor %}
+    <div class="product_page_carusel">
+        <ol>
+            {% for img in product.prodimg.all %}
+            <li class="li-img-product"><img class="img-carusel" src="{{ img.image.url }}" alt="продукт"></li>
+            {% endfor %}
+        </ol>
     </div>
 
     <div class="product_page_short_description_price">
@@ -30,8 +32,25 @@
             <div id="tab_01" class="tabs__block">
                     Характеристики:
                 <br> Производитель: {{ product.manufacturer }}
+                <br> Цвет: {{ product.color }}
+                <br> Тип дна: {{ product.category }}
                 <br> Длинна см: {{ product.length }}
                 <br> Ширина см: {{ product.width }}
+                <br> Длинна кокпита см: {{ product.cockpit_length }}
+                <br> Ширина кокпита см: {{ product.cockpit_width }}
+                <br> Диаметр борта см: {{ product.cylinder_diameter }}
+                <br> Плотность ткани борта (г/м²): {{ product.fabric_thickness_side }}
+                <br> Плотность ткани дна (г/м²): {{ product.fabric_thickness_bottom }}
+                <br> Количество надувных отсеков: {{ product.inflatable_compartments }}
+                <br> Грузоподъемность кг: {{ product.load_capacity }}
+                <br> Пассажировместимость чел: {{ product.passenger_capacity }}
+                <br> Макс мощность мотора л.с.: {{ product.maximum_motor_power }}
+                <br> Вес лодки кг: {{ product.boat_weight }}
+                <br> Вес полного комплекта кг: {{ product.complete_set_weight }}
+                <br> Фальшборт: {{ product.bulwark }}
+                <br> Киль: {{ product.keel }}
+                <br> Габариты упаковки(Д*Ш*В): {{ product.upak }}
+
             </div>
             <div id="tab_02" class="tabs__block">
                 {{ product.description|safe }}
