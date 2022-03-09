@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .models import Product, Category, Boat
 from .filters import BoatFilter
@@ -83,7 +83,8 @@ def search_boat_category(request, category_slug):
 def index(request):
     categories = Category.objects.all()
 
-    return render(request, "shop/index.html", { "category_list": categories })
+    # return render(request, "shop/index.html", { "category_list": categories })
+    return redirect("/lodki/")
 
 def contacts(request):
     categories = Category.objects.all()
