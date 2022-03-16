@@ -7,7 +7,8 @@ from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.http import HttpResponse
 # Функция отправки сообщения
-# def email(subject, content):
+def email(subject, content):
+    pass
 #     print("Отправка сообщения")
 #     print(subject)
 #     print(content)
