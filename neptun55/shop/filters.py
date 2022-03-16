@@ -39,3 +39,8 @@ class BoatFilter(django_filters.FilterSet):
         model = Boat
 
         fields = ['manufacturer',]
+
+        # widgets = {
+        #     "price__gt":
+        #
+        # }

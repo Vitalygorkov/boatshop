@@ -38,7 +38,7 @@ def search_boat(request):
     category_cats = Category.objects.filter(url='lodki').get_descendants(include_self=False)
     # print(category_cats)
 
-    return render(request, "shop/details-lodki.html", {"category_list": categories,
+    return render(request, "shop/details-lodki-search.html", {"category_list": categories,
                                           # "category_products": category_products,
                                           "category_cats": category_cats,
                                           "filter": boat_filter,})
@@ -54,6 +54,8 @@ def search_boat_category(request, category_slug):
     # print(current_category[0].url)
     cat_url_list  = current_category
     print(cat_url_list)
+    print('lodki-search category')
+
     category_products = Product.objects.filter(category__in=branch_categories).distinct()
     try:
         category_cats = current_category[0].get_descendants(include_self=False)
@@ -64,7 +66,8 @@ def search_boat_category(request, category_slug):
     if current_category[0].url != 'lodki':
         use_template = "shop/details.html"
     else:
-        use_template = "shop/details-lodki.html"
+        use_template = "shop/details-lodki-search.html"
+        print('lodki-search template')
     print(use_template)
     return render(request, use_template, {"category_list": categories,
                                           "category_products": category_products,
@@ -110,8 +113,6 @@ def success(request):
 #                                                "category_products": category_products,})
 
 def show_category(request, category_slug):
-    boat_list = Boat.objects.all()
-    boat_filter = BoatFilter(request.GET, queryset=boat_list)
     # print('Show_category view')
     categories = Category.objects.all()
     #categoryID = Category.objects.get(url=category_slug)
@@ -122,18 +123,34 @@ def show_category(request, category_slug):
     cat_url_list  = current_category
     # print(cat_url_list)
     category_products = Product.objects.filter(category__in=branch_categories).distinct()
+    boat_products = Boat.objects.filter(category__in=branch_categories).distinct()
+    # boat_list = Boat.objects.all()
+    boat_filter = BoatFilter(request.GET, queryset=boat_products)
+    category_cats = ''
+    print("show category")
     try:
         category_cats = current_category[0].get_descendants(include_self=False)
         # print(category_cats)
     except Exception as e:
-        print("Ошибка:" + str(e))
-    use_template = "shop/details-lodki.html"
-    if current_category[0].url != 'lodki':
-        use_template = "shop/details.html"
-
-    else:
-        use_template = "shop/details-lodki.html"
-        boat_filter = BoatFilter(request.GET, queryset=category_products)
+        print("Ошибка category_cats:" + str(e))
+    use_template = "shop/details.html"
+    try:
+        if current_category[0].url == 'lodki':
+            use_template = "shop/details-lodki.html"
+    except Exception as e:
+        print("Ошибка current_category:" + str(e))
+    # curr_cat = ''
+    # try:
+    #     curr_cat = current_category[0].url
+    #     print(curr_cat)
+    # except Exception as e:
+    #     print("Ошибка curr_cat:" + str(e))
+    # use_template = "shop/details-lodki.html"
+    # if curr_cat != 'lodki':
+    #     use_template = "shop/details.html"
+    # else:
+    #     use_template = "shop/details-lodki.html"
+    #     boat_filter = BoatFilter(request.GET, queryset=category_products)
     # print(use_template)
     return render(request, use_template, {"category_list": categories,
                                           "category_products": category_products,
