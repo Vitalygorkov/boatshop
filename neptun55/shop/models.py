@@ -60,7 +60,7 @@ class Color(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
-    short_description =  models.CharField(max_length=350)
+    short_description =  models.CharField(max_length=350, blank=True)
     description = models.TextField('Описание', blank=True)  # описание
     manufacturer = models.ForeignKey(Manufacturer, verbose_name="Производитель", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
@@ -140,7 +140,7 @@ class Boat(Product):
 
 class Photo_product(models.Model):
     title = models.CharField("Заголовок", max_length=100)
-    description = models.TextField("Описание")
+    description = models.TextField("Описание", blank=True)
     image = models.ImageField("Изображение", upload_to="photo/")
     product = models.ForeignKey(Product, verbose_name="", related_name='prodimg', on_delete=models.CASCADE)
 
