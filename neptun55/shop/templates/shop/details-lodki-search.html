@@ -264,8 +264,8 @@
 		<br>Макс мощность мотора (лс): {{ product.maximum_motor_power }}
 		<br>Вес лодки (кг): {{ product.boat_weight }}
 		<br>Вес полного комплекта кг: {{ product.complete_set_weight }}
-		<br>Фальшборт: {{ product.bulwark }}
-		<br>Киль: {{ product.keel }}
+		<br>Фальшборт: {{ product.bulwark|yesno:"Да,Нет" }}
+		<br>Киль: {{ product.keel|yesno:"Да,Нет" }}
 		<br>Габариты упаковки(Д*Ш*В): {{ product.upak }}
 			</div>
 		</div>
