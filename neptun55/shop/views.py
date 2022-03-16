@@ -38,7 +38,7 @@ def search_boat(request):
     category_cats = Category.objects.filter(url='lodki').get_descendants(include_self=False)
     # print(category_cats)
 
-    return render(request, "shop/details-lodki-search.html", {"category_list": categories,
+    return render(request, "shop/details-lodki.html", {"category_list": categories,
                                           # "category_products": category_products,
                                           "category_cats": category_cats,
                                           "filter": boat_filter,})
