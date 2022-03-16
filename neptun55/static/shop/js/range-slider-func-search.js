@@ -9,7 +9,7 @@ var params = window.location.search.replace( '?', '').split('&').reduce(
     );
 console.log(params.price__lt);
 
-// цена
+// цена f
 const rangeSlider = document.getElementById('range-slider-price');
 if (rangeSlider) {
   noUiSlider.create(rangeSlider, {
