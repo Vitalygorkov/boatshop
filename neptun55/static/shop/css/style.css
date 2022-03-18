@@ -118,21 +118,31 @@ border:2px solid silver;
 
 .prod-display-lodki-inside-img{
 display: inline-block;
+width:200px;
 }
 .prod-display-lodki-inside-text{
 display: inline-block;
-width: 500px;
+width: 450px;
 height: 300px;
 }
 .product-lodki-text1{
-display: inline-block;
-
+width: 450px;
 }
-.product-lodki-text2{
+.text-characteristics-name-tochki{
 display: inline-block;
-margin: 1px 1px 1px 5px;
-padding 10px 10px 10px 10px;
-
+border:2px solid silver;
+width: 350px;
+overflow: hidden;
+}
+.text-characteristics-name{
+display: inline-block;
+height: 15px;
+width: 350px;
+white-space: nowrap;
+overflow: hidden;
+}
+.text-characteristics{
+display: inline;
 }
 
 .prod-display-lodki-inside-price{
@@ -275,4 +285,15 @@ right: 0%;
 
 .button-search:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.menu-details {
+    padding: 8px;
+    background-color: #eee;
+    color: #333;
+    border: 1px #ccc solid;
+    border-radius: 12px;
+    cursor: pointer;
+
+    list-style-type: disc;  /* задаем маркер*/
 }

@@ -16,7 +16,7 @@ if (rangeSlider) {
   noUiSlider.create(rangeSlider, {
     start: [params.price__gt,params.price__lt],
     connect: true,
-    step: 50,
+    step: 10,
     range: {
       'min': [0],
       'max': [299999]

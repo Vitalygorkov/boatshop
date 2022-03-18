@@ -9,7 +9,9 @@
 	<form class="serach-menu" action="/search" method="get">
 	<br><button class="button-search" type="submit">Показать</button>
 <!--	{{ filter.form.as_p }}-->
-		<h3 class="filters-price__title">Цена</h3>
+		<details open class="menu-details">
+		<summary>Цена</summary>
+
 		<div class="filters-price__slider" id="range-slider-price"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -23,8 +25,10 @@
 				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Длинна</h3>
+		<details class="menu-details">
+		<summary>Длинна</summary>
 			<div class="filters-price__slider" id="range-slider-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -38,8 +42,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-				<h3 class="filters-price__title">Ширина</h3>
+		<details class="menu-details">
+		<summary>Ширина</summary>
 			<div class="filters-price__slider" id="range-slider-width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -53,8 +59,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Длинна кокпита</h3>
+		<details class="menu-details">
+		<summary>Длинна кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -68,8 +76,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Ширина кокпита</h3>
+		<details class="menu-details">
+		<summary>Ширина кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit_width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -83,9 +93,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-
-		<h3 class="filters-price__title">Грузоподъемность</h3>
+		<details class="menu-details">
+		<summary>Грузоподъемность</summary>
 			<div class="filters-price__slider" id="range-slider-load-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -99,8 +110,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Вес лодки</h3>
+		<details class="menu-details">
+		<summary>Вес лодки</summary>
 			<div class="filters-price__slider" id="range-slider-boat-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -114,8 +127,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Вес полного комплекта</h3>
+		<details class="menu-details">
+		<summary>Вес полного комплекта</summary>
 			<div class="filters-price__slider" id="range-slider-complete-set-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -129,8 +144,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Макс. мощность мотора</h3>
+		<details class="menu-details">
+		<summary>Макс. мощность мотора</summary>
 			<div class="filters-price__slider" id="range-slider-maximum-motor-power"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -144,9 +161,10 @@
 				<span class="filters-price__text">ЛС</span>
 				</label>
 			</div>
+		</details>
 
-
-		<h3 class="filters-price__title">Плотность ткани борта</h3>
+		<details class="menu-details">
+		<summary>Плотность ткани борта</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-side"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -160,8 +178,10 @@
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Плотность ткани дна</h3>
+		<details class="menu-details">
+		<summary>Плотность ткани дна</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-bottom"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -175,9 +195,10 @@
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
+		</details>
 
-
-				<h3 class="filters-price__title">Количество надувных отсеков</h3>
+		<details class="menu-details">
+		<summary>Количество надувных отсеков</summary>
 			<div class="filters-price__slider" id="range-slider-inflatable-compartments"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -191,8 +212,10 @@
 				<span class="filters-price__text">ШТ</span>
 				</label>
 			</div>
+		</details>
 
-						<h3 class="filters-price__title">Пассажировместимость</h3>
+		<details class="menu-details">
+		<summary>Пассажировместимость</summary>
 			<div class="filters-price__slider" id="range-slider-passenger-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -206,11 +229,23 @@
 				<span class="filters-price__text">Чел</span>
 				</label>
 			</div>
-
-		<h3 class="filters-price__title">Производитель</h3> {% render_field filter.form.manufacturer %}
-		<h3 class="filters-price__title">Тип дна</h3> {% render_field filter.form.category %}
-		<h3 class="filters-price__title">Фальшборт</h3> {% render_field filter.form.bulwark %}
-		<h3 class="filters-price__title">Киль</h3> {% render_field filter.form.keel %}
+		</details>
+		<details class="menu-details">
+		<summary>Производитель</summary>
+		 {% render_field filter.form.manufacturer %}
+		</details>
+		<details class="menu-details">
+		<summary>Тип дна</summary>
+		{% render_field filter.form.category %}
+		</details>
+		<details class="menu-details">
+		<summary>Фальшборт</summary>
+		{% render_field filter.form.bulwark %}
+		</details>
+		<details class="menu-details">
+		<summary>Киль</summary>
+		{% render_field filter.form.keel %}
+		</details>
 
 
 
@@ -246,28 +281,44 @@
 
 		<div class="prod-display-lodki-inside-text">
 			<div class="product-lodki-text1">
-			<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
-			<h3>Характеристики:</h3>
-		Производитель: {{ product.manufacturer }}
-		<br>Тип дна: {{ product.category }}
-		<br>Длинна (см): {{ product.length }}
-		<br>Ширина (см): {{ product.width }}
-		<br>Длинна кокпита (см): {{ product.cockpit_length }}
-		<br>Ширина кокпита (см): {{ product.cockpit_width }}
-		<br>Диаметр борта (см): {{ product.cylinder_diameter }}
-		<br>Плотность ткани борта (г/м²): {{ product.fabric_thickness_side }}
-		<br>Плотность ткани дна (г/м²): {{ product.fabric_thickness_bottom }}
-			</div>
-			<div class = "product-lodki-text2">
-		<br>Кол-во надувных отсеков: {{ product.inflatable_compartments }}
-		<br>Грузоподъемность (кг): {{ product.load_capacity }}
-		<br>Пассожировместимость (чел): {{ product.passenger_capacity }}
-		<br>Макс мощность мотора (лс): {{ product.maximum_motor_power }}
-		<br>Вес лодки (кг): {{ product.boat_weight }}
-		<br>Вес полного комплекта кг: {{ product.complete_set_weight }}
-		<br>Фальшборт: {{ product.bulwark|yesno:"Да,Нет" }}
-		<br>Киль: {{ product.keel|yesno:"Да,Нет" }}
-		<br>Габариты упаковки(Д*Ш*В): {{ product.upak }}
+				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+				<h3>Характеристики:</h3>
+				<div class="text-characteristics-name">Производитель:................................................................................................</div>
+				<div class="text-characteristics">{{ product.manufacturer }}</div>
+				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
+				<div class="text-characteristics">{{ product.category }}</div>
+				<br><div class="text-characteristics-name">Длинна (см):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.length }}</div>
+				<br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.width }}</div>
+				<br><div class="text-characteristics-name">Длинна кокпита (см):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.cockpit_length }}</div>
+				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.cockpit_width }}</div>
+				<br><div class="text-characteristics-name">Диаметр борта (см):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.cylinder_diameter }}</div>
+				<br><div class="text-characteristics-name">Плотность ткани борта (г/м²):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
+				<br><div class="text-characteristics-name">Плотность ткани дна (г/м²):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.fabric_thickness_bottom }}</div>
+				<br><div class="text-characteristics-name">Кол-во надувных отсеков:............................................................................................................</div>
+				<div class="text-characteristics">{{ product.inflatable_compartments }}</div>
+				<br><div class="text-characteristics-name">Грузоподъемность (кг):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.load_capacity }}</div>
+				<br><div class="text-characteristics-name">Пассожировместимость (чел):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.passenger_capacity }}</div>
+				<br><div class="text-characteristics-name">Макс мощность мотора (лс):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.maximum_motor_power }}</div>
+				<br><div class="text-characteristics-name">Вес лодки (кг):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.boat_weight }}</div>
+				<br><div class="text-characteristics-name">Вес полного комплекта кг:............................................................................................................</div>
+				<div class="text-characteristics">{{ product.complete_set_weight }}</div>
+				<br><div class="text-characteristics-name">Фальшборт:............................................................................................................</div>
+				<div class="text-characteristics">{{ product.bulwark|yesno:"Да,Нет" }}</div>
+				<br><div class="text-characteristics-name">Киль:............................................................................................................</div>
+				<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
+				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
+				<div class="text-characteristics">{{ product.upak }}</div>
 			</div>
 		</div>
 

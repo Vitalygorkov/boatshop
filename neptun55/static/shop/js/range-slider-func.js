@@ -118,11 +118,11 @@ if (rangeSlider) {
   noUiSlider.create(rangeSlider, {
     start: [0,299999],
     connect: true,
-    step: 50,
+    step: 10,
     range: {
       'min': [0],
       'max': [299999]
-    }
+    },
   });
   const input0 = document.getElementById('input-price-0');
   const input1 = document.getElementById('input-price-1');

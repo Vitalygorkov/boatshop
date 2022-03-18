@@ -9,7 +9,9 @@
 	<form class="serach-menu" action="/search" method="get">
 	<br><button class="button-search" type="submit">Показать</button>
 <!--	{{ filter.form.as_p }}-->
-		<h3 class="filters-price__title">Цена</h3>
+		<details open class="menu-details">
+		<summary>Цена</summary>
+
 		<div class="filters-price__slider" id="range-slider-price"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -23,8 +25,10 @@
 				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Длинна</h3>
+		<details class="menu-details">
+		<summary>Длинна</summary>
 			<div class="filters-price__slider" id="range-slider-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -38,8 +42,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-				<h3 class="filters-price__title">Ширина</h3>
+		<details class="menu-details">
+		<summary>Ширина</summary>
 			<div class="filters-price__slider" id="range-slider-width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -53,8 +59,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Длинна кокпита</h3>
+		<details class="menu-details">
+		<summary>Длинна кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -68,8 +76,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Ширина кокпита</h3>
+		<details class="menu-details">
+		<summary>Ширина кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit_width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -83,9 +93,10 @@
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
+		</details>
 
-
-		<h3 class="filters-price__title">Грузоподъемность</h3>
+		<details class="menu-details">
+		<summary>Грузоподъемность</summary>
 			<div class="filters-price__slider" id="range-slider-load-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -99,8 +110,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Вес лодки</h3>
+		<details class="menu-details">
+		<summary>Вес лодки</summary>
 			<div class="filters-price__slider" id="range-slider-boat-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -114,8 +127,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Вес полного комплекта</h3>
+		<details class="menu-details">
+		<summary>Вес полного комплекта</summary>
 			<div class="filters-price__slider" id="range-slider-complete-set-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -129,8 +144,10 @@
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Макс. мощность мотора</h3>
+		<details class="menu-details">
+		<summary>Макс. мощность мотора</summary>
 			<div class="filters-price__slider" id="range-slider-maximum-motor-power"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -144,9 +161,10 @@
 				<span class="filters-price__text">ЛС</span>
 				</label>
 			</div>
+		</details>
 
-
-		<h3 class="filters-price__title">Плотность ткани борта</h3>
+		<details class="menu-details">
+		<summary>Плотность ткани борта</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-side"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -160,8 +178,10 @@
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
+		</details>
 
-		<h3 class="filters-price__title">Плотность ткани дна</h3>
+		<details class="menu-details">
+		<summary>Плотность ткани дна</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-bottom"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -175,8 +195,10 @@
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
+		</details>
 
-				<h3 class="filters-price__title">Количество надувных отсеков</h3>
+		<details class="menu-details">
+		<summary>Количество надувных отсеков</summary>
 			<div class="filters-price__slider" id="range-slider-inflatable-compartments"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -190,8 +212,10 @@
 				<span class="filters-price__text">ШТ</span>
 				</label>
 			</div>
+		</details>
 
-						<h3 class="filters-price__title">Пассажировместимость</h3>
+		<details class="menu-details">
+		<summary>Пассажировместимость</summary>
 			<div class="filters-price__slider" id="range-slider-passenger-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -205,11 +229,26 @@
 				<span class="filters-price__text">Чел</span>
 				</label>
 			</div>
+		</details>
+		<details class="menu-details">
+		<summary>Производитель</summary>
+		 {% render_field filter.form.manufacturer %}
+		</details>
+		<details class="menu-details">
+		<summary>Тип дна</summary>
+		{% render_field filter.form.category %}
+		</details>
+		<details class="menu-details">
+		<summary>Фальшборт</summary>
+		{% render_field filter.form.bulwark %}
+		</details>
+		<details class="menu-details">
+		<summary>Киль</summary>
+		{% render_field filter.form.keel %}
+		</details>
 
-		<h3 class="filters-price__title">Производитель</h3> {% render_field filter.form.manufacturer %}
-		<h3 class="filters-price__title">Тип дна</h3> {% render_field filter.form.category %}
-		<h3 class="filters-price__title">Фальшборт</h3> {% render_field filter.form.bulwark %}
-		<h3 class="filters-price__title">Киль</h3> {% render_field filter.form.keel %}
+
+
 
 
 	<button class="button-search" type="submit">Показать</button>
@@ -228,7 +267,7 @@
 		{% endfor %}
 	</div>
 	<div class="sort_filter">
-<!--	Сортировка: <a href="##">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
+<!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
 	</div>
 
 

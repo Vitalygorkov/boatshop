@@ -44,13 +44,15 @@ margin-top: 3px;
 border: none;
 color:#4D4D4D;
 width: 65px;
-padding: 0 4px;
+padding: 0 2px;
 
 }
 
 .filters-price__slider{
 margin-bottom: 12px;
-width: 210px;
+margin-top: 9px;
+margin-left: 12px;
+width: 200px;
 }
 
 .noUi-connect {
@@ -62,7 +64,7 @@ background-color: white;
 border: none;
 border-radius: 100px;
 box-shadow: none;
-height: 5px;
+height: 3px;
 }
 
 .noUi-handle::after,
@@ -74,11 +76,12 @@ display: none;
 box-shadow: none;
 border-radius: 100%;
 background-color: #fff;
-border: 3px solid #5d71dd;
+border: 2px solid #5d71dd;
 }
 
 .noUi-horizontal .noUi-handle{
-width: 22px;
-height: 22px;
-top: -9px;
+width: 17px;
+height: 17px;
+right: 0px;
+top: -7px;
 }
