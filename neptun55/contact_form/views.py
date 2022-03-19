@@ -9,10 +9,7 @@ from django.http import HttpResponse
 # Функция отправки сообщения
 def email(subject, content):
     pass
-#     print("Отправка сообщения")
-#     print(subject)
-#     print(content)
-#     send_mail(subject, content, 'auto-message@neptun55.ru', ['9039274690@mail.ru'])
+    send_mail(subject, content, 'auto-message@neptun55.ru', ['clients@neptun55.ru'])
 
 class ContactFormView(CreateView):
     model = Contact
