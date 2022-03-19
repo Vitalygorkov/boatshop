@@ -178,27 +178,32 @@ border:2px solid silver;
 }
 /* product page */
 .product-page-topblock{
-width: 1000px;
-height: 350px;
+width: 900px;
+height: 280px;
+border:2px solid silver;
 }
 
 .product_page_carusel{
 display: inline-block;
 width: 400px;
-height: 400px;
+height: 280px;
 }
 
 .li-img-product{
 display: inline-block;
+
 }
 .img-carusel{
-max-width: 300px;
-max-height: 300px;
+display: inline-block;
+max-width: 200px;
+max-height: 200px;
+border:2px solid silver;
 }
 .product_page_short_description_price{
 display: inline-block;
-width: 450px;
-height: 600px;
+width: 350px;
+height: 250px;
+border:2px solid silver;
 }
 
 .content{
