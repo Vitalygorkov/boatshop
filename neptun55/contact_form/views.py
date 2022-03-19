@@ -8,7 +8,6 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 # Функция отправки сообщения
 def email(subject, content):
-    pass
     send_mail(subject, content, 'auto-message@neptun55.ru', ['clients@neptun55.ru'])
 
 class ContactFormView(CreateView):
