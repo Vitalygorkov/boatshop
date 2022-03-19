@@ -180,7 +180,7 @@ border:2px solid silver;
 .product-page-topblock{
 width: 900px;
 height: 280px;
-border:2px solid silver;
+
 }
 
 .product_page_carusel{
@@ -197,13 +197,12 @@ display: inline-block;
 display: inline-block;
 max-width: 200px;
 max-height: 200px;
-border:2px solid silver;
 }
 .product_page_short_description_price{
 display: inline-block;
 width: 350px;
 height: 250px;
-border:2px solid silver;
+
 }
 
 .content{
