@@ -52,7 +52,7 @@ if (rangeSlider2) {
     step: 1,
     range: {
       'min': [0],
-      'max': [600]
+      'max': [550]
     }
   });
   const input0 = document.getElementById('input-length-0');
@@ -84,7 +84,7 @@ if (rangeSliderWidth) {
     step: 1,
     range: {
       'min': [0],
-      'max': [250]
+      'max': [220]
     }
   });
   const input0 = document.getElementById('input-width-0');
@@ -116,7 +116,7 @@ if (rangeSliderCockpitLength) {
     step: 1,
     range: {
       'min': [0],
-      'max': [600]
+      'max': [500]
     }
   });
   const input0 = document.getElementById('input-cockpit-length-0');
@@ -148,7 +148,7 @@ if (rangeSliderCockpitWidth) {
     step: 1,
     range: {
       'min': [0],
-      'max': [250]
+      'max': [200]
     }
   });
   const input0 = document.getElementById('input-cockpit-width-0');
@@ -180,7 +180,7 @@ if (rangeSliderLoadCapacity) {
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [1200]
     }
   });
   const input0 = document.getElementById('input-load-capacity-0');
@@ -212,7 +212,7 @@ if (rangeSliderBoatWeight) {
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [150]
     }
   });
   const input0 = document.getElementById('input-boat-weight-0');
@@ -244,7 +244,7 @@ if (rangeSliderCompleteSetWeight) {
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [180]
     }
   });
   const input0 = document.getElementById('input-complete-set-weight-0');
@@ -276,7 +276,7 @@ if (rangeSliderMaximumMotorPower) {
     step: 1,
     range: {
       'min': [0],
-      'max': [150]
+      'max': [100]
     }
   });
   const input0 = document.getElementById('input-maximum-motor-power-0');

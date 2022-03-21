@@ -148,12 +148,12 @@ if (rangeSlider) {
 const rangeSlider2 = document.getElementById('range-slider-length');
 if (rangeSlider2) {
   noUiSlider.create(rangeSlider2, {
-    start: [0,600],
+    start: [0,550],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [600]
+      'max': [550]
     }
   });
   const input0 = document.getElementById('input-length-0');
@@ -180,12 +180,12 @@ if (rangeSlider2) {
 const rangeSliderWidth = document.getElementById('range-slider-width');
 if (rangeSliderWidth) {
   noUiSlider.create(rangeSliderWidth, {
-    start: [0,250],
+    start: [0,220],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [250]
+      'max': [220]
     }
   });
   const input0 = document.getElementById('input-width-0');
@@ -212,12 +212,12 @@ if (rangeSliderWidth) {
 const rangeSliderCockpitLength = document.getElementById('range-slider-cockpit-length');
 if (rangeSliderCockpitLength) {
   noUiSlider.create(rangeSliderCockpitLength, {
-    start: [0,600],
+    start: [0,500],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [600]
+      'max': [500]
     }
   });
   const input0 = document.getElementById('input-cockpit-length-0');
@@ -244,12 +244,12 @@ if (rangeSliderCockpitLength) {
 const rangeSliderCockpitWidth = document.getElementById('range-slider-cockpit_width');
 if (rangeSliderCockpitWidth) {
   noUiSlider.create(rangeSliderCockpitWidth, {
-    start: [0,250],
+    start: [0,200],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [250]
+      'max': [200]
     }
   });
   const input0 = document.getElementById('input-cockpit-width-0');
@@ -276,12 +276,12 @@ if (rangeSliderCockpitWidth) {
 const rangeSliderLoadCapacity = document.getElementById('range-slider-load-capacity');
 if (rangeSliderLoadCapacity) {
   noUiSlider.create(rangeSliderLoadCapacity, {
-    start: [0,2500],
+    start: [0,1200],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [1200]
     }
   });
   const input0 = document.getElementById('input-load-capacity-0');
@@ -308,12 +308,12 @@ if (rangeSliderLoadCapacity) {
 const rangeSliderBoatWeight = document.getElementById('range-slider-boat-weight');
 if (rangeSliderBoatWeight) {
   noUiSlider.create(rangeSliderBoatWeight, {
-    start: [0,2500],
+    start: [0,150],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [150]
     }
   });
   const input0 = document.getElementById('input-boat-weight-0');
@@ -340,12 +340,12 @@ if (rangeSliderBoatWeight) {
 const rangeSliderCompleteSetWeight = document.getElementById('range-slider-complete-set-weight');
 if (rangeSliderCompleteSetWeight) {
   noUiSlider.create(rangeSliderCompleteSetWeight, {
-    start: [0,2500],
+    start: [0,180],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [2500]
+      'max': [180]
     }
   });
   const input0 = document.getElementById('input-complete-set-weight-0');
@@ -372,12 +372,12 @@ if (rangeSliderCompleteSetWeight) {
 const rangeSliderMaximumMotorPower = document.getElementById('range-slider-maximum-motor-power');
 if (rangeSliderMaximumMotorPower) {
   noUiSlider.create(rangeSliderMaximumMotorPower, {
-    start: [0,150],
+    start: [0,100],
     connect: true,
     step: 1,
     range: {
       'min': [0],
-      'max': [150]
+      'max': [100]
     }
   });
   const input0 = document.getElementById('input-maximum-motor-power-0');

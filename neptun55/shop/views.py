@@ -31,7 +31,7 @@ from .filters import BoatFilter
 
 def search_boat(request):
     print('Search_boat view')
-    boat_list = Boat.objects.all()
+    boat_list = Boat.objects.all().order_by('price')
     boat_filter = BoatFilter(request.GET, queryset=boat_list)
     categories = Category.objects.all()
     # category_products = Product.objects.filter(category__in=branch_categories).distinct()
@@ -43,37 +43,37 @@ def search_boat(request):
                                           "category_cats": category_cats,
                                           "filter": boat_filter,})
 
-def search_boat_category(request, category_slug):
-    boat_list = Boat.objects.all()
-    boat_filter = BoatFilter(request.GET, queryset=boat_list)
-    categories = Category.objects.all()
-    #categoryID = Category.objects.get(url=category_slug)
-    # branch_categories = Category.objects.get(url=category_slug).get_descendants(include_self=True)
-    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=True)
-    current_category = categories.filter(url=category_slug).get_ancestors(include_self=True)
-    # print(current_category[0].url)
-    cat_url_list  = current_category
-    print(cat_url_list)
-    print('lodki-search category')
-
-    category_products = Product.objects.filter(category__in=branch_categories).distinct()
-    try:
-        category_cats = current_category[0].get_descendants(include_self=False)
-        # print(category_cats)
-    except Exception as e:
-        print("Ошибка:" + str(e))
-    use_template = "shop/details.html"
-    if current_category[0].url != 'lodki':
-        use_template = "shop/details.html"
-    else:
-        use_template = "shop/details-lodki-search.html"
-        print('lodki-search template')
-    print(use_template)
-    return render(request, use_template, {"category_list": categories,
-                                          "category_products": category_products,
-                                          "category_cats": category_cats,
-                                          "cat_url_list": cat_url_list,
-                                          "filter": category_products,})
+# def search_boat_category(request, category_slug):
+#     boat_list = Boat.objects.all()
+#     boat_filter = BoatFilter(request.GET, queryset=boat_list)
+#     categories = Category.objects.all()
+#     #categoryID = Category.objects.get(url=category_slug)
+#     # branch_categories = Category.objects.get(url=category_slug).get_descendants(include_self=True)
+#     branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=True)
+#     current_category = categories.filter(url=category_slug).get_ancestors(include_self=True)
+#     # print(current_category[0].url)
+#     cat_url_list  = current_category
+#     print(cat_url_list)
+#     print('lodki-search category')
+#
+#     category_products = Product.objects.filter(category__in=branch_categories).distinct()
+#     try:
+#         category_cats = current_category[0].get_descendants(include_self=False)
+#         # print(category_cats)
+#     except Exception as e:
+#         print("Ошибка:" + str(e))
+#     use_template = "shop/details.html"
+#     if current_category[0].url != 'lodki':
+#         use_template = "shop/details.html"
+#     else:
+#         use_template = "shop/details-lodki-search.html"
+#         print('lodki-search template')
+#     print(use_template)
+#     return render(request, use_template, {"category_list": categories,
+#                                           "category_products": category_products,
+#                                           "category_cats": category_cats,
+#                                           "cat_url_list": cat_url_list,
+#                                           "filter": category_products,})
 
 
 # def search_boat(request):
@@ -123,7 +123,7 @@ def show_category(request, category_slug):
     cat_url_list  = current_category
     # print(cat_url_list)
     category_products = Product.objects.filter(category__in=branch_categories).distinct()
-    boat_products = Boat.objects.filter(category__in=branch_categories).distinct()
+    boat_products = Boat.objects.filter(category__in=branch_categories).distinct().order_by('price')
     # boat_list = Boat.objects.all()
     boat_filter = BoatFilter(request.GET, queryset=boat_products)
     category_cats = ''
