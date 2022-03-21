@@ -7,242 +7,242 @@
 <div class="search-menu">
 
 	<form class="serach-menu" action="/search" method="get">
-	<br><button class="button-search" type="submit">Показать</button>
+	<br><button class="button-search" type="submit">Показать</button><a href="/lodki/">Сбросить</a>
 <!--	{{ filter.form.as_p }}-->
-		<details open class="menu-details">
+		<details {{ details_status.price }} class="menu-details">
 		<summary>Цена</summary>
 
 		<div class="filters-price__slider" id="range-slider-price"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.price__gt class="filters-price__input" placeholder="500" id="input-price-0" %}
 				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.price__lt class="filters-price__input" placeholder="299999" id="input-price-1" %}
 				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.length }} class="menu-details">
 		<summary>Длинна</summary>
 			<div class="filters-price__slider" id="range-slider-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.length__gt class="filters-price__input" placeholder="0" id="input-length-0" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.length__lt class="filters-price__input" placeholder="600" id="input-length-1" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.width }} class="menu-details">
 		<summary>Ширина</summary>
 			<div class="filters-price__slider" id="range-slider-width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.width__gt class="filters-price__input" placeholder="0" id="input-width-0" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.width__lt class="filters-price__input" placeholder="250" id="input-width-1" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.cockpit_length }} class="menu-details">
 		<summary>Длинна кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.cockpit_length__gt class="filters-price__input" placeholder="0" id="input-cockpit-length-0" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.cockpit_length__lt class="filters-price__input" placeholder="800" id="input-cockpit-length-1" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.cockpit_width }} class="menu-details">
 		<summary>Ширина кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit_width"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.cockpit_width__gt class="filters-price__input" placeholder="0" id="input-cockpit-width-0" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.cockpit_width__lt class="filters-price__input" placeholder="250" id="input-cockpit-width-1" %}
 				<span class="filters-price__text">СМ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.load_capacity }} class="menu-details">
 		<summary>Грузоподъемность</summary>
 			<div class="filters-price__slider" id="range-slider-load-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.load_capacity__gt class="filters-price__input" placeholder="0" id="input-load-capacity-0" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.load_capacity__lt class="filters-price__input" placeholder="2500" id="input-load-capacity-1" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.boat_weight }} class="menu-details">
 		<summary>Вес лодки</summary>
 			<div class="filters-price__slider" id="range-slider-boat-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.boat_weight__gt class="filters-price__input" placeholder="0" id="input-boat-weight-0" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.boat_weight__lt class="filters-price__input" placeholder="1500" id="input-boat-weight-1" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.complete_set_weight }} class="menu-details">
 		<summary>Вес полного комплекта</summary>
 			<div class="filters-price__slider" id="range-slider-complete-set-weight"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.complete_set_weight__gt class="filters-price__input" placeholder="0" id="input-complete-set-weight-0" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.complete_set_weight__lt class="filters-price__input" placeholder="1500" id="input-complete-set-weight-1" %}
 				<span class="filters-price__text">КГ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.maximum_motor }} class="menu-details">
 		<summary>Макс. мощность мотора</summary>
 			<div class="filters-price__slider" id="range-slider-maximum-motor-power"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.maximum_motor_power__gt class="filters-price__input" placeholder="0" id="input-maximum-motor-power-0" %}
 				<span class="filters-price__text">ЛС</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.maximum_motor_power__lt class="filters-price__input" placeholder="300" id="input-maximum-motor-power-1" %}
 				<span class="filters-price__text">ЛС</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.fabric_thickness_side }} class="menu-details">
 		<summary>Плотность ткани борта</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-side"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.fabric_thickness_side__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-side-0" %}
 				<span class="filters-price__text">г/м²</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.fabric_thickness_side__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-side-1" %}
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.fabric_thickness_bottom }} class="menu-details">
 		<summary>Плотность ткани дна</summary>
 			<div class="filters-price__slider" id="range-slider-fabric-thickness-bottom"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.fabric_thickness_bottom__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-bottom-0" %}
 				<span class="filters-price__text">г/м²</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.fabric_thickness_bottom__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-bottom-1" %}
 				<span class="filters-price__text">г/м²</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.inflatable_compartments }} class="menu-details">
 		<summary>Количество надувных отсеков</summary>
 			<div class="filters-price__slider" id="range-slider-inflatable-compartments"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.inflatable_compartments__gt class="filters-price__input" placeholder="0" id="input-inflatable-compartments-0" %}
 				<span class="filters-price__text">ШТ</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.inflatable_compartments__lt class="filters-price__input" placeholder="15" id="input-inflatable-compartments-1" %}
 				<span class="filters-price__text">ШТ</span>
 				</label>
 			</div>
 		</details>
 
-		<details class="menu-details">
+		<details {{ details_status.passenger_capacity }} class="menu-details">
 		<summary>Пассажировместимость</summary>
 			<div class="filters-price__slider" id="range-slider-passenger-capacity"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
-				<span class="filters-price__text">от</span>
+				<span class="filters-price__text1">от</span>
 					{% render_field filter.form.passenger_capacity__gt class="filters-price__input" placeholder="0" id="input-passenger-capacity-0" %}
 				<span class="filters-price__text">Чел</span>
 				</label>
 				<label class="filters-price__label">
-				<span class="filters-price__text">до</span>
+				<span class="filters-price__text1">до</span>
 					{% render_field filter.form.passenger_capacity__lt class="filters-price__input" placeholder="15" id="input-passenger-capacity-1" %}
 				<span class="filters-price__text">Чел</span>
 				</label>
 			</div>
 		</details>
-		<details class="menu-details">
+		<details {{ details_status.manufacturer }} class="menu-details">
 		<summary>Производитель</summary>
 		 {% render_field filter.form.manufacturer %}
 		</details>
-		<details class="menu-details">
+		<details {{ details_status.category }} class="menu-details">
 		<summary>Тип дна</summary>
 		{% render_field filter.form.category %}
 		</details>
-		<details class="menu-details">
+		<details {{ details_status.bulwark }} class="menu-details">
 		<summary>Фальшборт</summary>
 		{% render_field filter.form.bulwark %}
 		</details>
-		<details class="menu-details">
+		<details {{ details_status.keel }} class="menu-details">
 		<summary>Киль</summary>
 		{% render_field filter.form.keel %}
 		</details>
@@ -252,6 +252,7 @@
 
 
 	<button class="button-search" type="submit">Показать</button>
+	<a href="/lodki/">Сбросить</a>
 	</form>
 </div>
 <div class="block-results">

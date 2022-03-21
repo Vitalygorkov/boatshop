@@ -28,9 +28,87 @@ from .filters import BoatFilter
 #         # subcategories = Subcategory.objects.all()
 #         # manufacturers = get_manufacturer_by_subcategory(Boat)
 #         return render(request, "shop/index.html", {"boat_list": boats, "category_list": categories })
+def req_parse_dict(req):
+    params = {}
+    if req['price__gt'] != '0' or req['price__lt'] != '299999':
+        params.update({"price": "open"})
+    else:
+        params.update({"price": "close"})
+    if req['length__gt'] != '0' or req['length__lt'] != '550':
+        params.update({"length": "open"})
+    else:
+        params.update({"length": "close"})
+    if req['width__gt'] != '0' or req['width__lt'] != '220':
+        params.update({"width": "open"})
+    else:
+        params.update({"width": "close"})
+    if req['cockpit_length__gt'] != '0' or req['cockpit_length__lt'] != '500':
+        params.update({"cockpit_length": "open"})
+    else:
+        params.update({"cockpit_length": "close"})
+    if req['cockpit_width__gt'] != '0' or req['cockpit_width__lt'] != '200':
+        params.update({"cockpit_width": "open"})
+    else:
+        params.update({"cockpit_width": "close"})
+    if req['load_capacity__gt'] != '0' or req['load_capacity__lt'] != '1200':
+        params.update({"load_capacity": "open"})
+    else:
+        params.update({"load_capacity": "close"})
+    if req['boat_weight__gt'] != '0' or req['boat_weight__lt'] != '150':
+        params.update({"boat_weight": "open"})
+    else:
+        params.update({"boat_weight": "close"})
+    if req['complete_set_weight__gt'] != '0' or req['complete_set_weight__lt'] != '180':
+        params.update({"complete_set_weight": "open"})
+    else:
+        params.update({"complete_set_weight": "close"})
+    if req['maximum_motor_power__gt'] != '0' or req['maximum_motor_power__lt'] != '100':
+        params.update({"maximum_motor": "open"})
+    else:
+        params.update({"maximum_motor": "close"})
+    if req['fabric_thickness_side__gt'] != '0' or req['fabric_thickness_side__lt'] != '2000':
+        params.update({"fabric_thickness_side": "open"})
+    else:
+        params.update({"fabric_thickness_side": "close"})
+    if req['fabric_thickness_bottom__gt'] != '0' or req['fabric_thickness_bottom__lt'] != '2000':
+        params.update({"fabric_thickness_bottom": "open"})
+    else:
+        params.update({"fabric_thickness_bottom": "close"})
+    if req['inflatable_compartments__gt'] != '0' or req['inflatable_compartments__lt'] != '15':
+        params.update({"inflatable_compartments": "open"})
+    else:
+        params.update({"inflatable_compartments": "close"})
+    if req['passenger_capacity__gt'] != '0' or req['passenger_capacity__lt'] != '15':
+        params.update({"passenger_capacity": "open"})
+    else:
+        params.update({"passenger_capacity": "close"})
+    if req['manufacturer'] != '':
+        params.update({"manufacturer": "open"})
+    else:
+        params.update({"manufacturer": "close"})
+    if req['category'] != '':
+        params.update({"category": "open"})
+    else:
+        params.update({"category": "close"})
+    if req['bulwark'] != 'unknown':
+        params.update({"bulwark": "open"})
+    else:
+        params.update({"bulwark": "close"})
+    if req['keel'] != 'unknown':
+        params.update({"keel": "open"})
+    else:
+        params.update({"keel": "close"})
+
+
+    return params
+
 
 def search_boat(request):
     print('Search_boat view')
+    # print(request.GET['price__gt'])
+    # print(req_parse_dict(request.GET))
+    details_status = req_parse_dict(request.GET)
+    print(details_status)
     boat_list = Boat.objects.all().order_by('price')
     boat_filter = BoatFilter(request.GET, queryset=boat_list)
     categories = Category.objects.all()
@@ -41,6 +119,7 @@ def search_boat(request):
     return render(request, "shop/details-lodki-search.html", {"category_list": categories,
                                           # "category_products": category_products,
                                           "category_cats": category_cats,
+                                          "details_status": details_status,
                                           "filter": boat_filter,})
 
 # def search_boat_category(request, category_slug):
