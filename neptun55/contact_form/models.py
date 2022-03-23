@@ -5,7 +5,7 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=200, blank=True)
     phone = models.CharField(max_length=200)
     locality = models.CharField(max_length=200, blank=True)
-    email = models.EmailField(max_length=200, blank=True)
+    email = models.CharField(max_length=200, blank=True)
     message = models.TextField(max_length=1000)
 
     def __str__(self):
