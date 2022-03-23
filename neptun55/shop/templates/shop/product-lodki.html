@@ -1,15 +1,25 @@
 {% extends 'shop/base.html' %}
+{% load static %}
 
 {% block content %}
 
 <h2 align="center">{{ product.name }}</h2>
 <div class="product-page-topblock">
-    <div class="product_page_carusel">
-        <ol>
-            {% for img in product.prodimg.all %}
-            <li class="li-img-product"><img class="img-carusel" src="{{ img.image.url }}" alt="продукт"></li>
-            {% endfor %}
-        </ol>
+    <div class="flex__column">
+        <div class="slider">
+                {% for img in product.prodimg.all %}
+            <div class="slider__item">
+                <a href="{{ img.image.url }}"><img class="img-slider" src="{{ img.image.url }}" alt="продукт"></a>
+
+            </div>
+                {% endfor %}
+        </div>
+
+            <div class="slider-nav">
+                {% for img in product.prodimg.all %}
+                <img class="img-slider" src="{{ img.image.url }}" alt="продукт">
+                {% endfor %}
+            </div>
     </div>
 
     <div class="product_page_short_description_price">
@@ -20,6 +30,7 @@
 			</form>
     </div>
 </div>
+
 <div class="content">
     <div class="tabs">
         <nav class="tabs__items">
@@ -79,5 +90,7 @@
 <!--    Описание:-->
 <!--{{ product.description|safe }}-->
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'shop/js/slick.min.js' %}"></script>
+<script src="{% static 'shop/js/slick-script.js' %}"></script>
 {% endblock %}
