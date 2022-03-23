@@ -60,7 +60,7 @@ class Color(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
-    short_description =  models.CharField(max_length=350, blank=True)
+    short_description =  models.CharField(max_length=1000, blank=True)
     description = models.TextField('Описание', blank=True)  # описание
     manufacturer = models.ForeignKey(Manufacturer, verbose_name="Производитель", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
