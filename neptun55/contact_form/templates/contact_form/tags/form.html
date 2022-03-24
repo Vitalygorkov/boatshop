@@ -5,9 +5,9 @@
     <h2>с помощью формы снизу и мы обязательно вам перезвоним!</h2>
 {% csrf_token %}
 <!--    {{ contact_form.first_name }}-->
-    <p>{{ contact_form.first_name }}</p>
-    <p>{{ contact_form.last_name }}</p>
-    <p>{{ contact_form.email }}</p>
+    <p class="first_name">{{ contact_form.first_name }}</p>
+    <p class="famaly">{{ contact_form.last_name }}</p>
+    <p class="contact_email">{{ contact_form.email }}</p>
     <p>{{ contact_form.phone }}</p>
     <p>{{ contact_form.locality }}</p>
     <p>{{ contact_form.message }}</p>
