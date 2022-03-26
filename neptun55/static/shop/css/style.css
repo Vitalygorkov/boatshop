@@ -97,14 +97,6 @@ min-width: 650px;
 background: white;
  }
 
-.product-display-img{
-width: 200px;
-}
-
-.product-display-img-lodki{
-width: 200px;
-}
-
 .product-display{
 display: block;
 width: 250px;
@@ -114,22 +106,46 @@ height: 300px;
 
 
 .product-display-lodki{
+vertical-align:top;
+padding: 5 5 5 5px;
+display: inline-block;
 background:#f1f1f1;
-border:2px solid silver;
-
+border:1px solid silver;
+min-height: 400px;
+width: 300px;
 }
-
 .prod-display-lodki-inside-img{
 display: inline-block;
-width:200px;
+width: 280px;
+}
+
+.product-display-img{
+width: 100%;
+height: 100%;
+object-fit: fill;
 }
 .prod-display-lodki-inside-text{
 display: inline-block;
-width: 450px;
-height: 300px;
+min-width: 150px;
+min-height: 150px;
+}
+/*.cart_product{
+} */
+.cart_product summary {
+  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
+  width: 10em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
+  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
+  outline-style: none;  /* удалить обводку при фокусе */
+  cursor: pointer;
+}
+.cart_product summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
+  display: none;
 }
 .product-lodki-text1{
-width: 450px;
+width: 280px;
 }
 .text-characteristics-name-tochki{
 display: inline-block;
@@ -140,7 +156,7 @@ overflow: hidden;
 .text-characteristics-name{
 display: inline-block;
 height: 15px;
-width: 350px;
+width: 210px;
 white-space: nowrap;
 overflow: hidden;
 }
@@ -150,7 +166,8 @@ display: inline;
 
 .prod-display-lodki-inside-price{
 display: inline-block;
-
+min-height: 40px;
+min-width: 30px;
 }
 
 .cat-tags-block{

@@ -60,6 +60,7 @@ class Color(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
+    image = models.ImageField('Основное фото', upload_to="photo/", blank=True)  # фото  https://qna.habr.com/q/218059
     short_description =  models.CharField(max_length=1000, blank=True)
     description = models.TextField('Описание', blank=True)  # описание
     manufacturer = models.ForeignKey(Manufacturer, verbose_name="Производитель", on_delete=models.SET_NULL, null=True)
@@ -143,6 +144,7 @@ class Photo_product(models.Model):
     description = models.TextField("Описание", blank=True)
     image = models.ImageField("Изображение", upload_to="photo/")
     product = models.ForeignKey(Product, verbose_name="", related_name='prodimg', on_delete=models.CASCADE)
+    # main_photo = models.BooleanField("Основное фото",default='False')
 
     def __str__(self):
         return self.title

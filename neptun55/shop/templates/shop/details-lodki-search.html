@@ -274,16 +274,23 @@
 
 	{% for product in filter.qs %}
 	<div class="product-display-lodki">
+
 		<div class="prod-display-lodki-inside-img">
-					{% for prodimg in product.prodimg.all %}
-			<a href="{{ product.slug }}"><img class="product-display-img" src="{{ prodimg.image.url }}" alt="продукт"></a>
-					{% endfor %}
+			{% if product.image %}
+			<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+			{% endif %}
 		</div>
+
 
 		<div class="prod-display-lodki-inside-text">
 			<div class="product-lodki-text1">
 				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
-				<h3>Характеристики:</h3>
+									Длинна: {{ product.length }} см
+					<br>Длинна: {{ product.width }} см
+					<br>Диаметр баллонов: {{ product.cylinder_diameter }} см
+					<br>Вес лодки: {{ product.boat_weight }} кг
+				<details class="cart_product">
+				<summary class="all_characteristics">Все характеристики:</summary>
 				<div class="text-characteristics-name">Производитель:................................................................................................</div>
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
 				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
@@ -320,11 +327,14 @@
 				<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
 				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.upak }}</div>
+				</details>
 			</div>
 		</div>
 
 		<div class="prod-display-lodki-inside-price">
 			<p>Цена: {{ product.price }} руб.</p>
+		</div>
+		<div class="prod-display-lodki-inside-price">
 			<form action="/contacts/">
 			<input class="button-search" type="submit" value="Заказать">
 			</form>
