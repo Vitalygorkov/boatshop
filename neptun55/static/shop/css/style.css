@@ -254,31 +254,31 @@ position: absolute;
 top: -50px;
 }
 .tabs__block:nth-child(1){
-background-color: #00BFFF;
+background-color: #ffffff;
 }
 .tabs__block:nth-child(1):before{
-background-color: #00BFFF;
+background-color: #ffffff;
 left: 0;
 }
 .tabs__block:nth-child(2){
-background-color: #00BFFF;
+background-color: #ffffff;
 }
 .tabs__block:nth-child(2):before{
-background-color: #00BFFF;
+background-color: #ffffff;
 left: 25%;
 }
 .tabs__block:nth-child(3){
-background-color: #00BFFF;
+background-color: #ffffff;
 }
 .tabs__block:nth-child(3):before{
-background-color: #00BFFF;
+background-color: #ffffff;
 right: 25%;
 }
 .tabs__block:nth-child(4){
-background-color: #00BFFF;
+background-color: #ffffff;
 }
 .tabs__block:nth-child(4):before{
-background-color: #00BFFF;
+background-color: #ffffff;
 right: 0%;
 }
 

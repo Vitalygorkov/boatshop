@@ -76,6 +76,9 @@
             <a href="#tab_04" class="tabs__item"><span>ВИДЕО</span></a>
         </nav>
         <div class="tabs__body">
+            <div id="tab_01" class="tabs__block">
+                {{ product.description|safe }}
+            </div>
             <div id="tab_02" class="tabs__block">
                     Характеристики:
                 <br> Производитель: {{ product.manufacturer }}
@@ -99,9 +102,7 @@
                 <br> Габариты упаковки(Д*Ш*В): {{ product.upak }}
 
             </div>
-            <div id="tab_01" class="tabs__block">
-                {{ product.description|safe }}
-            </div>
+
             <div id="tab_03" class="tabs__block">
                 {% for review in product.prodreviews.all %}
                 <br>{{ review.name }}
