@@ -3,8 +3,26 @@
 body{
  background-image: url("../img/ep_naturalwhite.png");
 }
+h1{
+font-family: Cuprum, Arial, Helvetica, sans-serif;
+}
 h2{
 font-family: Cuprum, Arial, Helvetica, sans-serif;
+}
+h3{
+font-family: Cuprum, Arial, Helvetica, sans-serif;
+}
+a {
+font-family: Cuprum, Arial, Helvetica, sans-serif;
+color: #008000; /* Цвет обычной ссылки */
+text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+a:visited {
+color: #800080; /* Цвет посещённой ссылки */
+}
+a:hover {
+color: #800000; /* Цвет ссылки при наведении на нее курсора мыши */
+text-decoration: underline; /* Добавляем подчеркивание */
 }
 .famaly{
 display: none
@@ -164,17 +182,18 @@ height: 15px;
 width: 220px;
 white-space: nowrap;
 overflow: hidden;
-font-family: Arial, Helvetica, sans-serif;
+font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 .text-characteristics{
 display: inline;
-font-family: Arial, Helvetica, sans-serif;
+font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 
 .prod-display-lodki-inside-price{
 display: inline-block;
 min-height: 40px;
 min-width: 30px;
+font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 
 .cat-tags-block{
@@ -206,7 +225,7 @@ border:2px solid silver;
 /* product page */
 .product-page-topblock{
 width: 850px;
-height: 420px;
+min-height: 430px;
 margin-left: auto;
 margin-right: auto;
 background-color: #ffffff;
@@ -222,7 +241,6 @@ height: 250px;
 }
 
 .content{
-padding: 50px 0;
 max-width:1000px;
 margin: 0px auto;
 }
@@ -238,6 +256,10 @@ height: 50px;
 display: flex;
 justify-content: center;
 align-items: center;
+background-color: #f5f5f5;
+border: 1px #f5f5f5 solid;
+
+
 }
 .tabs__item span {
 position: relative;
