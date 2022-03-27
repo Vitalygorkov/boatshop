@@ -3,6 +3,9 @@
 body{
  background-image: url("../img/ep_naturalwhite.png");
 }
+h2{
+font-family: Cuprum, Arial, Helvetica, sans-serif;
+}
 .famaly{
 display: none
 }
@@ -107,10 +110,12 @@ height: 300px;
 
 .product-display-lodki{
 vertical-align:top;
+margin: 4px 4px 4px 4px;
 padding: 5 5 5 5px;
 display: inline-block;
 background:#f1f1f1;
 border:1px solid silver;
+border-radius: 15px;
 min-height: 400px;
 width: 300px;
 }
@@ -156,12 +161,14 @@ overflow: hidden;
 .text-characteristics-name{
 display: inline-block;
 height: 15px;
-width: 210px;
+width: 220px;
 white-space: nowrap;
 overflow: hidden;
+font-family: Arial, Helvetica, sans-serif;
 }
 .text-characteristics{
 display: inline;
+font-family: Arial, Helvetica, sans-serif;
 }
 
 .prod-display-lodki-inside-price{
@@ -202,9 +209,11 @@ width: 850px;
 height: 420px;
 margin-left: auto;
 margin-right: auto;
-
+background-color: #ffffff;
 }
-
+.price-product-lodki{
+display: inline-block;
+}
 .product_page_short_description_price{
 display: inline-block;
 width: 420px;

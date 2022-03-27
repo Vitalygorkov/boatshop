@@ -3,8 +3,9 @@
 
 {% block content %}
 
-<h2 align="center">{{ product.name }}</h2>
+
 <div class="product-page-topblock">
+    <h2 align="center" >{{ product.name }}</h2>
     <div class="flex__column">
         <div class="slider">
                 {% for img in product.prodimg.all %}
@@ -20,19 +21,28 @@
                 <img class="img-slider" src="{{ img.image.url }}" alt="продукт">
                 {% endfor %}
             </div>
+        <center>
+        <div class="price-product-lodki"><p>Цена: {{ product.price }} руб.</p></div>
+        <div class="price-product-lodki">
+            <form action="/contacts/">
+            <input class="button-search" type="submit" value="Заказать">
+            </form>
+        </div>
+        </center>
     </div>
 
     <div class="product_page_short_description_price">
 <!--        <p align="center">{{ product.short_description}}</p>-->
-            <div class="text-characteristics-name">Производитель:................................................................................................</div>
+                <div class="text-characteristics-name">Технические характеристики:</div>
+                <div class="text-characteristics-name">Производитель:................................................................................................</div>
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
 				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
 				<div class="text-characteristics">{{ product.category }}</div>
-				<br><div class="text-characteristics-name">Длинна (см):............................................................................................................</div>
+				<br><div class="text-characteristics-name">Длина (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.length }}</div>
 				<br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.width }}</div>
-				<br><div class="text-characteristics-name">Длинна кокпита (см):............................................................................................................</div>
+				<br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_length }}</div>
 				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_width }}</div>
@@ -60,10 +70,6 @@
 				<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
 				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.upak }}</div>
-        <p>Цена: {{ product.price }} руб.</p>
-			<form action="/contacts/">
-			<input class="button-search" type="submit" value="Заказать">
-			</form>
     </div>
 </div>
 

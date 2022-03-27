@@ -116,9 +116,9 @@ class Boat(Product):
     # floor =  # Надувное днище низкого давления,Надувное многобаллонное высокого давления,ПВХ,ПВХ+разборный пайол
     # series =  # серия, модельный ряд
     # color = models.ForeignKey(Color, verbose_name= "Цвет лодки", on_delete=models.SET_NULL, null=True, blank= True) # цвет
-    length = models.IntegerField("Длинна см", blank=True,null=True) # длинна
+    length = models.IntegerField("Длина см", blank=True,null=True) # длина
     width = models.IntegerField("Ширина см", blank=True,null=True) # ширина
-    cockpit_length = models.IntegerField("Длинна кокпита см", blank=True,null=True) # длинна кокпита см
+    cockpit_length = models.IntegerField("Длина кокпита см", blank=True,null=True) # длина кокпита см
     cockpit_width = models.IntegerField("Ширина кокпита см", blank=True, null=True) # ширина кокпита см
     cylinder_diameter = models.IntegerField("Диаметр борта см", blank=True, null=True) # Диаметр баллонов см
     fabric_thickness_bottom = models.IntegerField("Плотность ткани дна (г/м²)", blank=True, null=True)  # Диаметр

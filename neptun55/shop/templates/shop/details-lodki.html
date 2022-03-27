@@ -28,7 +28,7 @@
 		</details>
 
 		<details class="menu-details">
-		<summary>Длинна</summary>
+		<summary>Длина</summary>
 			<div class="filters-price__slider" id="range-slider-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -62,7 +62,7 @@
 		</details>
 
 		<details class="menu-details">
-		<summary>Длинна кокпита</summary>
+		<summary>Длина кокпита</summary>
 			<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
 			<div class="filters-price__inputs">
 				<label class="filters-price__label">
@@ -280,22 +280,26 @@
 		</div>
 		<div class="prod-display-lodki-inside-text">
 			<div class="product-lodki-text1">
-				<center><a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a></center>
-					Длинна: {{ product.length }} см
-					<br>Длинна: {{ product.width }} см
-					<br>Диаметр баллонов: {{ product.cylinder_diameter }} см
-					<br>Вес лодки: {{ product.boat_weight }} кг
+				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+				<div class="text-characteristics-name">Длина:</div>
+				<div class="text-characteristics">{{ product.length }} см</div>
+				<br><div class="text-characteristics-name">Ширина:</div>
+				<div class="text-characteristics">{{ product.width }} см</div>
+				<br><div class="text-characteristics-name">Диаметр баллонов:</div>
+				<div class="text-characteristics">{{ product.cylinder_diameter }} см</div>
+				<br><div class="text-characteristics-name">Вес лодки:</div>
+				<div class="text-characteristics">{{ product.boat_weight }} кг</div>
 				<details class="cart_product">
 				<summary class="all_characteristics">Все характеристики:</summary>
 				<div class="text-characteristics-name">Производитель:................................................................................................</div>
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
 				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
 				<div class="text-characteristics">{{ product.category }}</div>
-				<br><div class="text-characteristics-name">Длинна (см):............................................................................................................</div>
+				<br><div class="text-characteristics-name">Длина (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.length }}</div>
 				<br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.width }}</div>
-				<br><div class="text-characteristics-name">Длинна кокпита (см):............................................................................................................</div>
+				<br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_length }}</div>
 				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_width }}</div>
@@ -324,6 +328,7 @@
 				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.upak }}</div>
 				</details>
+
 			</div>
 		</div>
 
@@ -352,9 +357,9 @@
 
 			<div class="prod-display-lodki-inside-text"><p><a href="{{ product.slug }}">{{ product.name }}</a></p>
 				<p>Производитель: {{ product.manufacturer }}</p>
-				<p>Длинна (см): {{ product.length }}</p>
+				<p>Длина (см): {{ product.length }}</p>
 				<p>Ширина (см): {{ product.width }}</p>
-				<p>Длинна кокпита: {{ product.cockpit_length }}</p>
+				<p>Длина кокпита: {{ product.cockpit_length }}</p>
 				</div>
 
 			<div class="prod-display-lodki-inside-price"><p>Цена: {{ product.price }} руб.</p>
