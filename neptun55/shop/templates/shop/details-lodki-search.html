@@ -271,7 +271,7 @@
 <!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
 	</div>
 
-
+	<div class="product-container">
 	{% for product in filter.qs %}
 	<div class="product-display-lodki">
 
@@ -300,16 +300,10 @@
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
 				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
 				<div class="text-characteristics">{{ product.category }}</div>
-				<br><div class="text-characteristics-name">Длина (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.length }}</div>
-				<br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.width }}</div>
 				<br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_length }}</div>
 				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.cockpit_width }}</div>
-				<br><div class="text-characteristics-name">Диаметр борта (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cylinder_diameter }}</div>
 				<br><div class="text-characteristics-name">Плотность ткани борта (г/м²):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
 				<br><div class="text-characteristics-name">Плотность ткани дна (г/м²):............................................................................................................</div>
@@ -322,8 +316,6 @@
 				<div class="text-characteristics">{{ product.passenger_capacity }}</div>
 				<br><div class="text-characteristics-name">Макс мощность мотора (лс):............................................................................................................</div>
 				<div class="text-characteristics">{{ product.maximum_motor_power }}</div>
-				<br><div class="text-characteristics-name">Вес лодки (кг):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.boat_weight }}</div>
 				<br><div class="text-characteristics-name">Вес полного комплекта кг:............................................................................................................</div>
 				<div class="text-characteristics">{{ product.complete_set_weight }}</div>
 				<br><div class="text-characteristics-name">Фальшборт:............................................................................................................</div>
@@ -371,6 +363,7 @@
 
 		</div> -->
 	{% endfor %}
+	</div>
 
 </div>
 <script src="{% static 'shop/js/nouislider.min.js' %}"></script>

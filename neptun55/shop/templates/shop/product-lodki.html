@@ -74,43 +74,34 @@
     </div>
 </div>
 
-<div class="content">
+<div class="nav-product-menu">
     <div class="tabs">
         <nav class="tabs__items">
             <a href="#tab_01" class="tabs__item"><span>ОПИСАНИЕ</span></a>
-            <a href="#tab_02" class="tabs__item"><span>ХАРАКТЕРИСТИКИ</span></a>
-            <a href="#tab_03" class="tabs__item"><span>ОТЗЫВЫ</span></a>
-            <a href="#tab_04" class="tabs__item"><span>ВИДЕО</span></a>
+            <a href="#tab_02" class="tabs__item"><span>АКСЕССУАРЫ</span></a>
+            <a href="#tab_03" class="tabs__item"><span>ВИДЕО</span></a>
+            <a href="#tab_04" class="tabs__item"><span>ОТЗЫВЫ</span></a>
         </nav>
         <div class="tabs__body">
             <div id="tab_01" class="tabs__block">
                 {{ product.description|safe }}
             </div>
             <div id="tab_02" class="tabs__block">
-                    Характеристики:
-                <br> Производитель: {{ product.manufacturer }}
-                <br> Цвет: {{ product.color }}
-                <br> Тип дна: {{ product.category }}
-                <br> Длинна см: {{ product.length }}
-                <br> Ширина см: {{ product.width }}
-                <br> Длинна кокпита см: {{ product.cockpit_length }}
-                <br> Ширина кокпита см: {{ product.cockpit_width }}
-                <br> Диаметр борта см: {{ product.cylinder_diameter }}
-                <br> Плотность ткани борта (г/м²): {{ product.fabric_thickness_side }}
-                <br> Плотность ткани дна (г/м²): {{ product.fabric_thickness_bottom }}
-                <br> Количество надувных отсеков: {{ product.inflatable_compartments }}
-                <br> Грузоподъемность кг: {{ product.load_capacity }}
-                <br> Пассажировместимость чел: {{ product.passenger_capacity }}
-                <br> Макс мощность мотора л.с.: {{ product.maximum_motor_power }}
-                <br> Вес лодки кг: {{ product.boat_weight }}
-                <br> Вес полного комплекта кг: {{ product.complete_set_weight }}
-                <br> Фальшборт: {{ product.bulwark|yesno:"Да,Нет" }}
-                <br> Киль: {{ product.keel|yesno:"Да,Нет" }}
-                <br> Габариты упаковки(Д*Ш*В): {{ product.upak }}
+                <h3>Аксессуары</h3>
+
 
             </div>
 
             <div id="tab_03" class="tabs__block">
+                <h3>Видео с лодкой</h3>
+                {% for videos in product.prodvideos.all %}
+                <iframe frameborder="0" height="360" width="640" src="https://www.youtube.com/embed/{{ videos.video }}">
+                </iframe>
+                {% endfor %}
+            </div>
+
+            <div id="tab_04" class="tabs__block">
+                <h3>Отзывы</h3>
                 {% for review in product.prodreviews.all %}
                 <br>{{ review.name }}
                 <br>{{ review.text }}
@@ -118,12 +109,7 @@
                 <br>
                 {% endfor %}
             </div>
-            <div id="tab_04" class="tabs__block">
-                {% for videos in product.prodvideos.all %}
-                <iframe frameborder="0" height="360" width="640" src="https://www.youtube.com/embed/{{ videos.video }}">
-                </iframe>
-                {% endfor %}
-            </div>
+
 
         </div>
     </div>
@@ -134,8 +120,14 @@
 <!--    Описание:-->
 <!--{{ product.description|safe }}-->
 </div>
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'shop/js/slick.min.js' %}"></script>
 <script src="{% static 'shop/js/slick-script.js' %}"></script>
 <script src="{% static 'shop/js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'shop/js/product-nav.js' %}"></script>
 {% endblock %}
