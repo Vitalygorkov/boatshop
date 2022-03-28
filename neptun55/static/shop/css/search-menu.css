@@ -10,6 +10,7 @@ input[type=number]{
 }
 
 .search-menu {
+display: inline-block;
 background: white;
 float: left;
 width: 230px;

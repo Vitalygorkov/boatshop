@@ -285,12 +285,17 @@
 		<div class="prod-display-lodki-inside-text">
 			<div class="product-lodki-text1">
 				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
-									Длина: {{ product.length }} см
-					<br>Ширина: {{ product.width }} см
-					<br>Диаметр баллонов: {{ product.cylinder_diameter }} см
-					<br>Вес лодки: {{ product.boat_weight }} кг
-				<details class="cart_product">
-				<summary class="all_characteristics">Все характеристики:</summary>
+				<details class="cart_product"><summary class="all_characteristics">
+				<div class="text-characteristics-name">Длина:...........................................................................................</div>
+				<div class="text-characteristics">{{ product.length }} см</div>
+				<br><div class="text-characteristics-name">Ширина:.....................................................................................</div>
+				<div class="text-characteristics">{{ product.width }} см</div>
+				<br><div class="text-characteristics-name">Диаметр баллонов:...........................................................................</div>
+				<div class="text-characteristics">{{ product.cylinder_diameter }} см</div>
+				<br><div class="text-characteristics-name">Вес лодки:..................................................................................</div>
+				<div class="text-characteristics">{{ product.boat_weight }} кг</div>
+
+					<center><font style="color:blue">ПОКАЗАТЬ ХАРАКТЕРИСТИКИ:</font></center></summary>
 				<div class="text-characteristics-name">Производитель:................................................................................................</div>
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
 				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
@@ -332,7 +337,7 @@
 		</div>
 
 		<div class="prod-display-lodki-inside-price">
-			<p>Цена: {{ product.price }} руб.</p>
+			<p>Цена: <font size="5">{{ product.price }}</font> руб.</p>
 		</div>
 		<div class="prod-display-lodki-inside-price">
 			<form action="/contacts/">

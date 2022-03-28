@@ -8,21 +8,30 @@
 	<link rel="icon" href="{% static 'shop/img/favicon.ico' %}">
 <!--	<link rel="icon" href="data:;base64,=">-->
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'shop/css/nouislider.min.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'shop/css/font-awesome.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'shop/css/style.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'shop/css/media.css'%}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static 'shop/css/jquery.fancybox.min.css'%}">
     <title>Нептун55</title>
+
 </head>
 <body>
 <h1 align="center" >НЕПТУН 55</h1>
 <header>
 	<nav class="dws-menu">
+		<input type="checkbox" name="toggle" id="menu" class="toggleMenu">
+		<label for="menu" class="toggleMenu"><i class="fa fa-bars"></i>Меню</label>
 		<ul>
 			{% recursetree category_list %}
 				<li class="menu-li">
+					<input type="checkbox" name="toggle" class="toggleSubmenu" id="sub_m{{ node.id }}">
 					<a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+					{% if not node.is_leaf_node %}
+					<label for="sub_m{{ node.id }}" class="toggleSubmenu"><i class="fa"></i></label>
+					{% endif %}
 					{% if not node.is_leaf_node %}
                 		<ul>
                    			 {{ children }}
