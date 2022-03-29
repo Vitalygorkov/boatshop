@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .models import Product, Category, Boat
-from .filters import BoatFilter
+from .filters import BoatFilter, ProductFilter
 
 # def get_manufacturer_by_subcategory(category):
 #     boats = Boat.objects.all()
@@ -99,7 +99,18 @@ def req_parse_dict(req):
     else:
         params.update({"keel": "close"})
 
+    return params
 
+def req_parse_dict_product(req):
+    params = {}
+    if req['price__gt'] != '0' or req['price__lt'] != '299999':
+        params.update({"price": "open"})
+    else:
+        params.update({"price": "close"})
+    if req['manufacturer'] != '':
+        params.update({"manufacturer": "open"})
+    else:
+        params.update({"manufacturer": "close"})
     return params
 
 
@@ -111,6 +122,7 @@ def search_boat(request):
     print(details_status)
     boat_list = Boat.objects.all().order_by('price')
     boat_filter = BoatFilter(request.GET, queryset=boat_list)
+    product_filter = ProductFilter(request.GET, queryset=boat_list)
     categories = Category.objects.all()
     # category_products = Product.objects.filter(category__in=branch_categories).distinct()
     category_cats = Category.objects.filter(url='lodki').get_descendants(include_self=False)
@@ -120,7 +132,35 @@ def search_boat(request):
                                           # "category_products": category_products,
                                           "category_cats": category_cats,
                                           "details_status": details_status,
-                                          "filter": boat_filter,})
+                                          "filter": boat_filter,
+                                          "product_filter": product_filter,})
+
+def search_product(request, category_slug):
+    print('Search_product view')
+    # print(request.GET['price__gt'])
+    # print(req_parse_dict(request.GET))
+    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=True)
+    cat_id = Category.objects.filter(url=category_slug)
+    details_status = req_parse_dict_product(request.GET)
+    print(details_status)
+    print(cat_id)
+
+    product_list = Product.objects.filter(category=cat_id[0].id).order_by('price')
+    product_filter = ProductFilter(request.GET, queryset=product_list)
+    categories = Category.objects.all()
+    category_products = Product.objects.filter(category__in=branch_categories).distinct()
+    # print((category_products))
+    category_cats = Category.objects.filter(url='lodki').get_descendants(include_self=False)
+    # print(category_cats)
+
+    return render(request, "shop/details-search.html", {"category_list": categories,
+                                          # "category_products": category_products,
+                                          "category_cats": category_cats,
+                                          "details_status": details_status,
+                                          "filter": product_filter,
+                                          "product_filter": product_filter,
+                                          "last_category": category_slug,
+                                                        })
 
 # def search_boat_category(request, category_slug):
 #     boat_list = Boat.objects.all()
@@ -205,6 +245,7 @@ def show_category(request, category_slug):
     boat_products = Boat.objects.filter(category__in=branch_categories).distinct().order_by('price')
     # boat_list = Boat.objects.all()
     boat_filter = BoatFilter(request.GET, queryset=boat_products)
+    product_filter = ProductFilter(request.GET, queryset=category_products)
     category_cats = ''
     print("show category")
     try:
@@ -235,7 +276,10 @@ def show_category(request, category_slug):
                                           "category_products": category_products,
                                           "category_cats": category_cats,
                                           "cat_url_list": cat_url_list,
-                                          "filter": boat_filter,})
+                                          "filter": boat_filter,
+                                          "product_filter": product_filter,
+                                          "last_category": category_slug,
+                                          })
 
 def show_product(request, product_slug,category_slug):
     categories = Category.objects.all()

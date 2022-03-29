@@ -10,6 +10,10 @@ urlpatterns = [
     path('success/', views.success, name='success'),
     path('contacts/', views.contacts, name='contacts'),
     re_path(r'^search/$', views.search_boat, name='search'),
+    # re_path(r'^search-product/$', views.search_product, name='search-product'),
+    path('<category_slug>/search-product/', views.search_product, name='search-product'),
+    # path('<category_slug>/search-product/$', views.search_product, name='search-product'),
+
     # path('<category_slug>/', views.show_category, name='category'),
     path('<category_slug>/', views.show_category, name='category'),
     # path('<category_slug>/', views.search_boat, name='search'),

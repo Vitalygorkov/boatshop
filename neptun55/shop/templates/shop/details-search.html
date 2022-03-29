@@ -5,10 +5,10 @@
 {% load widget_tweaks %}
 <div class="search-menu">
 
-	<form class="serach-menu" action="/{{ last_category }}/search-product" method="get" name="{{ last_category }}">
-	<br><button class="button-search" type="submit">Показать</button>
+	<form class="serach-menu" action="/{{ last_category }}/search-product" method="get">
+	<br><button class="button-search" type="submit">Показать</button><a href="/">Сбросить</a>
 <!--	{{ filter.form.as_p }}-->
-		<details open class="menu-details">
+		<details {{ details_status.price }} class="menu-details">
 		<summary>Цена</summary>
 
 		<div class="filters-price__slider" id="range-slider-price"></div>
@@ -27,7 +27,7 @@
 		</details>
 
 
-		<details class="menu-details">
+		<details {{ details_status.manufacturer }} class="menu-details">
 		<summary>Производитель</summary>
 		 {% render_field filter.form.manufacturer %}
 		</details>
@@ -36,16 +36,16 @@
 
 
 
-
 	<button class="button-search" type="submit">Показать</button>
+	<a href="/lodki/">Сбросить</a>
 	</form>
 </div>
 <div class="block-results">
 
 	<div class="cat-tags-block">
-		{% for cat in category_cats %}
-		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>
-		{% endfor %}
+<!--		{% for cat in category_cats %}-->
+<!--		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>-->
+<!--		{% endfor %}-->
 	</div>
 	<div class="cat-tags-block">
 		{% for cat in cat_url_list %}
@@ -56,23 +56,26 @@
 <!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
 	</div>
 
-
-	{% for product in product_filter.qs %}
+	<div class="product-container">
+	{% for product in filter.qs %}
 	<div class="product-display-lodki">
+
 		<div class="prod-display-lodki-inside-img">
 			{% if product.image %}
 			<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
 			{% endif %}
 		</div>
+
+
 		<div class="prod-display-lodki-inside-text">
 			<div class="product-lodki-text1">
 				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+
+
 				<div class="text-characteristics-name">Производитель:................................................................................................</div>
 				<div class="text-characteristics">{{ product.manufacturer }}</div>
-
 			</div>
 		</div>
-
 
 		<div class="prod-display-lodki-inside-price">
 			<p>Цена: <font size="5">{{ product.price }}</font> руб.</p>
@@ -109,8 +112,9 @@
 
 		</div> -->
 	{% endfor %}
+	</div>
 
 </div>
 <script src="{% static 'shop/js/nouislider.min.js' %}"></script>
-<script src="{% static 'shop/js/range-slider-func-product.js' %}"></script>
+<script src="{% static 'shop/js/range-slider-func-search-product.js' %}"></script>
 {% endblock %}

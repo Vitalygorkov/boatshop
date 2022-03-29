@@ -144,7 +144,7 @@ if (rangeSlider) {
   });
 }
 
-// длинна
+// длина
 const rangeSlider2 = document.getElementById('range-slider-length');
 if (rangeSlider2) {
   noUiSlider.create(rangeSlider2, {
@@ -208,7 +208,7 @@ if (rangeSliderWidth) {
   });
 }
 
-// длинна кокпита
+// длина кокпита
 const rangeSliderCockpitLength = document.getElementById('range-slider-cockpit-length');
 if (rangeSliderCockpitLength) {
   noUiSlider.create(rangeSliderCockpitLength, {

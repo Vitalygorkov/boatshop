@@ -1,4 +1,4 @@
-from .models import Boat,Category
+from .models import Boat,Category, Product
 import django_filters
 class BoatFilter(django_filters.FilterSet):
     # Category.objects.filter(url='lodki').get_descendants(include_self=False)
@@ -44,3 +44,18 @@ class BoatFilter(django_filters.FilterSet):
         #     "price__gt":
         #
         # }
+
+
+class ProductFilter(django_filters.FilterSet):
+    # Category.objects.filter(url='lodki').get_descendants(include_self=False)
+    category = django_filters.ModelChoiceFilter(queryset=Category.objects.filter(url='lodki').get_descendants(include_self=False), label='Тип дна:')
+    price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='Цена(руб) от:')
+    price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='Цена(руб) до:')
+    color = django_filters.MultipleChoiceFilter(field_name='color')
+    # manufacturer = django_filters.MultipleChoiceFilter(field_name='manufacturer')
+    # manufacturer = django_filters.ChoiceFilter(field_name='manufacturer')
+
+    class Meta:
+        model = Product
+
+        fields = ['manufacturer',]
