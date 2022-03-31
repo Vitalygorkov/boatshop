@@ -15,7 +15,7 @@
     min-width: 0;
 /* ограничивающая оболочка */
 .slick-list{
-    overflow: hidden;
+overflow: hidden;
 }
 /* лента слайдов*/
 .slick-track{
@@ -103,6 +103,7 @@ padding: 0px 15px;
 
 /* класс миниатюр  */
 .slider-nav{
+    overflow: hidden;
     position: relative;
     padding: 0px 60px;
 }

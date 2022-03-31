@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'shop/css/nouislider.min.css'%}" type="text/css">
-    <link rel="stylesheet" href="{% static 'shop/css/font-awesome.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'shop/css/style.css'%}" type="text/css">
 	<link rel="stylesheet" href="{% static 'shop/css/media.css'%}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
@@ -21,7 +20,7 @@
 </head>
 <body>
 <div class="head-block">
-	<div class="logo-name"><img class="image-name" src="{% static 'shop/img/neptun.gif'%}" ></div>
+	<a href="http://neptun55.ru"><div class="logo-name"><img class="image-name" src="{% static 'shop/img/neptun.gif'%}" ></div></a>
 	<div class="logo-contacts"><img class="image-contacts" src="{% static 'shop/img/contacts.gif'%}" ></div>
 </div>
 <header>
@@ -47,7 +46,7 @@
 			<li><a href="/contacts/"><i class="fa fa-envelope-open"></i>Контакты</a></li>
 		</ul>
 	</nav>
-		<div class="logo-img"><img class="image-logo" src="{% static 'shop/img/logo.gif'%}" ></div>
+	<a href="http://neptun55.ru"><div class="logo-img"><img class="image-logo" src="{% static 'shop/img/logo.gif'%}" ></div></a>
 </header>
 {% block content %}
 {% endblock %}
