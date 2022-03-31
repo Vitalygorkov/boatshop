@@ -25,6 +25,16 @@
  font-size: 18px;
 }
 @media all and (max-width: 800px){
+ .logo-name{
+ display:none;
+ }
+ .head-block{
+ justify-content: right;
+ }
+ .image-logo{
+  margin-top: 5px;
+  max-height: 100px;
+  }
  .search-menu{
  display: none;
  }

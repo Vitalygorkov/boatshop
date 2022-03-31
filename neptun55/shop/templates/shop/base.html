@@ -15,11 +15,15 @@
 	<link rel="stylesheet" href="{% static 'shop/css/media.css'%}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static 'shop/css/jquery.fancybox.min.css'%}">
+
     <title>Нептун55</title>
 
 </head>
 <body>
-<h1 align="center" >НЕПТУН 55</h1>
+<div class="head-block">
+	<div class="logo-name"><img class="image-name" src="{% static 'shop/img/neptun.gif'%}" ></div>
+	<div class="logo-contacts"><img class="image-contacts" src="{% static 'shop/img/contacts.gif'%}" ></div>
+</div>
 <header>
 	<nav class="dws-menu">
 		<input type="checkbox" name="toggle" id="menu" class="toggleMenu">
@@ -43,6 +47,7 @@
 			<li><a href="/contacts/"><i class="fa fa-envelope-open"></i>Контакты</a></li>
 		</ul>
 	</nav>
+		<div class="logo-img"><img class="image-logo" src="{% static 'shop/img/logo.gif'%}" ></div>
 </header>
 {% block content %}
 {% endblock %}

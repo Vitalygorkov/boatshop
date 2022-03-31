@@ -1,9 +1,10 @@
 @import 'search-menu.css';
 @import 'slick-slider-product-style.css';
 body, html{
- background-image: url("../img/ep_naturalwhite.png");
- width: 100%;
- height: 100%;
+ /* background-image: url("../img/ep_naturalwhite.png");
+width: 100%;
+height: 100%;*/
+  background: #afdbf5;
 }
 iframe {
 width: 100%;
@@ -20,11 +21,11 @@ font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 a {
 font-family: Cuprum, Arial, Helvetica, sans-serif;
-color: #008000; /* Цвет обычной ссылки */
+color: #0000CD; /* Цвет обычной ссылки */
 text-decoration: none; /* Убираем подчеркивание у ссылок */
 }
 a:visited {
-color: #800080; /* Цвет посещённой ссылки */
+color: #191970; /* Цвет посещённой ссылки */
 }
 a:hover {
 color: #800000; /* Цвет ссылки при наведении на нее курсора мыши */
@@ -33,6 +34,35 @@ text-decoration: underline; /* Добавляем подчеркивание */
 .famaly{
 display: none
 }
+.logo-img{
+height: 160px;
+margin-top: -130px;
+}
+.image-logo{
+max-height: 145px;
+}
+.head-block{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 70px;
+width: 100%;
+}
+.logo-name{
+max-height: 45px;
+
+}
+.image-name{
+max-height: 35px;
+}
+.logo-contacts{
+margin-top: 15px;
+margin-left: 20px;
+}
+.image-contacts{
+max-height: 55px;
+}
+
 header{
 /* margin-top: 50px; */
  font-family: Cuprum, Arial, Helvetica, sans-serif;
@@ -140,7 +170,8 @@ vertical-align: top;
 margin: 4px 4px 4px 4px;
 padding: 5 5 5 5px;
 display: inline-block;
-background: #f1f1f1;
+/* background: #f1f1f1; */
+background: #FFFAFA;
 border:1px solid silver;
 border-radius: 15px;
 min-height: 400px;
@@ -217,9 +248,10 @@ display: block;
 .cat-tag{
 vertical-align: top;
 display: inline;
-background-color: #dedede;
-border:3px solid #dedede; width: 10%;
+background-color: #FFFAFA;
+border:2px solid #AFEEEE; width: 10%;
 border-radius: 10px;
+font-size: 1.2em;
 }
 .cat-urls-list{
 padding: 1px 1px;
@@ -272,8 +304,9 @@ height: 50px;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: #48D1CC;
+background-color: #E0FFFF;
 border: 2px #00FFFF solid;
+font-size: large;
 }
 .tabs__body {
 background-color: #f5f5f5;
@@ -376,10 +409,10 @@ right: 0%;
 
 .menu-details {
     padding: 8px;
-    background-color: #eee;
+    background-color: #FFFAFA;
     color: #333;
     border: 1px #ccc solid;
-    border-radius: 12px;
+  /*  border-radius: 12px; */
     cursor: pointer;
 
     list-style-type: disc;  /* задаем маркер*/
