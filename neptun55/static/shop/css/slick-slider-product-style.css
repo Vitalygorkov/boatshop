@@ -10,6 +10,9 @@
    max-width: 400px;
    max-height: 300px;
 }
+.img-slider-nav{
+   max-height: 75px;
+}
 /* слайдер */
 .slick-slider{}
     min-width: 0;
@@ -19,6 +22,10 @@ overflow: hidden;
 }
 /* лента слайдов*/
 .slick-track{
+    display: flex;
+    align-items: flex-start;
+}
+.slick-track-nav{
     display: flex;
     align-items: flex-start;
 }
@@ -103,6 +110,7 @@ padding: 0px 15px;
 
 /* класс миниатюр  */
 .slider-nav{
+    max-height: 70px;
     overflow: hidden;
     position: relative;
     padding: 0px 60px;
