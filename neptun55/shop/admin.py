@@ -78,8 +78,8 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(Photo_product)
 class Photo_productAdmin(admin.ModelAdmin):
-    list_display = ("title", "description", "get_image", "product",)
-    list_display_links = ("title",)
+    list_display = ("get_image", "product",)
+    list_display_links = ("product",)
     readonly_fields = ("get_image",)
 
     def get_image(self, obj):

@@ -140,11 +140,10 @@ class Boat(Product):
         verbose_name_plural = 'Лодки'
 
 class Photo_product(models.Model):
-    title = models.CharField("Заголовок", max_length=100)
-    description = models.TextField("Описание", blank=True)
+    # title = models.CharField("Заголовок", max_length=100, blank=True)
+    # description = models.TextField("Описание", blank=True)
     image = models.ImageField("Изображение", upload_to="photo/")
     product = models.ForeignKey(Product, verbose_name="", related_name='prodimg', on_delete=models.CASCADE)
-    # main_photo = models.BooleanField("Основное фото",default='False')
 
     def __str__(self):
         return self.title
