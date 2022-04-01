@@ -146,7 +146,7 @@ class Photo_product(models.Model):
     product = models.ForeignKey(Product, verbose_name="", related_name='prodimg', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.product.name
 
     class Meta:
         verbose_name = "Фото"
