@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 {% load widget_tweaks %}
+<div class="page-content">
 <div class="search-menu">
 
 	<form class="serach-menu" action="/search" method="get">
@@ -261,8 +262,9 @@
 		{% endfor %}
 	</div>
 	<div class="cat-tags-block">
+		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ Главная</a></div>
 		{% for cat in cat_url_list %}
-		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/{{ cat.name }}</a></div>
+		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ {{ cat.name }}</a></div>
 		{% endfor %}
 	</div>
 	<div class="sort_filter">
@@ -361,6 +363,7 @@
 		</div> -->
 	{% endfor %}
 
+</div>
 </div>
 <script src="{% static 'shop/js/nouislider.min.js' %}"></script>
 <script src="{% static 'shop/js/range-slider-func.js' %}"></script>

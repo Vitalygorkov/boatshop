@@ -115,3 +115,45 @@ padding: 0px 15px;
     position: relative;
     padding: 0px 60px;
 }
+/*  класс рекомендация */
+
+.flex__column-recommend-name{
+display: block;
+margin-left: 20px;
+}
+.flex__column-recommend{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+
+
+}
+.slider-nav-recommend{
+    overflow: hidden;
+    position: relative;
+    padding: 0px 60px;
+}
+
+.slider__item-recommend{
+padding: 0 5px;
+max-width: 150px;
+align: center;
+}
+.slider__item-recommend img{
+width: 75%;
+}
+.slider__item-recommend.slick-center{
+
+}
+.recommend-block-image{
+max-height: 100px;
+
+display: block;
+}
+.recommend-block{
+width: 100%;
+display: block;
+}
+
+

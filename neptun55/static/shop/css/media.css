@@ -25,6 +25,9 @@
  font-size: 18px;
 }
 @media all and (max-width: 800px){
+ .product-page-topblock{
+ display: block;
+}
  .logo-name{
  display:none;
  }

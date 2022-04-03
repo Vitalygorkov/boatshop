@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 {% load widget_tweaks %}
+<div class="page-content">
 <div class="search-menu">
 
 	<form class="serach-menu" action="/{{ last_category }}/search-product" method="get">
@@ -114,6 +115,7 @@
 	{% endfor %}
 	</div>
 
+</div>
 </div>
 <script src="{% static 'shop/js/nouislider.min.js' %}"></script>
 <script src="{% static 'shop/js/range-slider-func-search-product.js' %}"></script>

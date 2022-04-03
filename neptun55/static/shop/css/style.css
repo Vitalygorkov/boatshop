@@ -146,11 +146,14 @@ header{
  top: 0;
 }
 .dws-menu li:hover > ul{
- display: block;
+ display: inline-block;
 }
 
+.page-content{
+display: flex;
+}
 .block-results {
-display: block;
+display: inline-block;
 background: white;
  }
 
@@ -241,7 +244,8 @@ font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 
 .cat-tags-block{
-padding: 20px 20px;
+margin-left: 10px;
+padding: 10px 10px;
 display: block;
 }
 
@@ -256,7 +260,7 @@ font-size: 1.2em;
 .cat-urls-list{
 padding: 1px 1px;
 display: inline;
-
+font-size: large;
 }
 
 .form_contact{
@@ -269,12 +273,12 @@ border:2px solid silver;
 }
 /* product page */
 .product-page-topblock{
-displayflex
-
-min-height: 430px;
-margin-left: auto;
-margin-right: auto;
+display: flex;
+flex-direction: column;
+width: 100%;
 background-color: #ffffff;
+}
+.product-page-topblock-name{
 }
 .price-product-lodki{
 display: inline-block;
@@ -286,8 +290,6 @@ height: 250px;
 
 }
 .nav-product-menu{
-min-width:500px;
-margin: 0px auto;
 }
 .tabs__items{
 display: flex;

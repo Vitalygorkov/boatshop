@@ -48,8 +48,9 @@
 		{% endfor %}
 	</div>
 	<div class="cat-tags-block">
+		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ Главная</a></div>
 		{% for cat in cat_url_list %}
-		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/{{ cat.name }}</a></div>
+		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ {{ cat.name }}</a></div>
 		{% endfor %}
 	</div>
 	<div class="sort_filter">

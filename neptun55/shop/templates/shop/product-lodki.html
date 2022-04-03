@@ -5,72 +5,97 @@
 
 
 <div class="product-page-topblock">
-    <h2 align="center" >{{ product.name }}</h2>
-    <div class="flex__column">
-        <div class="slider">
-                {% for img in product.prodimg.all %}
-            <div class="slider__item">
-                <a data-fancybox="gallery" href="{{ img.image.url }}" ><img class="img-slider" src="{{ img.image.url }}" alt="продукт"/></a>
+    <div class="product-page-topblock-name">
+        <h2 align="center" >{{ product.name }}</h2>
+    </div>
+    <div class="product-page-topblock-photo-i-descr">
+        <div class="flex__column">
+            <div class="slider">
+                    {% for img in product.prodimg.all %}
+                <div class="slider__item">
+                    <a data-fancybox="gallery" href="{{ img.image.url }}" ><img class="img-slider" src="{{ img.image.url }}" alt="продукт"/></a>
 
+                </div>
+                    {% endfor %}
             </div>
-                {% endfor %}
+
+                <div class="slider-nav">
+                    {% for img in product.prodimg.all %}
+                    <img class="img-slider" src="{{ img.image.url }}" alt="продукт">
+                    {% endfor %}
+                </div>
+            <center>
+            <div class="price-product-lodki"><p>Цена: <font size="5">{{ product.price }}</font> руб.</p></div>
+            <div class="price-product-lodki">
+                <form action="/contacts/">
+                <input class="button-search" type="submit" value="Заказать">
+                </form>
+            </div>
+            </center>
         </div>
 
-            <div class="slider-nav">
-                {% for img in product.prodimg.all %}
-                <img class="img-slider" src="{{ img.image.url }}" alt="продукт">
-                {% endfor %}
-            </div>
-        <center>
-        <div class="price-product-lodki"><p>Цена: <font size="5">{{ product.price }}</font> руб.</p></div>
-        <div class="price-product-lodki">
-            <form action="/contacts/">
-            <input class="button-search" type="submit" value="Заказать">
-            </form>
+        <div class="product_page_short_description_price">
+    <!--        <p align="center">{{ product.short_description}}</p>-->
+            <h3>Технические характеристики:</h3>
+    <!--                <div class="text-characteristics-name">Технические характеристики:</div>-->
+                    <div class="text-characteristics-name">Производитель:................................................................................................</div>
+                    <div class="text-characteristics">{{ product.manufacturer }}</div>
+                    <br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.category }}</div>
+                    <br><div class="text-characteristics-name">Длина (см):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.length }}</div>
+                    <br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.width }}</div>
+                    <br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.cockpit_length }}</div>
+                    <br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.cockpit_width }}</div>
+                    <br><div class="text-characteristics-name">Диаметр борта (см):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.cylinder_diameter }}</div>
+                    <br><div class="text-characteristics-name">Плотность ткани борта (г/м²):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
+                    <br><div class="text-characteristics-name">Плотность ткани дна (г/м²):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.fabric_thickness_bottom }}</div>
+                    <br><div class="text-characteristics-name">Кол-во надувных отсеков:............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.inflatable_compartments }}</div>
+                    <br><div class="text-characteristics-name">Грузоподъемность (кг):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.load_capacity }}</div>
+                    <br><div class="text-characteristics-name">Пассожировместимость (чел):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.passenger_capacity }}</div>
+                    <br><div class="text-characteristics-name">Макс мощность мотора (лс):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.maximum_motor_power }}</div>
+                    <br><div class="text-characteristics-name">Вес лодки (кг):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.boat_weight }}</div>
+                    <br><div class="text-characteristics-name">Вес полного комплекта кг:............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.complete_set_weight }}</div>
+                    <br><div class="text-characteristics-name">Фальшборт:............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.bulwark|yesno:"Да,Нет" }}</div>
+                    <br><div class="text-characteristics-name">Киль:............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
+                    <br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
+                    <div class="text-characteristics">{{ product.upak }}</div>
         </div>
-        </center>
     </div>
 
-    <div class="product_page_short_description_price">
-<!--        <p align="center">{{ product.short_description}}</p>-->
-        <h3>Технические характеристики:</h3>
-<!--                <div class="text-characteristics-name">Технические характеристики:</div>-->
-                <div class="text-characteristics-name">Производитель:................................................................................................</div>
-				<div class="text-characteristics">{{ product.manufacturer }}</div>
-				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.category }}</div>
-				<br><div class="text-characteristics-name">Длина (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.length }}</div>
-				<br><div class="text-characteristics-name">Ширина (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.width }}</div>
-				<br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cockpit_length }}</div>
-				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cockpit_width }}</div>
-				<br><div class="text-characteristics-name">Диаметр борта (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cylinder_diameter }}</div>
-				<br><div class="text-characteristics-name">Плотность ткани борта (г/м²):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
-				<br><div class="text-characteristics-name">Плотность ткани дна (г/м²):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.fabric_thickness_bottom }}</div>
-				<br><div class="text-characteristics-name">Кол-во надувных отсеков:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.inflatable_compartments }}</div>
-				<br><div class="text-characteristics-name">Грузоподъемность (кг):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.load_capacity }}</div>
-				<br><div class="text-characteristics-name">Пассожировместимость (чел):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.passenger_capacity }}</div>
-				<br><div class="text-characteristics-name">Макс мощность мотора (лс):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.maximum_motor_power }}</div>
-				<br><div class="text-characteristics-name">Вес лодки (кг):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.boat_weight }}</div>
-				<br><div class="text-characteristics-name">Вес полного комплекта кг:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.complete_set_weight }}</div>
-				<br><div class="text-characteristics-name">Фальшборт:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.bulwark|yesno:"Да,Нет" }}</div>
-				<br><div class="text-characteristics-name">Киль:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
-				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.upak }}</div>
+    <div class="flex__column-recommend-name">
+        <h3>С этим товаром покупают:</h3>
+    </div>
+    <div class="flex__column-recommend">
+            <div class="slider-nav-recommend">
+            {% for recommendations in product.recommendations.all %}
+                <div class="slider__item-recommend">
+                    <div class="recommend-block-image">
+                        {% if recommendations.image %}
+                        <center><a href="{{ recommendations.get_absolute_url }}" target="_blank"><img src="{{ recommendations.image.url }}"></a></center>
+                        {% endif %}
+                    </div>
+
+                    <div class="recommend-block">
+                        <center><a href="{{ recommendations.get_absolute_url }}" target="_blank">{{ recommendations.name }}</a></center>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
     </div>
 </div>
 
@@ -116,10 +141,7 @@
 
 </div>
 
-<div>
-<!--    Описание:-->
-<!--{{ product.description|safe }}-->
-</div>
+
 
 
 

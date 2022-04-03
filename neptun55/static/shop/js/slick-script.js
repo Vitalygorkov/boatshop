@@ -18,6 +18,17 @@ $('.slider-nav').slick({
   focusOnSelect: true
 });
 
+$('.slider-nav-recommend').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  infinite: false,
+  dots: false,
+  centerMode: true,
+  adaptiveHeight: true,
+  arrows: true,
+  focusOnSelect: true
+});
+
 //
 //$(document).ready(function(){
 //    $('.slider').slick({

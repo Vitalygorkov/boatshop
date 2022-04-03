@@ -68,10 +68,13 @@ class Product(models.Model):
     color = models.ForeignKey(Color, verbose_name= "Цвет", on_delete=models.SET_NULL, null=True, blank= True) # цвет
     # subcategory = models.ForeignKey(Subcategory,on_delete= models.CASCADE)
     # category = models.ForeignKey(Category,blank=True,default=None, on_delete = models.CASCADE)
-    category = TreeForeignKey(Category, on_delete=models.SET_NULL, blank=True,null=True,related_name='cat_product')
+    recommendations = models.ManyToManyField('Product',verbose_name="Рекомендуемые товары", blank=True)
+    category = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
     slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return f'/{self.category.url}/{self.slug}'
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
@@ -126,7 +129,7 @@ class Boat(Product):
     inflatable_compartments = models.IntegerField("Количество надувных отсеков", blank=True, null=True) # Количество надувных отсеков
     load_capacity = models.IntegerField("Грузоподъемность кг", blank=True, null=True) # грузоподъемность кг
     passenger_capacity = models.IntegerField("Пассажировместимость чел", blank=True, null=True) # пассажировместимость чел
-    maximum_motor_power = models.IntegerField("Макс мощность мотора лс", blank=True, null=True) # максимальная мощность мотора лс
+    maximum_motor_power = models.FloatField("Макс мощность мотора лс", blank=True, null=True) # максимальная мощность мотора лс
     boat_weight = models.IntegerField("Вес лодки кг", blank=True, null=True) # вес лодки кг
     complete_set_weight = models.IntegerField("Вес полного комплекта кг", blank=True, null=True) # Вес полного комплекта кг
     bulwark = models.BooleanField("Фальшборт", default=False, blank=True) # фальшборт по дефолту нет.
