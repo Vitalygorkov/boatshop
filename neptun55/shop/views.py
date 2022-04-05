@@ -152,7 +152,7 @@ def search_product(request, category_slug):
     # print((category_products))
     category_cats = Category.objects.filter(url='lodki').get_descendants(include_self=False)
     # print(category_cats)
-
+    # cat_name_url = [cat_id[0].name, category_slug, cat_id[0].url]
     return render(request, "shop/details-search.html", {"category_list": categories,
                                           # "category_products": category_products,
                                           "category_cats": category_cats,
@@ -160,6 +160,7 @@ def search_product(request, category_slug):
                                           "filter": product_filter,
                                           "product_filter": product_filter,
                                           "last_category": category_slug,
+                                          "cat_name_url": cat_id[0],
                                                         })
 
 # def search_boat_category(request, category_slug):
@@ -232,6 +233,8 @@ def success(request):
 #                                                "category_products": category_products,})
 
 def show_category(request, category_slug):
+    sale_products = Product.objects.exclude(sale= 0)
+    print(sale_products)
     # print('Show_category view')
     categories = Category.objects.all()
     #categoryID = Category.objects.get(url=category_slug)
@@ -279,6 +282,7 @@ def show_category(request, category_slug):
                                           "filter": boat_filter,
                                           "product_filter": product_filter,
                                           "last_category": category_slug,
+                                          "sale_products": sale_products,
                                           })
 
 def show_product(request, product_slug,category_slug):

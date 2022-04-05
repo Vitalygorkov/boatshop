@@ -156,7 +156,10 @@ display: flex;
 display: inline-block;
 background: white;
  }
-
+.top-sale-block{
+display: flex;
+height: 300px;
+}
 .product-display{
 display: block;
 width: 250px;
@@ -165,25 +168,38 @@ height: 300px;
 }
 
 .product-container{
+  display:flex;
   background: white;
+  flex-direction: row;
+  flex-wrap: wrap;
 
 }
 .product-display-lodki{
+flex: 1 1 360px;
+max-width: 500px;
+min-height: 300px;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
 vertical-align: top;
 margin: 4px 4px 4px 4px;
 padding: 5 5 5 5px;
-display: inline-block;
 /* background: #f1f1f1; */
 background: #FFFAFA;
 border:1px solid silver;
 border-radius: 15px;
-min-height: 400px;
-width: 300px;
+}
+.sale_block{
+align-self: flex-start;
+padding: 5px;
+background: #FFFF00;
+border: 3px #FFFF00;
+border-radius: 15px;
 }
 .prod-display-lodki-inside-img{
-display: inline-block;
-margin-left: 10px;
-width: 280px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .product-display-img{
@@ -191,17 +207,13 @@ width: 100%;
 height: 100%;
 object-fit: fill;
 }
-.prod-display-lodki-inside-text{
-display: inline-block;
-margin-left: 3px;
-min-width: 150px;
-min-height: 150px;
+.cart_product{
+width: 80%;
 }
-/*.cart_product{
-} */
 .cart_product summary {
   display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
-  width: 10em;
+  width: 100%;
+  /*
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
@@ -213,33 +225,48 @@ min-height: 150px;
   display: none;
 }
 .product-lodki-text1{
-width: 280px;
-margin-left: 12px;
+display: flex;
+flex-direction: column;
 }
-.text-characteristics-name-tochki{
-display: inline-block;
-border:2px solid silver;
-width: 350px;
-overflow: hidden;
+.product-lodki-text1-product-page{
+flex: 1 0 500px;
+max-height: 410px;
+padding: 20px;
+justify-content: center;
+flex-direction: column;
+}
+.cart-product-name{
+display: flex;
+justify-content: center;
+}
+.text-characteristics-container{
+display: flex;
+justify-content: space-between;
+border:2px solid #AFEEEE;
+width: 100%;
+
 }
 .text-characteristics-name{
-display: inline-block;
-height: 15px;
-width: 220px;
+flex: 1 1 auto;
+margin-left: 2px;
 white-space: nowrap;
 overflow: hidden;
 font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
+
 .text-characteristics{
-display: inline;
+flex: 0 0 auto;
+justify-content: right;
+white-space: nowrap;
 font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
-
+.price-sale-button-block{
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .prod-display-lodki-inside-price{
-display: inline-block;
-margin-left: 10px;
-min-height: 40px;
-min-width: 30px;
+margin-left: 3px;
 font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 
@@ -250,10 +277,12 @@ display: block;
 }
 
 .cat-tag{
+padding: 4px;
 vertical-align: top;
 display: inline;
 background-color: #FFFAFA;
-border:2px solid #AFEEEE; width: 10%;
+border:2px solid #AFEEEE;
+width: 10%;
 border-radius: 10px;
 font-size: 1.2em;
 }
@@ -272,30 +301,52 @@ border:2px solid silver;
 
 }
 /* product page */
-.product-page-topblock{
+.product-content{
 display: flex;
 flex-direction: column;
-width: 100%;
+position: relative;
+background-color: #ffffff;
+}
+
+.product-page-topblock{
+display: flex;
+
+flex-direction: column;
+position: relative;
 background-color: #ffffff;
 }
 .product-page-topblock-name{
+}
+.product-page-topblock-photo-i-descr{
+display: flex;
+border: 2px #00FFFF solid;
 }
 .price-product-lodki{
 display: inline-block;
 }
 .product_page_short_description_price{
-display: inline-block;
-min-width: 380px;
-height: 250px;
+display: flex;
+max-width: 600px;
+min-width: 350px;
+flex-direction: column;
 
 }
+.nav-product-menu-box{
+display: flex;
+}
 .nav-product-menu{
+width: 100%;
+min-width:400px;
 }
 .tabs__items{
+justify-content: center;
+align-items: center;
 display: flex;
-width: 100%
+width: 100%;
+z-index:12;
 }
 .f-nav{
+width: 98%;
 position: fixed;
 top: 0;
 }

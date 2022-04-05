@@ -65,12 +65,18 @@ class Product(models.Model):
     description = models.TextField('Описание', blank=True)  # описание
     manufacturer = models.ForeignKey(Manufacturer, verbose_name="Производитель", on_delete=models.SET_NULL, null=True)
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
+    sale = models.IntegerField('Скидка в процентах', blank=True, default=0)
     color = models.ForeignKey(Color, verbose_name= "Цвет", on_delete=models.SET_NULL, null=True, blank= True) # цвет
     # subcategory = models.ForeignKey(Subcategory,on_delete= models.CASCADE)
     # category = models.ForeignKey(Category,blank=True,default=None, on_delete = models.CASCADE)
     recommendations = models.ManyToManyField('Product',verbose_name="Рекомендуемые товары", blank=True)
+    accessories = models.ManyToManyField('self', verbose_name="Аксессуары", blank=True)
     category = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
     slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
+    def get_sale(self):
+        '''Расчитать стоимость со скидкой'''
+        price = int(self.price * (100 - self.sale) / 100)
+        return price
     def __str__(self):
         return self.name
     def get_absolute_url(self):

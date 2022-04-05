@@ -3,94 +3,268 @@
 
 {% block content %}
 
-
+<div class="product-content">
 <div class="product-page-topblock">
-    <h2 align="center" >{{ product.name }}</h2>
-    <div class="flex__column">
-        <div class="slider">
-                {% for img in product.prodimg.all %}
-            <div class="slider__item">
-                <a data-fancybox="gallery" href="{{ img.image.url }}" ><img class="img-slider" src="{{ img.image.url }}" alt="продукт"/></a>
-
-            </div>
-                {% endfor %}
-        </div>
-
-            <div class="slider-nav">
-                {% for img in product.prodimg.all %}
-                <img class="img-slider-nav" src="{{ img.image.url }}" alt="продукт">
-                {% endfor %}
-            </div>
-        <center>
-        <div class="price-product-lodki"><p>Цена: <font size="5">{{ product.price }}</font> руб.</p></div>
-        <div class="price-product-lodki">
-            <form action="/contacts/">
-            <input class="button-search" type="submit" value="Заказать">
-            </form>
-        </div>
-        </center>
+    <div class="product-page-topblock-name">
+        <h2 align="center" >{{ product.name }}</h2>
     </div>
+    <div class="product-page-topblock-photo-i-descr">
+        <div class="flex__column">
+            <div class="slider">
+                    {% for img in product.prodimg.all %}
+                <div class="slider__item">
+                    <a data-fancybox="gallery" href="{{ img.image.url }}" ><img class="img-slider" data-lazy="{{ img.image.url }}" alt="продукт"/></a>
 
-    <div class="product_page_short_description_price">
-        <p align="center">{{ product.short_description}}</p>
-<!--        <h3>Осн характеристики:</h3>-->
-<!--                <div class="text-characteristics-name">Технические характеристики:</div>-->
-                <div class="text-characteristics-name">Производитель:................................................................................................</div>
-				<div class="text-characteristics">{{ product.manufacturer }}</div>
-    </div>
-</div>
-
-<div class="nav-product-menu">
-    <div class="tabs">
-        <nav class="tabs__items">
-            <a href="#tab_01" class="tabs__item"><span>ОПИСАНИЕ</span></a>
-            <a href="#tab_02" class="tabs__item"><span>АКСЕССУАРЫ</span></a>
-            <a href="#tab_03" class="tabs__item"><span>ВИДЕО</span></a>
-            <a href="#tab_04" class="tabs__item"><span>ОТЗЫВЫ</span></a>
-        </nav>
-        <div class="tabs__body">
-            <div id="tab_01" class="tabs__block">
-                {{ product.description|safe }}
-            </div>
-            <div id="tab_02" class="tabs__block">
-                <h3>Аксессуары</h3>
-
-
+                </div>
+                    {% endfor %}
             </div>
 
-            <div id="tab_03" class="tabs__block">
-                <h3>Видео с лодкой</h3>
-                {% for videos in product.prodvideos.all %}
-                <iframe frameborder="0" height="360" width="640" src="https://www.youtube.com/embed/{{ videos.video }}">
-                </iframe>
-                {% endfor %}
-            </div>
-
-            <div id="tab_04" class="tabs__block">
-                <h3>Отзывы</h3>
-                {% for review in product.prodreviews.all %}
-                <br>{{ review.name }}
-                <br>{{ review.text }}
-                <br>{{ review.product }}
+                <div class="slider-nav">
+                    {% for img in product.prodimg.all %}
+                    <img class="img-slider" src="{{ img.image.url }}" alt="продукт">
+                    {% endfor %}
+                </div>
+            <center>
                 <br>
-                {% endfor %}
-            </div>
+            <div class="price-sale-button-block">
+                {% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="5"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="5"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
 
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="5">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
+                <form action="/contacts/">
+                <input class="button-search" type="submit" value="Заказать">
+                </form>
+            </div>
+            </center>
+        </div>
+
+        <div class="product_page_short_description_price">
+    <!--        <p align="center">{{ product.short_description}}</p>-->
+            <center><h3>Технические характеристики:</h3></center>
+    <!--                <div class="text-characteristics-name">Технические характеристики:</div>-->
+            					<div class="product-lodki-text1-product-page">
+						<div class="text-characteristics-container">
+						</div>
+
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Производитель:</div>
+						<div class="text-characteristics">{{ product.manufacturer }}</div>
+							</div>
+					</div>
 
         </div>
     </div>
 
+    <div class="flex__column-recommend-name">
+        <h3>С этим товаром покупают:</h3>
+    </div>
+
+            <div class="slider-nav-recommend">
+            {% for product in product.recommendations.all %}
+				<div class="product-display-lodki">
+					{% if product.sale != 0 %}
+					<div class="sale_block">
+						СКИДКА {{ product.sale }} %
+					</div>
+					{% endif %}
+					<div class="prod-display-lodki-inside-img">
+						{% if product.image %}
+						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+						{% endif %}
+					</div>
+					<div class="product-lodki-text1">
+						<div class="cart-product-name">
+						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
+						</div>
+					</div>
+
+					<div class="price-sale-button-block">
+						{% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="4"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="4"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
+
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="4">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+
+<!--                <div class="product-display-lodki">-->
+<!--                    <div class="prod-display-lodki-inside-img">-->
+<!--                        {% if product.image %}-->
+<!--                        <a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                    <div class="prod-display-lodki-inside-text">-->
+<!--&lt;!&ndash;                        <div class="product-lodki-text1">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                        <span><a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a></span>-->
+<!--                    </div>-->
+<!--                    <div class="prod-display-lodki-inside-price">-->
+<!--                        <p>Цена: <font size="5">{{ product.price }}</font> руб.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+<!--                <div class="recommend-cart">-->
+<!--                    <div class="recommend-block-image">-->
+<!--                        {% if recommendations.image %}-->
+<!--                        <a href="{{ recommendations.get_absolute_url }}" target="_blank"><img  class="rec-img" data-lazy="{{ recommendations.image.url }}"></a>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+
+<!--                    <div class="recommend-block">-->
+<!--                        <a href="{{ recommendations.get_absolute_url }}" target="_blank">{{ recommendations.name }}</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+            {% endfor %}
+            </div>
+
+
+</div>
+<div class="nav-product-menu-box">
+    <div class="nav-product-menu">
+        <div class="tabs">
+            <nav class="tabs__items">
+                <a href="#tab_01" class="tabs__item"><span>ОПИСАНИЕ</span></a>
+                <a href="#tab_02" class="tabs__item"><span>АКСЕССУАРЫ</span></a>
+                <a href="#tab_03" class="tabs__item"><span>ВИДЕО</span></a>
+                <a href="#tab_04" class="tabs__item"><span>ОТЗЫВЫ</span></a>
+            </nav>
+            <div class="tabs__body">
+                <div id="tab_01" class="tabs__block">
+                    {{ product.description|safe }}
+                </div>
+                <div id="tab_02" class="tabs__block">
+                    <h3>Аксессуары</h3>
+            <div class="slider-nav-recommend">
+            {% for product in product.accessories.all %}
+				<div class="product-display-lodki">
+					{% if product.sale != 0 %}
+					<div class="sale_block">
+						СКИДКА {{ product.sale }} %
+					</div>
+					{% endif %}
+					<div class="prod-display-lodki-inside-img">
+						{% if product.image %}
+						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+						{% endif %}
+					</div>
+					<div class="product-lodki-text1">
+						<div class="cart-product-name">
+						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
+						</div>
+					</div>
+
+					<div class="price-sale-button-block">
+						{% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="4"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="4"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
+
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="4">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+
+<!--                <div class="product-display-lodki">-->
+<!--                    <div class="prod-display-lodki-inside-img">-->
+<!--                        {% if product.image %}-->
+<!--                        <a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                    <div class="prod-display-lodki-inside-text">-->
+<!--&lt;!&ndash;                        <div class="product-lodki-text1">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                        <span><a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a></span>-->
+<!--                    </div>-->
+<!--                    <div class="prod-display-lodki-inside-price">-->
+<!--                        <p>Цена: <font size="5">{{ product.price }}</font> руб.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+<!--                <div class="recommend-cart">-->
+<!--                    <div class="recommend-block-image">-->
+<!--                        {% if recommendations.image %}-->
+<!--                        <a href="{{ recommendations.get_absolute_url }}" target="_blank"><img  class="rec-img" data-lazy="{{ recommendations.image.url }}"></a>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+
+<!--                    <div class="recommend-block">-->
+<!--                        <a href="{{ recommendations.get_absolute_url }}" target="_blank">{{ recommendations.name }}</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+            {% endfor %}
+            </div>
+
+
+                <div id="tab_03" class="tabs__block">
+                    <h3>Видео с лодкой</h3>
+                    {% for videos in product.prodvideos.all %}
+                    <iframe frameborder="0" height="360" width="640" src="https://www.youtube.com/embed/{{ videos.video }}">
+                    </iframe>
+                    {% endfor %}
+                </div>
+
+                <div id="tab_04" class="tabs__block">
+                    <h3>Отзывы</h3>
+                    {% for review in product.prodreviews.all %}
+                    <br>{{ review.name }}
+                    <br>{{ review.text }}
+                    <br>{{ review.product }}
+                    <br>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<div>
-<!--    Описание:-->
-<!--{{ product.description|safe }}-->
+
+
+
+
 </div>
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'shop/js/slick.min.js' %}"></script>
 <script src="{% static 'shop/js/slick-script.js' %}"></script>

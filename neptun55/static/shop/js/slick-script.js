@@ -4,7 +4,23 @@ $(document).ready(function(){
      slidesToScroll: 1,
      arrows: true,
      fade: true,
-     asNavFor: '.slider-nav'
+     asNavFor: '.slider-nav',
+     responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        slidesToShow: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        slidesToShow: 1,
+      }
+    }
+  ]
     });
 });
 
@@ -19,15 +35,37 @@ $('.slider-nav').slick({
 });
 
 $('.slider-nav-recommend').slick({
-  slidesToShow: 3,
+  slidesToShow: 5,
   slidesToScroll: 1,
   infinite: false,
+  centerPadding: '60px',
   dots: false,
-  centerMode: true,
+  centerMode: false,
   adaptiveHeight: true,
   arrows: true,
-  focusOnSelect: true
+  focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: false,
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: false,
+        slidesToShow: 2
+      }
+    }
+  ]
 });
+
+
+
 
 //
 //$(document).ready(function(){

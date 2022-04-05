@@ -43,12 +43,15 @@
 </div>
 <div class="block-results">
 
+<!--	<div class="cat-tags-block">-->
+<!--&lt;!&ndash;		{% for cat in category_cats %}&ndash;&gt;-->
+<!--&lt;!&ndash;		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;		{% endfor %}&ndash;&gt;-->
+<!--	</div>-->
 	<div class="cat-tags-block">
-<!--		{% for cat in category_cats %}-->
-<!--		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>-->
-<!--		{% endfor %}-->
-	</div>
-	<div class="cat-tags-block">
+		<div class="cat-urls-list"><a href="https://neptun55.ru/">/ Главная</a></div>
+		<div class="cat-urls-list"><a href="/{{ cat_name_url.url }}">/ {{ cat_name_url.name }}</a></div>
+
 		{% for cat in cat_url_list %}
 		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/{{ cat.name }}</a></div>
 		{% endfor %}
@@ -59,59 +62,53 @@
 
 	<div class="product-container">
 	{% for product in filter.qs %}
-	<div class="product-display-lodki">
+					<div class="product-display-lodki">
+					{% if product.sale != 0 %}
+					<div class="sale_block">
+						СКИДКА {{ product.sale }} %
+					</div>
+					{% endif %}
+					<div class="prod-display-lodki-inside-img">
+						{% if product.image %}
+						<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+						{% endif %}
+					</div>
+					<div class="product-lodki-text1">
+						<div class="cart-product-name">
+						<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+						</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Производитель:</div>
+						<div class="text-characteristics">{{ product.manufacturer }}</div>
+							</div>
 
-		<div class="prod-display-lodki-inside-img">
-			{% if product.image %}
-			<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
-			{% endif %}
-		</div>
+					</div>
 
+					<div class="price-sale-button-block">
+						{% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="5"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="5"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
 
-		<div class="prod-display-lodki-inside-text">
-			<div class="product-lodki-text1">
-				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="5">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
 
-
-				<div class="text-characteristics-name">Производитель:................................................................................................</div>
-				<div class="text-characteristics">{{ product.manufacturer }}</div>
-			</div>
-		</div>
-
-		<div class="prod-display-lodki-inside-price">
-			<p>Цена: <font size="5">{{ product.price }}</font> руб.</p>
-		</div>
-		<div class="prod-display-lodki-inside-price">
-			<form action="/contacts/">
-			<input class="button-search" type="submit" value="Заказать">
-			</form>
-		</div>
-
-
-
-	</div>
-
-
-		<!--<div class="product-display-lodki">
-
-			<div class="prod-display-lodki-inside-img">
-				{% for prodimg in product.prodimg.all %}
-			<a href="{{ product.slug }}"><img class="product-display-img" src="{{ prodimg.image.url }}" alt="продукт"></a>
-				{% endfor %}
-			</div>
-
-			<div class="prod-display-lodki-inside-text"><p><a href="{{ product.slug }}">{{ product.name }}</a></p>
-				<p>Производитель: {{ product.manufacturer }}</p>
-				<p>Длина (см): {{ product.length }}</p>
-				<p>Ширина (см): {{ product.width }}</p>
-				<p>Длина кокпита: {{ product.cockpit_length }}</p>
+						<div class="prod-display-lodki-inside-price">
+							<form action="/contacts/">
+							<input class="button-search" type="submit" value="Заказать">
+							</form>
+						</div>
+					</div>
 				</div>
-
-			<div class="prod-display-lodki-inside-price"><p>Цена: {{ product.price }} руб.</p>
-			<p><input type="submit" value="Купить"><input type="submit" value="Сравнить"></p>
-			</div>
-
-		</div> -->
 	{% endfor %}
 	</div>
 

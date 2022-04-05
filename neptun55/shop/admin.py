@@ -48,9 +48,9 @@ class DescriptionAdminForm(forms.ModelForm):
 class BoatAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',),}
-    list_display = ("name", "manufacturer", "price", )
+    list_display = ("name", "manufacturer", "sale", "price", )
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "price", "name")
+    list_filter = ("manufacturer", "price", "sale", "name")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline, ReviewInline,]
     save_on_top = True
@@ -63,7 +63,7 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',), }
     list_display = ("name", "manufacturer", "price", )
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "price", "name")
+    list_filter = ("manufacturer", "price", "sale", "name")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline, ReviewInline,]
     save_on_top = True

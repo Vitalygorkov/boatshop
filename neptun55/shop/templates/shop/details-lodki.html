@@ -3,368 +3,453 @@
 {% load static %}
 {% block content %}
 {% load widget_tweaks %}
-<div class="page-content">
-<div class="search-menu">
+<div class="product-content">
+				<div class="top-sale-block">
+			<div class="slider-nav-recommend">
+            {% for product in sale_products %}
+				<div class="product-display-lodki">
+					{% if product.sale != 0 %}
+					<div class="sale_block">
+						СКИДКА {{ product.sale }} %
+					</div>
+					{% endif %}
+					<div class="prod-display-lodki-inside-img">
+						{% if product.image %}
+						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+						{% endif %}
+					</div>
+					<div class="product-lodki-text1">
+						<div class="cart-product-name">
+						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
+						</div>
+					</div>
 
-	<form class="serach-menu" action="/search" method="get">
-	<br><button class="button-search" type="submit">Показать</button>
-<!--	{{ filter.form.as_p }}-->
-		<details open class="menu-details">
-		<summary>Цена</summary>
+					<div class="price-sale-button-block">
+						{% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="4"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="4"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
 
-		<div class="filters-price__slider" id="range-slider-price"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.price__gt class="filters-price__input" placeholder="500" id="input-price-0" %}
-				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.price__lt class="filters-price__input" placeholder="299999" id="input-price-1" %}
-				<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Длина</summary>
-			<div class="filters-price__slider" id="range-slider-length"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.length__gt class="filters-price__input" placeholder="0" id="input-length-0" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.length__lt class="filters-price__input" placeholder="600" id="input-length-1" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Ширина</summary>
-			<div class="filters-price__slider" id="range-slider-width"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.width__gt class="filters-price__input" placeholder="0" id="input-width-0" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.width__lt class="filters-price__input" placeholder="250" id="input-width-1" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Длина кокпита</summary>
-			<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.cockpit_length__gt class="filters-price__input" placeholder="0" id="input-cockpit-length-0" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.cockpit_length__lt class="filters-price__input" placeholder="800" id="input-cockpit-length-1" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Ширина кокпита</summary>
-			<div class="filters-price__slider" id="range-slider-cockpit_width"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.cockpit_width__gt class="filters-price__input" placeholder="0" id="input-cockpit-width-0" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.cockpit_width__lt class="filters-price__input" placeholder="250" id="input-cockpit-width-1" %}
-				<span class="filters-price__text">СМ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Грузоподъемность</summary>
-			<div class="filters-price__slider" id="range-slider-load-capacity"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.load_capacity__gt class="filters-price__input" placeholder="0" id="input-load-capacity-0" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.load_capacity__lt class="filters-price__input" placeholder="2500" id="input-load-capacity-1" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Вес лодки</summary>
-			<div class="filters-price__slider" id="range-slider-boat-weight"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.boat_weight__gt class="filters-price__input" placeholder="0" id="input-boat-weight-0" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.boat_weight__lt class="filters-price__input" placeholder="1500" id="input-boat-weight-1" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Вес полного комплекта</summary>
-			<div class="filters-price__slider" id="range-slider-complete-set-weight"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.complete_set_weight__gt class="filters-price__input" placeholder="0" id="input-complete-set-weight-0" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.complete_set_weight__lt class="filters-price__input" placeholder="1500" id="input-complete-set-weight-1" %}
-				<span class="filters-price__text">КГ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Макс. мощность мотора</summary>
-			<div class="filters-price__slider" id="range-slider-maximum-motor-power"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.maximum_motor_power__gt class="filters-price__input" placeholder="0" id="input-maximum-motor-power-0" %}
-				<span class="filters-price__text">ЛС</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.maximum_motor_power__lt class="filters-price__input" placeholder="300" id="input-maximum-motor-power-1" %}
-				<span class="filters-price__text">ЛС</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Плотность ткани борта</summary>
-			<div class="filters-price__slider" id="range-slider-fabric-thickness-side"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.fabric_thickness_side__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-side-0" %}
-				<span class="filters-price__text">г/м²</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.fabric_thickness_side__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-side-1" %}
-				<span class="filters-price__text">г/м²</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Плотность ткани дна</summary>
-			<div class="filters-price__slider" id="range-slider-fabric-thickness-bottom"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.fabric_thickness_bottom__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-bottom-0" %}
-				<span class="filters-price__text">г/м²</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.fabric_thickness_bottom__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-bottom-1" %}
-				<span class="filters-price__text">г/м²</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Количество надувных отсеков</summary>
-			<div class="filters-price__slider" id="range-slider-inflatable-compartments"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.inflatable_compartments__gt class="filters-price__input" placeholder="0" id="input-inflatable-compartments-0" %}
-				<span class="filters-price__text">ШТ</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.inflatable_compartments__lt class="filters-price__input" placeholder="15" id="input-inflatable-compartments-1" %}
-				<span class="filters-price__text">ШТ</span>
-				</label>
-			</div>
-		</details>
-
-		<details class="menu-details">
-		<summary>Пассажировместимость</summary>
-			<div class="filters-price__slider" id="range-slider-passenger-capacity"></div>
-			<div class="filters-price__inputs">
-				<label class="filters-price__label">
-				<span class="filters-price__text1">от</span>
-					{% render_field filter.form.passenger_capacity__gt class="filters-price__input" placeholder="0" id="input-passenger-capacity-0" %}
-				<span class="filters-price__text">Чел</span>
-				</label>
-				<label class="filters-price__label">
-				<span class="filters-price__text1">до</span>
-					{% render_field filter.form.passenger_capacity__lt class="filters-price__input" placeholder="15" id="input-passenger-capacity-1" %}
-				<span class="filters-price__text">Чел</span>
-				</label>
-			</div>
-		</details>
-		<details class="menu-details">
-		<summary>Производитель</summary>
-		 {% render_field filter.form.manufacturer %}
-		</details>
-		<details class="menu-details">
-		<summary>Тип дна</summary>
-		{% render_field filter.form.category %}
-		</details>
-		<details class="menu-details">
-		<summary>Фальшборт</summary>
-		{% render_field filter.form.bulwark %}
-		</details>
-		<details class="menu-details">
-		<summary>Киль</summary>
-		{% render_field filter.form.keel %}
-		</details>
-
-
-
-
-
-	<button class="button-search" type="submit">Показать</button>
-	</form>
-</div>
-<div class="block-results">
-
-	<div class="cat-tags-block">
-		{% for cat in category_cats %}
-		<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>
-		{% endfor %}
-	</div>
-	<div class="cat-tags-block">
-		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ Главная</a></div>
-		{% for cat in cat_url_list %}
-		<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ {{ cat.name }}</a></div>
-		{% endfor %}
-	</div>
-	<div class="sort_filter">
-<!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
-	</div>
-
-
-	{% for product in filter.qs %}
-	<div class="product-display-lodki">
-		<div class="prod-display-lodki-inside-img">
-			{% if product.image %}
-			<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
-			{% endif %}
-		</div>
-		<div class="prod-display-lodki-inside-text">
-			<div class="product-lodki-text1">
-				<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
-				<details class="cart_product"><summary class="all_characteristics">
-				<div class="text-characteristics-name">Длина:...........................................................................................</div>
-				<div class="text-characteristics">{{ product.length }} см</div>
-				<br><div class="text-characteristics-name">Ширина:.....................................................................................</div>
-				<div class="text-characteristics">{{ product.width }} см</div>
-				<br><div class="text-characteristics-name">Диаметр баллонов:...........................................................................</div>
-				<div class="text-characteristics">{{ product.cylinder_diameter }} см</div>
-				<br><div class="text-characteristics-name">Вес лодки:..................................................................................</div>
-				<div class="text-characteristics">{{ product.boat_weight }} кг</div>
-
-					<center><font style="color:blue">ПОКАЗАТЬ ХАРАКТЕРИСТИКИ:</font></center></summary>
-				<div class="text-characteristics-name">Производитель:................................................................................................</div>
-				<div class="text-characteristics">{{ product.manufacturer }}</div>
-				<br><div class="text-characteristics-name">Тип дна:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.category }}</div>
-				<br><div class="text-characteristics-name">Длина кокпита (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cockpit_length }}</div>
-				<br><div class="text-characteristics-name">Ширина кокпита (см):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.cockpit_width }}</div>
-				<br><div class="text-characteristics-name">Плотность ткани борта (г/м²):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
-				<br><div class="text-characteristics-name">Плотность ткани дна (г/м²):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.fabric_thickness_bottom }}</div>
-				<br><div class="text-characteristics-name">Кол-во надувных отсеков:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.inflatable_compartments }}</div>
-				<br><div class="text-characteristics-name">Грузоподъемность (кг):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.load_capacity }}</div>
-				<br><div class="text-characteristics-name">Пассожировместимость (чел):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.passenger_capacity }}</div>
-				<br><div class="text-characteristics-name">Макс мощность мотора (лс):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.maximum_motor_power }}</div>
-				<br><div class="text-characteristics-name">Вес полного комплекта кг:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.complete_set_weight }}</div>
-				<br><div class="text-characteristics-name">Фальшборт:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.bulwark|yesno:"Да,Нет" }}</div>
-				<br><div class="text-characteristics-name">Киль:............................................................................................................</div>
-				<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
-				<br><div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):............................................................................................................</div>
-				<div class="text-characteristics">{{ product.upak }}</div>
-				</details>
-
-			</div>
-		</div>
-
-
-		<div class="prod-display-lodki-inside-price">
-			<p>Цена: <font size="5">{{ product.price }}</font> руб.</p>
-		</div>
-		<div class="prod-display-lodki-inside-price">
-			<form action="/contacts/">
-			<input class="button-search" type="submit" value="Заказать">
-			</form>
-		</div>
-
-
-
-	</div>
-
-
-		<!--<div class="product-display-lodki">
-
-			<div class="prod-display-lodki-inside-img">
-				{% for prodimg in product.prodimg.all %}
-			<a href="{{ product.slug }}"><img class="product-display-img" src="{{ prodimg.image.url }}" alt="продукт"></a>
-				{% endfor %}
-			</div>
-
-			<div class="prod-display-lodki-inside-text"><p><a href="{{ product.slug }}">{{ product.name }}</a></p>
-				<p>Производитель: {{ product.manufacturer }}</p>
-				<p>Длина (см): {{ product.length }}</p>
-				<p>Ширина (см): {{ product.width }}</p>
-				<p>Длина кокпита: {{ product.cockpit_length }}</p>
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="4">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
+					</div>
 				</div>
-
-			<div class="prod-display-lodki-inside-price"><p>Цена: {{ product.price }} руб.</p>
-			<p><input type="submit" value="Купить"><input type="submit" value="Сравнить"></p>
+            {% endfor %}
+            </div>
 			</div>
+<div class="page-content">
+	<div class="search-menu">
 
-		</div> -->
-	{% endfor %}
+		<form class="serach-menu" action="/search" method="get">
+		<br><button class="button-search" type="submit">Показать</button>
+	<!--	{{ filter.form.as_p }}-->
+			<details open class="menu-details">
+			<summary>Цена</summary>
 
+			<div class="filters-price__slider" id="range-slider-price"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.price__gt class="filters-price__input" placeholder="500" id="input-price-0" %}
+					<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.price__lt class="filters-price__input" placeholder="299999" id="input-price-1" %}
+					<span class="filters-price__text">&nbsp&nbsp&nbsp₽</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Длина</summary>
+				<div class="filters-price__slider" id="range-slider-length"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.length__gt class="filters-price__input" placeholder="0" id="input-length-0" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.length__lt class="filters-price__input" placeholder="600" id="input-length-1" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Ширина</summary>
+				<div class="filters-price__slider" id="range-slider-width"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.width__gt class="filters-price__input" placeholder="0" id="input-width-0" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.width__lt class="filters-price__input" placeholder="250" id="input-width-1" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Длина кокпита</summary>
+				<div class="filters-price__slider" id="range-slider-cockpit-length"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.cockpit_length__gt class="filters-price__input" placeholder="0" id="input-cockpit-length-0" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.cockpit_length__lt class="filters-price__input" placeholder="800" id="input-cockpit-length-1" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Ширина кокпита</summary>
+				<div class="filters-price__slider" id="range-slider-cockpit_width"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.cockpit_width__gt class="filters-price__input" placeholder="0" id="input-cockpit-width-0" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.cockpit_width__lt class="filters-price__input" placeholder="250" id="input-cockpit-width-1" %}
+					<span class="filters-price__text">СМ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Грузоподъемность</summary>
+				<div class="filters-price__slider" id="range-slider-load-capacity"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.load_capacity__gt class="filters-price__input" placeholder="0" id="input-load-capacity-0" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.load_capacity__lt class="filters-price__input" placeholder="2500" id="input-load-capacity-1" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Вес лодки</summary>
+				<div class="filters-price__slider" id="range-slider-boat-weight"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.boat_weight__gt class="filters-price__input" placeholder="0" id="input-boat-weight-0" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.boat_weight__lt class="filters-price__input" placeholder="1500" id="input-boat-weight-1" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Вес полного комплекта</summary>
+				<div class="filters-price__slider" id="range-slider-complete-set-weight"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.complete_set_weight__gt class="filters-price__input" placeholder="0" id="input-complete-set-weight-0" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.complete_set_weight__lt class="filters-price__input" placeholder="1500" id="input-complete-set-weight-1" %}
+					<span class="filters-price__text">КГ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Макс. мощность мотора</summary>
+				<div class="filters-price__slider" id="range-slider-maximum-motor-power"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.maximum_motor_power__gt class="filters-price__input" placeholder="0" id="input-maximum-motor-power-0" %}
+					<span class="filters-price__text">ЛС</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.maximum_motor_power__lt class="filters-price__input" placeholder="300" id="input-maximum-motor-power-1" %}
+					<span class="filters-price__text">ЛС</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Плотность ткани борта</summary>
+				<div class="filters-price__slider" id="range-slider-fabric-thickness-side"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.fabric_thickness_side__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-side-0" %}
+					<span class="filters-price__text">г/м²</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.fabric_thickness_side__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-side-1" %}
+					<span class="filters-price__text">г/м²</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Плотность ткани дна</summary>
+				<div class="filters-price__slider" id="range-slider-fabric-thickness-bottom"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.fabric_thickness_bottom__gt class="filters-price__input" placeholder="0" id="input-fabric-thickness-bottom-0" %}
+					<span class="filters-price__text">г/м²</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.fabric_thickness_bottom__lt class="filters-price__input" placeholder="2000" id="input-fabric-thickness-bottom-1" %}
+					<span class="filters-price__text">г/м²</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Количество надувных отсеков</summary>
+				<div class="filters-price__slider" id="range-slider-inflatable-compartments"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.inflatable_compartments__gt class="filters-price__input" placeholder="0" id="input-inflatable-compartments-0" %}
+					<span class="filters-price__text">ШТ</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.inflatable_compartments__lt class="filters-price__input" placeholder="15" id="input-inflatable-compartments-1" %}
+					<span class="filters-price__text">ШТ</span>
+					</label>
+				</div>
+			</details>
+
+			<details class="menu-details">
+			<summary>Пассажировместимость</summary>
+				<div class="filters-price__slider" id="range-slider-passenger-capacity"></div>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.passenger_capacity__gt class="filters-price__input" placeholder="0" id="input-passenger-capacity-0" %}
+					<span class="filters-price__text">Чел</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.passenger_capacity__lt class="filters-price__input" placeholder="15" id="input-passenger-capacity-1" %}
+					<span class="filters-price__text">Чел</span>
+					</label>
+				</div>
+			</details>
+			<details class="menu-details">
+			<summary>Производитель</summary>
+			 {% render_field filter.form.manufacturer %}
+			</details>
+			<details class="menu-details">
+			<summary>Тип дна</summary>
+			{% render_field filter.form.category %}
+			</details>
+			<details class="menu-details">
+			<summary>Фальшборт</summary>
+			{% render_field filter.form.bulwark %}
+			</details>
+			<details class="menu-details">
+			<summary>Киль</summary>
+			{% render_field filter.form.keel %}
+			</details>
+
+
+
+
+
+		<button class="button-search" type="submit">Показать</button>
+		</form>
+	</div>
+
+	<div class="block-results">
+
+
+		<div class="cat-tags-block">
+			{% for cat in category_cats %}
+			<div class="cat-tag"><a href="{{ cat.get_absolute_url }}">{{ cat.description }}</a></div>
+			{% endfor %}
+		</div>
+		<div class="cat-tags-block">
+			<div class="cat-urls-list"><a href="https://neptun55.ru/">/ Главная</a></div>
+			{% for cat in cat_url_list %}
+			<div class="cat-urls-list"><a href="{{ cat.get_absolute_url }}">/ {{ cat.name }}</a></div>
+			{% endfor %}
+		</div>
+	<!--	<div class="sort_filter">-->
+	<!--	Сортировка: <a href="#">По алфавиту</a><a href="#">По цене+</a>   <a href="#">По цене-</a>-->
+	<!--	</div>-->
+
+		<div class="product-container">
+			{% for product in filter.qs %}
+				<div class="product-display-lodki">
+					{% if product.sale != 0 %}
+					<div class="sale_block">
+						СКИДКА {{ product.sale }} %
+					</div>
+					{% endif %}
+					<div class="prod-display-lodki-inside-img">
+						{% if product.image %}
+						<a href="{{ product.slug }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
+						{% endif %}
+					</div>
+					<div class="product-lodki-text1">
+						<div class="cart-product-name">
+						<a href="{{ product.slug }}"><h2>{{ product.name }}</h2></a>
+						</div>
+						<details class="cart_product"><summary class="all_characteristics">
+						<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Длина:</div>
+						<div class="text-characteristics">{{ product.length }} см</div>
+						</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Ширина:</div>
+						<div class="text-characteristics">{{ product.width }} см</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Диаметр баллонов:</div>
+						<div class="text-characteristics">{{ product.cylinder_diameter }} см</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Вес лодки:</div>
+						<div class="text-characteristics">{{ product.boat_weight }} кг</div>
+							</div>
+							<div class="text-characteristics-container">
+							<center><font style="color:blue">ПОКАЗАТЬ ХАРАКТЕРИСТИКИ:</font></center>
+							</div>
+						</summary>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Производитель:</div>
+						<div class="text-characteristics">{{ product.manufacturer }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Тип дна:</div>
+						<div class="text-characteristics">{{ product.category }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Длина кокпита (см):</div>
+						<div class="text-characteristics">{{ product.cockpit_length }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Ширина кокпита (см):</div>
+						<div class="text-characteristics">{{ product.cockpit_width }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Плотность ткани борта (г/м²):</div>
+						<div class="text-characteristics">{{ product.fabric_thickness_side }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Плотность ткани дна (г/м²):</div>
+						<div class="text-characteristics">{{ product.fabric_thickness_bottom }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Кол-во надувных отсеков:</div>
+						<div class="text-characteristics">{{ product.inflatable_compartments }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Грузоподъемность (кг):</div>
+						<div class="text-characteristics">{{ product.load_capacity }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Пассожировместимость (чел):</div>
+						<div class="text-characteristics">{{ product.passenger_capacity }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Макс мощность мотора (лс):</div>
+						<div class="text-characteristics">{{ product.maximum_motor_power }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Вес полного комплекта кг:</div>
+						<div class="text-characteristics">{{ product.complete_set_weight }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Фальшборт:</div>
+						<div class="text-characteristics">{{ product.bulwark|yesno:"Да,Нет" }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Киль:</div>
+						<div class="text-characteristics">{{ product.keel|yesno:"Да,Нет" }}</div>
+							</div>
+							<div class="text-characteristics-container">
+						<div class="text-characteristics-name">Габариты упаковки(Д*Ш*В):</div>
+						<div class="text-characteristics">{{ product.upak }}</div>
+							</div>
+						</details>
+					</div>
+
+					<div class="price-sale-button-block">
+						{% if product.sale != 0 %}
+						<div class="prod-display-lodki-inside-price">
+							Цена: <font size="5"> {{ product.get_sale }}</font> р.
+						</div>
+						<div class="prod-display-lodki-inside-price">
+							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="5"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>
+						</div>
+						<div class="sale_block">
+							-{{ product.sale }} %
+						</div>
+
+						{% else %}
+						<div class="prod-display-lodki-inside-price">
+							<p>Цена: <font size="5">{{ product.price }}</font> р.</p>
+						</div>
+						{% endif %}
+
+						<div class="prod-display-lodki-inside-price">
+							<form action="/contacts/">
+							<input class="button-search" type="submit" value="Заказать">
+							</form>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+
+
+		</div>
+	</div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'shop/js/slick.min.js' %}"></script>
+<script src="{% static 'shop/js/slick-script.js' %}"></script>
 <script src="{% static 'shop/js/nouislider.min.js' %}"></script>
 <script src="{% static 'shop/js/range-slider-func.js' %}"></script>
 {% endblock %}
