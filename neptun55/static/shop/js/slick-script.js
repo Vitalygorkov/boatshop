@@ -11,6 +11,8 @@ $(document).ready(function(){
       settings: {
         arrows: false,
         slidesToShow: 1,
+        infinite: true,
+        dots: true,
       }
     },
     {
@@ -18,6 +20,8 @@ $(document).ready(function(){
       settings: {
         arrows: false,
         slidesToShow: 1,
+        infinite: true,
+        dots: true,
       }
     }
   ]

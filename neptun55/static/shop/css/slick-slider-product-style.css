@@ -1,28 +1,41 @@
 .flex__column{
    display: flex;
    flex-direction: column;
-   min-width: 350px;
-   max-width: 600px;
-   max-height: 500px;
+   min-width: 300px;
+   max-width: 450px;
+   max-height: 450px;
    margin-left: auto;
    margin-right: auto;
+
 }
 .flex__column .slick-track{
-    max-width: 50%;
     display: flex;
     align-items: flex-start;
 }
+.slick-initialized{
+ overflow: hidden;
+}
 
 .img-slider{
-   max-width: 400px;
-   max-height: 300px;
+
 }
+.slider__item{
+flex: 1 1 auto;
+}
+.slider__item img{
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  vertical-align: center;
+}
+
 .img-slider-nav{
    max-height: 75px;
 }
 /* слайдер */
-.slick-slider{}
+.slick-slider{
     min-width: 0;
+}
 /* ограничивающая оболочка */
 .slick-list{
 overflow: hidden;
@@ -35,7 +48,9 @@ overflow: hidden;
 }
  */
 /* слайд */
-.slick-slide{}
+.slick-slide{
+max-height: 350px;
+}
 /* слайд активный */
 .slick-slide.slick-active{}
 /* слайд основной  */
@@ -51,9 +66,28 @@ overflow: hidden;
 /* стрелка неактивная */
 .slick-arrow.slick-disabled{}
 /* точки */
+/* в примере были убраны
 .slick-dots{}
 .slick-dots li{}
-.slick-dots button{}
+.slick-dots button{} */
+.slick-slider .slick-dots li button:before {
+ font-family: 'slick';
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: '•'; /* <-- Вот этот символ */
+  text-align: center;
+  opacity: .25;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 
 /* div Элемет слайдера */
 .slider{
@@ -102,14 +136,6 @@ overflow: hidden;
 	background-color: transparent;
 	border: 1px solid #fff;
 }
-
-.slider__item{
-
-}
-.slider__item img{
-
-}
-
 /* класс миниатюр  */
 .slider-nav.slick-track{
     display: flex;

@@ -262,6 +262,8 @@ font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 .price-sale-button-block{
 display: flex;
+flex-direction: row;
+flex-wrap: wrap;
 align-items: center;
 justify-content: center;
 }
