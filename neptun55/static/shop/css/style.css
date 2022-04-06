@@ -68,6 +68,7 @@ header{
  font-family: Cuprum, Arial, Helvetica, sans-serif;
 }
 .dws-menu *{
+ z-index: 20;
  margin: 0;
  padding: 0;
 }
@@ -159,6 +160,7 @@ background: white;
 .top-sale-block{
 display: flex;
 height: 300px;
+
 }
 .product-display{
 display: block;
