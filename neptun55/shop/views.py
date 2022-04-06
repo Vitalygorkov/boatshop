@@ -295,7 +295,8 @@ def show_product(request, product_slug,category_slug):
     if categories.filter(name=product.category).get_ancestors(include_self=True)[0].name == 'Лодки':
         product = Boat.objects.get(slug=product_slug)
         template_render = "shop/product-lodki.html"
-
+    print("show_product")
+    print(product.get_absolute_url())
 
     return render(request, template_render, {"product": product,
                                                            "category_list": categories, })
