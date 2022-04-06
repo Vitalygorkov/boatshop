@@ -150,12 +150,6 @@ max-height: 350px;
 }
 /*  класс рекомендаций */
 
-.flex__column-recommend-name{
-display: block;
-margin-left: 20px;
-z-index: 1;
-}
-
 .slider-nav-recommend{
     display:inline-block;
     overflow: hidden;

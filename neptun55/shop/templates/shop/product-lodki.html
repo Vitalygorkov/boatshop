@@ -138,19 +138,20 @@
 
             <div class="slider-nav-recommend">
             {% for product in product.recommendations.all %}
-				<div class="product-display-lodki">
+
+				<div class="product-display-lodki-small">
 					{% if product.sale != 0 %}
 					<div class="sale_block">
 						СКИДКА {{ product.sale }} %
 					</div>
 					{% endif %}
-					<div class="prod-display-lodki-inside-img">
+					<div class="prod-display-lodki-inside-img-small">
 						{% if product.image %}
 						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
 						{% endif %}
 					</div>
 					<div class="product-lodki-text1">
-						<div class="cart-product-name">
+						<div class="cart-product-name-small">
 						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
 						</div>
 					</div>
@@ -174,6 +175,44 @@
 						{% endif %}
 					</div>
 				</div>
+
+
+<!--				<div class="product-display-lodki">-->
+<!--					{% if product.sale != 0 %}-->
+<!--					<div class="sale_block">-->
+<!--						СКИДКА {{ product.sale }} %-->
+<!--					</div>-->
+<!--					{% endif %}-->
+<!--					<div class="prod-display-lodki-inside-img">-->
+<!--						{% if product.image %}-->
+<!--						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>-->
+<!--						{% endif %}-->
+<!--					</div>-->
+<!--					<div class="product-lodki-text1">-->
+<!--						<div class="cart-product-name">-->
+<!--						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>-->
+<!--						</div>-->
+<!--					</div>-->
+
+<!--					<div class="price-sale-button-block">-->
+<!--						{% if product.sale != 0 %}-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							Цена: <font size="4"> {{ product.get_sale }}</font> р.-->
+<!--						</div>-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="4"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>-->
+<!--						</div>-->
+<!--						<div class="sale_block">-->
+<!--							-{{ product.sale }} %-->
+<!--						</div>-->
+
+<!--						{% else %}-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							<p>Цена: <font size="4">{{ product.price }}</font> р.</p>-->
+<!--						</div>-->
+<!--						{% endif %}-->
+<!--					</div>-->
+<!--				</div>-->
 
 
 <!--                <div class="product-display-lodki">-->
@@ -228,19 +267,20 @@
                     <h3>Аксессуары</h3>
             <div class="slider-nav-recommend">
             {% for product in product.accessories.all %}
-				<div class="product-display-lodki">
+
+				<div class="product-display-lodki-small">
 					{% if product.sale != 0 %}
 					<div class="sale_block">
 						СКИДКА {{ product.sale }} %
 					</div>
 					{% endif %}
-					<div class="prod-display-lodki-inside-img">
+					<div class="prod-display-lodki-inside-img-small">
 						{% if product.image %}
 						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
 						{% endif %}
 					</div>
 					<div class="product-lodki-text1">
-						<div class="cart-product-name">
+						<div class="cart-product-name-small">
 						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
 						</div>
 					</div>
@@ -264,6 +304,44 @@
 						{% endif %}
 					</div>
 				</div>
+
+
+<!--				<div class="product-display-lodki">-->
+<!--					{% if product.sale != 0 %}-->
+<!--					<div class="sale_block">-->
+<!--						СКИДКА {{ product.sale }} %-->
+<!--					</div>-->
+<!--					{% endif %}-->
+<!--					<div class="prod-display-lodki-inside-img">-->
+<!--						{% if product.image %}-->
+<!--						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>-->
+<!--						{% endif %}-->
+<!--					</div>-->
+<!--					<div class="product-lodki-text1">-->
+<!--						<div class="cart-product-name">-->
+<!--						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>-->
+<!--						</div>-->
+<!--					</div>-->
+
+<!--					<div class="price-sale-button-block">-->
+<!--						{% if product.sale != 0 %}-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							Цена: <font size="4"> {{ product.get_sale }}</font> р.-->
+<!--						</div>-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							<s><font color="#20B2AA">Цена: </font></s><font color="#20B2AA" size="4"><s>{{ product.price }}</s></font><font color="#20B2AA"><s> р.</s></font>-->
+<!--						</div>-->
+<!--						<div class="sale_block">-->
+<!--							-{{ product.sale }} %-->
+<!--						</div>-->
+
+<!--						{% else %}-->
+<!--						<div class="prod-display-lodki-inside-price">-->
+<!--							<p>Цена: <font size="4">{{ product.price }}</font> р.</p>-->
+<!--						</div>-->
+<!--						{% endif %}-->
+<!--					</div>-->
+<!--				</div>-->
 
 
 <!--                <div class="product-display-lodki">-->

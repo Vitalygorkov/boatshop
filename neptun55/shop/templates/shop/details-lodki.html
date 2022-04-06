@@ -4,22 +4,25 @@
 {% block content %}
 {% load widget_tweaks %}
 <div class="product-content">
+				<div class="flex__column-recommend-name">
+        		<h3>Товары со скидкой:</h3>
+    			</div>
 				<div class="top-sale-block">
 			<div class="slider-nav-recommend">
             {% for product in sale_products %}
-				<div class="product-display-lodki">
+				<div class="product-display-lodki-small">
 					{% if product.sale != 0 %}
 					<div class="sale_block">
 						СКИДКА {{ product.sale }} %
 					</div>
 					{% endif %}
-					<div class="prod-display-lodki-inside-img">
+					<div class="prod-display-lodki-inside-img-small">
 						{% if product.image %}
 						<a href="{{ product.get_absolute_url }}"><img class="product-display-img" src="/media/{{ product.image }}"></a>
 						{% endif %}
 					</div>
 					<div class="product-lodki-text1">
-						<div class="cart-product-name">
+						<div class="cart-product-name-small">
 						<a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
 						</div>
 					</div>
