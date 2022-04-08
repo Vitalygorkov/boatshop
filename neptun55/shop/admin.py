@@ -63,7 +63,7 @@ class ProductResource(resources.ModelResource):
 
     class Meta:
         model = Product
-        fields = ("id", "name", "price", )
+        fields = ("id", "name", "price", "sale",)
         skip_unchanged = True
         report_skipped = False
 
