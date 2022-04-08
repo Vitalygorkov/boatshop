@@ -50,9 +50,10 @@ class DescriptionAdminForm(forms.ModelForm):
 class BoatAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',),}
-    list_display = ("name", "manufacturer", "sale", "price", )
+    list_display = ("name", "manufacturer", "price", "sale")
+    list_editable = ("price", "sale")
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "price", "sale", "name")
+    list_filter = ("manufacturer", "price", "sale")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
@@ -72,9 +73,10 @@ class ProductAdmin(ImportExportModelAdmin):
     resource_class = ProductResource
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',), }
-    list_display = ("name", "manufacturer", "price", )
+    list_display = ("name", "manufacturer", "price", "sale")
+    list_editable = ("price", "sale")
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "price", "sale", "name")
+    list_filter = ("manufacturer", "price", "sale")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
