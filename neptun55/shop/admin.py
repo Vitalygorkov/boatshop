@@ -53,7 +53,7 @@ class BoatAdmin(admin.ModelAdmin):
     list_display = ("name", "manufacturer", "price", "sale")
     list_editable = ("price", "sale")
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "category", "sale")
+    list_filter = ("manufacturer", "sale")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
@@ -76,7 +76,7 @@ class ProductAdmin(ImportExportModelAdmin):
     list_display = ("name", "manufacturer", "price", "sale")
     list_editable = ("price", "sale")
     list_display_links = ("name",)
-    list_filter = ("manufacturer", "price", "sale")
+    list_filter = ("manufacturer", "sale")
     search_fields = ("name","manufacturer")
     inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
