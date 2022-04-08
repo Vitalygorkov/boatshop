@@ -3,6 +3,8 @@ from django.contrib import admin
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 from .models import Color, Boat, Photo_product, Category, Product, Manufacturer, Reviews,VideosProducts
 
 
@@ -52,22 +54,45 @@ class BoatAdmin(admin.ModelAdmin):
     list_display_links = ("name",)
     list_filter = ("manufacturer", "price", "sale", "name")
     search_fields = ("name","manufacturer")
-    inlines = [VideosInline, Photo_productInline, ReviewInline,]
+    inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
     save_as = True
 
 
+class ProductResource(resources.ModelResource):
+
+    class Meta:
+        model = Product
+        fields = ("id", "name", "price", )
+        skip_unchanged = True
+        report_skipped = False
+
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
+    resource_class = ProductResource
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',), }
     list_display = ("name", "manufacturer", "price", )
     list_display_links = ("name",)
     list_filter = ("manufacturer", "price", "sale", "name")
     search_fields = ("name","manufacturer")
-    inlines = [VideosInline, Photo_productInline, ReviewInline,]
+    inlines = [VideosInline, Photo_productInline,]
     save_on_top = True
     save_as = True
+
+
+# убрал, теперь все череза импорт_экспорт
+# @admin.register(Product)
+# class ProductAdmin(admin.ModelAdmin):
+#     form = DescriptionAdminForm
+#     prepopulated_fields = {'slug': ('name',), }
+#     list_display = ("name", "manufacturer", "price", )
+#     list_display_links = ("name",)
+#     list_filter = ("manufacturer", "price", "sale", "name")
+#     search_fields = ("name","manufacturer")
+#     inlines = [VideosInline, Photo_productInline, ReviewInline,]
+#     save_on_top = True
+#     save_as = True
 
 
 @admin.register(Reviews)
