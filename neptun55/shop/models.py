@@ -2,6 +2,9 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 import mptt
 
+from PIL import Image as Img
+from io import StringIO, BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 
@@ -73,6 +76,28 @@ class Product(models.Model):
     accessories = models.ManyToManyField('self', verbose_name="Аксессуары", blank=True)
     category = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
     slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
+    def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
+        if self.image:
+            photo = Img.open(BytesIO(self.image.read()))
+            photo = photo.convert('RGB')
+            photo.thumbnail((500,500), Img.ANTIALIAS)
+            output = BytesIO()
+            photo.save(output, format='JPEG', quality=99)
+            output.seek(0)
+            self.image= InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name, 'image/jpeg', output, None)
+        super(Product, self).save(*args, **kwargs)
+
+    # def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
+    #     if self.image:
+    #         photo = Img.open(BytesIO(self.image.read()))
+    #         photo = photo.convert('RGB')
+    #         photo.thumbnail((400,400), Img.ANTIALIAS)
+    #         output = BytesIO()
+    #         photo.save(output, format='JPEG', quality=75)
+    #         output.seek(0)
+    #         self.image= InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name, 'image/jpeg', output.len, None)
+    #     super(Mymodel, self).save(*args, **kwargs)
+
     def get_sale(self):
         '''Расчитать стоимость со скидкой'''
         price = int(self.price * (100 - self.sale) / 100)
