@@ -1,7 +1,21 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
+from rest_framework.viewsets import ModelViewSet
+
+from shop.serializers import ProductSerializer, CategorySerializer
 from .models import Product, Category, Boat
 from .filters import BoatFilter, ProductFilter
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+class ProductView(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    http_method_names = ['get']
+
+class CategoryView(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    http_method_names = ['get']
 
 # def get_manufacturer_by_subcategory(category):
 #     boats = Boat.objects.all()
@@ -296,7 +310,6 @@ def show_product(request, product_slug,category_slug):
         product = Boat.objects.get(slug=product_slug)
         template_render = "shop/product-lodki.html"
     print("show_product")
-    print(product.get_absolute_url())
 
     return render(request, template_render, {"product": product,
                                                            "category_list": categories, })

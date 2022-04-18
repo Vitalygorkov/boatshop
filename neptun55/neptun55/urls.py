@@ -19,6 +19,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from rest_framework.routers import SimpleRouter
+
+from shop.views import ProductView, CategoryView
+
+router = SimpleRouter()
+
+router.register('api/v1/category', CategoryView)
+router.register('api/v1/product', ProductView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +39,8 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
 ]
+
+urlpatterns += router.urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

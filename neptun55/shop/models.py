@@ -8,7 +8,7 @@ import mptt
 class Category(MPTTModel):
     name = models.CharField("Категория",max_length=150)
     description = models.TextField("Описание")
-    url = models.SlugField(max_length=160, verbose_name='URL на английском, например "Category"')
+    url = models.SlugField(max_length=160, verbose_name='URL на английском, например "Category"', unique=True)
     parent = TreeForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children')
 
     def get_absolute_url(self):
