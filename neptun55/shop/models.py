@@ -114,7 +114,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return f'/{self.category.url}/{self.slug}'
+        if self.category.url:
+            return f'/{self.category.url}/{self.slug}'
+        else:
+            return f'/none-cateory/{self.slug}'
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
