@@ -79,12 +79,21 @@ class Product(models.Model):
     def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
         if self.image:
             photo = Img.open(BytesIO(self.image.read()))
-            photo = photo.convert('RGB')
-            photo.thumbnail((500,500), Img.ANTIALIAS)
+            # photo = photo.convert('RGB')
+            photo.thumbnail((550,550), Img.ANTIALIAS)
             output = BytesIO()
-            photo.save(output, format='JPEG', quality=99)
-            output.seek(0)
-            self.image= InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name, 'image/jpeg', output, None)
+            if photo.mode == "JPEG":
+                photo.save(output, format='JPEG', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'image/jpeg', output, None)
+            elif photo.mode == "PNG":
+                photo.save(output, format='png', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'png', output, None)
+            else:
+                photo.save(output, format='webp', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'webp', output, None)
         super(Product, self).save(*args, **kwargs)
 
     # def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
@@ -178,6 +187,26 @@ class Photo_product(models.Model):
     # description = models.TextField("Описание", blank=True)
     image = models.ImageField("Изображение", upload_to="photo/")
     product = models.ForeignKey(Product, verbose_name="", related_name='prodimg', on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
+        if self.image:
+            photo = Img.open(BytesIO(self.image.read()))
+            # photo = photo.convert('RGB')
+            photo.thumbnail((1280,1280), Img.ANTIALIAS)
+            output = BytesIO()
+            if photo.mode == "JPEG":
+                photo.save(output, format='JPEG', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'image/jpeg', output, None)
+            elif photo.mode == "PNG":
+                photo.save(output, format='png', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'png', output, None)
+            else:
+                photo.save(output, format='webp', quality=99)
+                output.seek(0)
+                self.image= InMemoryUploadedFile(output,'ImageField', "%s" %self.image.name, 'webp', output, None)
+        super(Photo_product, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.product.name
