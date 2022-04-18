@@ -114,7 +114,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        if self.category.url:
+        if self.category:
             return f'/{self.category.url}/{self.slug}'
         else:
             return f'/none-cateory/{self.slug}'
