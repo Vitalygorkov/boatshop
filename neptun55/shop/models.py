@@ -80,7 +80,7 @@ class Product(models.Model):
         if self.image:
             photo = Img.open(BytesIO(self.image.read()))
             # photo = photo.convert('RGB')
-            photo.thumbnail((550,550), Img.ANTIALIAS)
+            photo.thumbnail((450,450), Img.ANTIALIAS)
             output = BytesIO()
             if photo.mode == "JPEG":
                 photo.save(output, format='JPEG', quality=99)
