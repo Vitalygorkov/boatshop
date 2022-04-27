@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from rest_framework.viewsets import ModelViewSet
 
-from shop.serializers import ProductSerializer, CategorySerializer
+from shop.serializers import ProductsSerializer, ProductSerializer, CategorySerializer
 from .models import Product, Category, Boat
 from .filters import BoatFilter, ProductFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+class ProductsView(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductsSerializer
+    http_method_names = ['get']
 
 class ProductView(ModelViewSet):
     queryset = Product.objects.all()

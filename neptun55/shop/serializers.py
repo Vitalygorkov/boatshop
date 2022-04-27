@@ -4,12 +4,21 @@ from rest_framework import serializers
 from shop.models import Product, Category, Boat
 
 
+class ProductsSerializer(ModelSerializer):
+    product_abs_url = serializers.SerializerMethodField()
+    class Meta:
+        model = Product
+        fields = ['name', 'image','manufacturer', 'price', 'sale', 'color', 'category', 'slug']
+        # fields = '__all__'
+    def get_product_abs_url(self, obj):
+        return obj.get_absolute_url()
+
 class ProductSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
     class Meta:
         model = Product
-        fields = ['name', 'image','manufacturer', 'price', 'sale', 'color', 'recommendations', 'accessories', 'category', 'slug']
-        # fields = '__all__'
+        # fields = ['name', 'image','manufacturer', 'price', 'sale', 'color', 'category', 'slug']
+        fields = '__all__'
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
