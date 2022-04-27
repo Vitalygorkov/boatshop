@@ -21,12 +21,13 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from rest_framework.routers import SimpleRouter
 
-from shop.views import ProductView, CategoryView
+from shop.views import ProductView, CategoryView, BoatView
 
 router = SimpleRouter()
 
 router.register('api/v1/category', CategoryView)
 router.register('api/v1/product', ProductView)
+router.register('api/v1/boat', BoatView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

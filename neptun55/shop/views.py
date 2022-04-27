@@ -12,6 +12,11 @@ class ProductView(ModelViewSet):
     serializer_class = ProductSerializer
     http_method_names = ['get']
 
+class BoatView(ModelViewSet):
+    queryset = Boat.objects.all()
+    serializer_class = ProductSerializer
+    http_method_names = ['get']
+
 class CategoryView(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
