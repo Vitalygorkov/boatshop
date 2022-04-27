@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from rest_framework.viewsets import ModelViewSet
 
-from shop.serializers import ProductsSerializer, ProductSerializer, CategorySerializer
+from shop.serializers import ProductsSerializer, ProductSerializer,BoatSerializer, CategorySerializer
 from .models import Product, Category, Boat
 from .filters import BoatFilter, ProductFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -19,7 +19,7 @@ class ProductView(ModelViewSet):
 
 class BoatView(ModelViewSet):
     queryset = Boat.objects.all()
-    serializer_class = ProductSerializer
+    serializer_class = BoatSerializer
     http_method_names = ['get']
 
 class CategoryView(ModelViewSet):
