@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from rest_framework.viewsets import ModelViewSet
 
-from shop.serializers import ProductsSerializer, ProductSerializer,BoatSerializer, CategorySerializer
-from .models import Product, Category, Boat
+from shop.serializers import ProductsSerializer, ProductSerializer,BoatSerializer, CategorySerializer, Photo_productSerializer, VideoSerializer
+from .models import Product, Category, Boat, Photo_product, VideosProducts
 from .filters import BoatFilter, ProductFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -20,6 +20,16 @@ class ProductView(ModelViewSet):
 class BoatView(ModelViewSet):
     queryset = Boat.objects.all()
     serializer_class = BoatSerializer
+    http_method_names = ['get']
+
+class PhotoView(ModelViewSet):
+    queryset = Photo_product.objects.all()
+    serializer_class = Photo_productSerializer
+    http_method_names = ['get']
+
+class VideoView(ModelViewSet):
+    queryset = VideosProducts.objects.all()
+    serializer_class = VideoSerializer
     http_method_names = ['get']
 
 class CategoryView(ModelViewSet):

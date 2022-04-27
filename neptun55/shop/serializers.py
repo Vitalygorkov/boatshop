@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 
-from shop.models import Product, Category, Boat
+from shop.models import Product, Category, Boat, Photo_product, VideosProducts
 
 
 class ProductsSerializer(ModelSerializer):
@@ -9,16 +9,28 @@ class ProductsSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'image','manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
-        # fields = '__all__'
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
+class VideoSerializer(ModelSerializer):
+    class Meta:
+        model = VideosProducts
+        fields = ['video']
+
+class Photo_productSerializer(ModelSerializer):
+    class Meta:
+        model = Photo_product
+        fields = ['image']
+
 class ProductSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
+    prodimg = Photo_productSerializer(many=True, read_only=True)
+    prodvideos = VideoSerializer(many=True, read_only=True)
     class Meta:
         model = Product
-        # fields = ['name', 'image','manufacturer', 'price', 'sale', 'color', 'category', 'slug']
-        fields = '__all__'
+        fields = ['name', 'image', 'short_description', 'description', 'manufacturer', 'price',
+                  'sale', 'color', 'recommendations', 'accessories', 'category', 'slug',
+                  'product_abs_url', 'prodimg','prodvideos']
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
@@ -26,7 +38,6 @@ class BoatSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
     class Meta:
         model = Boat
-        # fields = ['name', 'image', 'price', 'slug']
         fields = '__all__'
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
@@ -34,5 +45,4 @@ class BoatSerializer(ModelSerializer):
 class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category
-        # fields = ['name', 'image', 'price', 'slug']
         fields = '__all__'
