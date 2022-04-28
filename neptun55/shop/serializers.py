@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 
-from shop.models import Product, Category, Boat, Photo_product, VideosProducts
+from shop.models import Product, Category, Boat, Photo_product, VideosProducts, Color, Manufacturer
 
 
 class ProductsSerializer(ModelSerializer):
@@ -22,10 +22,22 @@ class Photo_productSerializer(ModelSerializer):
         model = Photo_product
         fields = ['image']
 
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Color
+        fields = "__all__"
+
+class ManufacturerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturer
+        fields = "__all__"
+
 class ProductSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
     prodimg = Photo_productSerializer(many=True, read_only=True)
     prodvideos = VideoSerializer(many=True, read_only=True)
+    color = ColorSerializer(read_only=True)
+    manufacturer = ManufacturerSerializer(read_only=True)
     class Meta:
         model = Product
         fields = ['name', 'image', 'short_description', 'description', 'manufacturer', 'price',
