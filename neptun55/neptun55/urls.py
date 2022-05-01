@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from rest_framework.routers import SimpleRouter
 
-from shop.views import ProductsView, ProductView, CategoryView, BoatView, PhotoView, VideoView
+from shop.views import ProductsView, ProductView, CategoryView, BoatView, BoatsView, PhotoView, VideoView
 
 router = SimpleRouter()
 
@@ -31,6 +31,7 @@ router.register('api/v1/video', VideoView)
 router.register('api/v1/products', ProductsView)
 router.register('api/v1/product', ProductView)
 router.register('api/v1/boat', BoatView)
+router.register('api/v1/boats', BoatsView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

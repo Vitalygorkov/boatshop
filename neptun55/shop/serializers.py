@@ -8,7 +8,15 @@ class ProductsSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
     class Meta:
         model = Product
-        fields = ['id', 'name', 'image','manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
+        fields = ['id', 'name', 'image', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
+    def get_product_abs_url(self, obj):
+        return obj.get_absolute_url()
+
+class BoatsSerializer(ModelSerializer):
+    product_abs_url = serializers.SerializerMethodField()
+    class Meta:
+        model = Boat
+        fields = fields = ['id', 'name', 'image', 'length', 'width', 'cylinder_diameter', 'boat_weight', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
