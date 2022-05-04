@@ -56,9 +56,18 @@ class ProductSerializer(ModelSerializer):
 
 class BoatSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
+    prodimg = Photo_productSerializer(many=True, read_only=True)
+    prodvideos = VideoSerializer(many=True, read_only=True)
+    color = ColorSerializer(read_only=True)
+    manufacturer = ManufacturerSerializer(read_only=True)
     class Meta:
         model = Boat
-        fields = '__all__'
+        fields = ["id", "name", "image" ,"short_description", "description", "price", "sale", "slug", "length",
+                  "width", "cockpit_length", "cockpit_width", "cylinder_diameter", "fabric_thickness_bottom",
+                  "fabric_thickness_side", "inflatable_compartments", "load_capacity", "passenger_capacity",
+                  "maximum_motor_power", "boat_weight", "complete_set_weight", "bulwark", "keel", "upak",
+                  "manufacturer", "color", "category", "recommendations", "accessories", 'prodimg', 'prodvideos',
+                  'color', 'manufacturer', 'product_abs_url']
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
