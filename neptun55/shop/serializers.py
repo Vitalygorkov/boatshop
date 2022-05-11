@@ -3,6 +3,16 @@ from rest_framework import serializers
 
 from shop.models import Product, Category, Boat, Photo_product, VideosProducts, Color, Manufacturer
 
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Color
+        fields = "__all__"
+
+class ManufacturerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturer
+        fields = "__all__"
+
 
 class ProductsSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
@@ -33,16 +43,6 @@ class Photo_productSerializer(ModelSerializer):
     class Meta:
         model = Photo_product
         fields = ['image']
-
-class ColorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Color
-        fields = "__all__"
-
-class ManufacturerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Manufacturer
-        fields = "__all__"
 
 class ProductSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
