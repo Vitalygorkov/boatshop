@@ -6,6 +6,8 @@ from shop.models import Product, Category, Boat, Photo_product, VideosProducts, 
 
 class ProductsSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
+    manufacturer = ManufacturerSerializer(read_only=True)
+    color = ColorSerializer(read_only=True)
     class Meta:
         model = Product
         fields = ['id', 'name', 'image', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
@@ -14,6 +16,8 @@ class ProductsSerializer(ModelSerializer):
 
 class BoatsSerializer(ModelSerializer):
     product_abs_url = serializers.SerializerMethodField()
+    manufacturer = ManufacturerSerializer(read_only=True)
+    color = ColorSerializer(read_only=True)
     class Meta:
         model = Boat
         fields = fields = ['id', 'name', 'image', 'length', 'width', 'cockpit_length', 'cockpit_width', 'cylinder_diameter', 'fabric_thickness_bottom', 'fabric_thickness_side', 'inflatable_compartments', 'load_capacity', 'passenger_capacity', 'maximum_motor_power', 'boat_weight', 'complete_set_weight', 'bulwark', 'keel', 'upak', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
