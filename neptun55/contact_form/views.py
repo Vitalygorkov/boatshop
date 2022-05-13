@@ -6,9 +6,19 @@ from .forms import ContactForm
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from .models import Contact
+from contact_form.serializers import ContactSerializer
+from rest_framework.viewsets import ModelViewSet
+
+class FormView(ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+    http_method_names = ['get','post']
+
 # Функция отправки сообщения
 def email(subject, content):
     send_mail(subject, content, 'auto-message@neptun55.ru', ['vet.omsk@mail.ru'])
+
 
 class ContactFormView(CreateView):
     model = Contact
