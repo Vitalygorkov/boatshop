@@ -36,6 +36,7 @@ class ContactFormView(CreateView):
             print('last name input')
             print(str(data["last_name"]))
             return super().form_valid(form)
+
         # data = form.data
         # subject = f'Сообщение с сайта от {data["first_name"]} {data["last_name"]}, Телефон: {data["phone"]} Почта отправителя: {data["email"]}'
         # email(subject, data['message'] + 'Телефон: ' + data['phone'])
