@@ -39,7 +39,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     # path('', include("contact_form.urls")), # Добавил по https://fixmypc.ru/post/sozdaem-formu-obratnoi-sviazi-v-django-s-pochtovym-uvedomleniem/
     # path("contact/", include("contact_form.urls")),
-    path("contact_view/", include("contact_form.urls")),
+    # path("contact_view/", include("contact_form.urls")),
     path("", include("shop.urls")),
     # path("", include("contact_form.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),

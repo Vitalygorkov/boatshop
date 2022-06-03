@@ -30,12 +30,12 @@ class ContactFormView(CreateView):
         data = form.data
         if data["last_name"] == '':
             subject = f'Сообщение с сайта от {data["first_name"]} {data["last_name"]}, Телефон: {data["phone"]} Почта отправителя: {data["email"]}'
-            # email(subject, data['message'] + 'Телефон: ' + data['phone']) --убрал возможность отправки формы на старой версии
-            # return super().form_valid(form)   --убрал возможность отправки формы на старой версии
+            email(subject, data['message'] + 'Телефон: ' + data['phone'])
+            return super().form_valid(form)
         else:
             print('last name input')
             print(str(data["last_name"]))
-            # return super().form_valid(form)  --убрал возможность отправки формы на старой версии
+            return super().form_valid(form)
         # data = form.data
         # subject = f'Сообщение с сайта от {data["first_name"]} {data["last_name"]}, Телефон: {data["phone"]} Почта отправителя: {data["email"]}'
         # email(subject, data['message'] + 'Телефон: ' + data['phone'])
