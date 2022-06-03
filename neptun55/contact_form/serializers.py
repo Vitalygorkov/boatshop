@@ -26,9 +26,10 @@ class ContactSerializer(serializers.ModelSerializer):
 
         if contact.last_name == '':
             print('Фамилия пуста, отправляем письмо')
+            print(contact.first_name)
+            print(contact.email)
             subject = f'Сообщение с сайта от {contact.first_name}, Телефон: {contact.phone} Почта отправителя: {contact.email}'
             email(subject, contact.message + 'Телефон: ' + contact.phone)
-            return super().form_valid(form)
         else:
             print('Фамилия введена, не отправляем письмо')
 
