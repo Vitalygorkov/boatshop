@@ -17,7 +17,7 @@ def email(subject, content):
 class FormView(ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    http_method_names = ['get','post']
+    http_method_names = ['post']
 
 
 
