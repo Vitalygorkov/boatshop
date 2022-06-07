@@ -36,11 +36,11 @@ router.register('api/v1/contactform', FormView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('captcha/', include('captcha.urls')),
+    # path('captcha/', include('captcha.urls')),
     # path('', include("contact_form.urls")), # Добавил по https://fixmypc.ru/post/sozdaem-formu-obratnoi-sviazi-v-django-s-pochtovym-uvedomleniem/
     # path("contact/", include("contact_form.urls")),
     # path("contact_view/", include("contact_form.urls")), - убрал форму на старой версии
-    path("", include("shop.urls")),
+    # path("", include("shop.urls")),
     # path("", include("contact_form.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
