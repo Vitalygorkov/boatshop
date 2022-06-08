@@ -36,6 +36,7 @@ router.register('api/v1/contactform', FormView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
     # path('captcha/', include('captcha.urls')),
     # path('', include("contact_form.urls")), # Добавил по https://fixmypc.ru/post/sozdaem-formu-obratnoi-sviazi-v-django-s-pochtovym-uvedomleniem/
     # path("contact/", include("contact_form.urls")),
