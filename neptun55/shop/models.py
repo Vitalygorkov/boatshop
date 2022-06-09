@@ -75,7 +75,7 @@ class Product(models.Model):
     recommendations = models.ManyToManyField('Product',verbose_name="Рекомендуемые товары", blank=True)
     accessories = models.ManyToManyField('self', verbose_name="Аксессуары", blank=True)
     category = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
-    slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
+    slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL', null=True, blank= True)
     parse_url = models.CharField(max_length=350, verbose_name='Ссылка на товар на сайте производителя для автообновления цен')
     def save(self, *args, **kwargs):            #https://overcoder.net/q/136570/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-django-%D0%B8-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9
         if self.image:
