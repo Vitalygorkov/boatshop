@@ -21,6 +21,14 @@ class ProductsSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'image', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug', 'parse_url']
+
+    # def create(self, validated_data):
+    #     return Product.objects.create(**validated_data)
+    #
+    # def update(self, request, *args, **kwargs):
+    #     kwargs['partial'] = True
+    #     return super().update(request, *args, **kwargs)
+
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 

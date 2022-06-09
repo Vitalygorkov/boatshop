@@ -10,7 +10,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class ProductsView(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductsSerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'put']
+
 
 class ProductView(ModelViewSet):
     queryset = Product.objects.all()
