@@ -20,7 +20,7 @@ class ProductsSerializer(ModelSerializer):
     color = ColorSerializer(read_only=True)
     class Meta:
         model = Product
-        fields = ['id', 'name', 'image', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug']
+        fields = ['id', 'name', 'image', 'manufacturer', 'price', 'product_abs_url', 'sale', 'color', 'category', 'slug', 'parse_url']
     def get_product_abs_url(self, obj):
         return obj.get_absolute_url()
 
