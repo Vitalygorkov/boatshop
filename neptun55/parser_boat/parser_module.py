@@ -32,8 +32,10 @@ rs = requests.get(url_api)
         # берем сет товаров
     # (url_api, params=params, headers=headers)
 count = 0
+
+# for only master- lodok
 for item in rs.json():
-    if count > 4:
+    if count > 100:
         count += 1
         print(count)
         break
@@ -50,13 +52,29 @@ for item in rs.json():
         price = soup.find_all("div", class_="item_current_price")
         print(price)
         print('старая цена', item.get('price'))
-        print('новая цена',price[0].attrs["data-price"])
+        new_price = price[0].attrs["data-price"]
+        print('новая цена', new_price)
         if item.get('price') != price[0].attrs["data-price"]:
             print('цена изменилась')
-            api_product_url = url_api + str(item.get('id'))
+            api_product_url = url_api + str(item.get('id'))+'/'
             print(api_product_url)
             print('цена изменилась')
-            # request.put(api_product_url, params={key: value})
+            item['price'] = new_price
+            print(item)
+            new_name = item.get('name')
+            print(new_name)
+            new_slug = item.get('slug')
+            print(new_slug)
+            new_item = {
+                "id": item.get('id'),
+                "name": new_name.encode('utf-8'),
+                "price": new_price,
+                "slug": new_slug.encode('utf-8'),
+            }
+            response2 = requests.put(api_product_url, data=new_item)
+            print(response2.status_code)
+            print(response2.content)
+            # request.put(api_\xd0\xb5\xd0\xbd\xd0\xb8\xd1\x8f\xd1\x85product_url, paraitem_idms={key: value})
     count +=1
 
 
@@ -78,3 +96,24 @@ for item in rs.json():
 
 
         # -- Парсинг --
+
+# {
+#     "id": 4,
+#     "name": "Ривьера Компакт 3600 СК \"Комби\" светло-серый/черный",
+#     "image": "http://localhost:8000/media/photo/71_QhvXdTw.png",
+#     "manufacturer": {
+#         "id": 2,
+#         "name": "Мастер лодок",
+#         "description": "г. Уфа"
+#     },
+#     "price": 59560,
+#     "product_abs_url": "/slan-keel/lodka-rivera-3600-kilevoe-naduvnoe-dno-kombi-svetlo-seryjchernyj",
+#     "sale": 0,
+#     "color": {
+#         "id": 1,
+#         "name": "Светло-серый/Чёрный"
+#     },
+#     "category": 13,
+#     "slug": "lodka-rivera-3600-kilevoe-naduvnoe-dno-kombi-svetlo-seryjchernyj",
+#     "parse_url": "https://master-lodok.ru/catalog/lodki/rivera/rivera_kompakt/rivera_kompakt_3600_sk_kombi_svetlo_seryy_chernyy_/"
+# }

@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class ProductsView(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductsSerializer
-    http_method_names = ['get', 'put']
+    http_method_names = ['get']
     # http_method_names = ['get', 'put'] для изменения при парсинге цен, нужно сделать аутентификацию
 
 
