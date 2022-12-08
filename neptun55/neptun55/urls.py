@@ -22,7 +22,6 @@ from django.views.generic.base import TemplateView
 from rest_framework.routers import SimpleRouter
 from contact_form.views import FormView
 from shop.views import ProductsView, ProductView, CategoryView, BoatView, BoatsView, PhotoView, VideoView
-from blog.views import PostsView, PostView, CategoryBlogView, TagView
 
 router = SimpleRouter()
 
@@ -34,10 +33,6 @@ router.register('api/v1/product', ProductView)
 router.register('api/v1/boat', BoatView)
 router.register('api/v1/boats', BoatsView)
 router.register('api/v1/contactform', FormView)
-router.register('api/v1/post', PostView)
-router.register('api/v1/posts', PostsView)
-router.register('api/v1/CategoryBlog', CategoryBlogView)
-router.register('api/v1/tag', TagView)
 
 
 urlpatterns = [
