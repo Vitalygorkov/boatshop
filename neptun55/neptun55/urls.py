@@ -39,6 +39,7 @@ router.register('api/v1/posts', PostsView)
 router.register('api/v1/CategoryBlog', CategoryBlogView)
 router.register('api/v1/tag', TagView)
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
