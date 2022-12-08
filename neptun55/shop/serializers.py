@@ -1,6 +1,5 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-
 from shop.models import Product, Category, Boat, Photo_product, VideosProducts, Color, Manufacturer
 
 class ColorSerializer(serializers.ModelSerializer):
