@@ -54,6 +54,7 @@ class Post(models.Model):
     created_ad = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
     photo = models.ImageField("Основная картинка",upload_to='photo/blog/%Y/%m/%d', blank=True)
     views = models.ManyToManyField(counter_ip_readers, verbose_name='Кол-во уникальных просмотров')
+    views_simple = models.IntegerField('Кол-во НЕуникальных просмотров', blank=True, null=True)
     category = models.ForeignKey(CategoryBlog, on_delete=models.PROTECT, related_name='posts',
                                  verbose_name='Категория')
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts',
@@ -61,6 +62,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def counter_views_simple(self):
+        self.views_simple += 1
+        self.save()
+        return self.views_simple
 
     def counter(self, req):
         count = counter_ip_readers()

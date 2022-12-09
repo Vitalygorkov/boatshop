@@ -12,6 +12,10 @@ class PostSerializer(ModelSerializer):
                   'category', 'tags']
         # fields = '__all__'
 
+    def get_counts_views_simple(self, obj):
+        return obj.counter_views_simple()
+
+
     def get_views_count(self, obj):
         obj.counter(self.context['request'].META['REMOTE_ADDR'])
         return obj.views.count()
