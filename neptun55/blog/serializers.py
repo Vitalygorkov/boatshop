@@ -4,10 +4,11 @@ from .models import Post, CategoryBlog, Tag
 
 class PostSerializer(ModelSerializer):
     views_count = serializers.SerializerMethodField()
+    counts_views_simple = serializers.SerializerMethodField()
     # views = serializers.SlugRelatedField(many=True, read_only=True, slug_field='pk')
     class Meta:
         model = Post
-        fields = ['title', 'views_count', 'views_simple', 'short_description',
+        fields = ['title', 'views_count', 'counts_views_simple', 'short_description',
                   'content', 'author', 'created_ad', 'photo',
                   'category', 'tags']
         # fields = '__all__'
