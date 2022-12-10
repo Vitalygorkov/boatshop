@@ -14,16 +14,18 @@ class DescriptionAdminForm(forms.ModelForm):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     form = DescriptionAdminForm
-    list_display = ["title", "category", "created_ad", 'display_views']
+    list_display = ["title", "category", "created_ad", 'views_simple']
     fields = ["title", "category", "short_description", 'author',
-              "content", "photo", "tags"]
-    def display_views(self, x):
-        print(x.views.count())
-        # return 'Id просмотров'.join([ views.id for views in self.views.all()[:3] ])
-        print("функция display_views")
-        return x.views.count()
+              "content", "photo", "views_simple", "tags"]
 
-    display_views.short_description = 'Просмотры'
+    # Для вывода уникальных просмотров
+    # def display_views(self, x):
+    #     print(x.views.count())
+    #     # return 'Id просмотров'.join([ views.id for views in self.views.all()[:3] ])
+    #     print("функция display_views")
+    #     return x.views.count()
+    #
+    # display_views.short_description = 'Просмотры'
 
 admin.site.register(CategoryBlog, MPTTModelAdmin)
 
