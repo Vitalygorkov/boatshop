@@ -8,7 +8,7 @@ class PostSerializer(ModelSerializer):
     # views = serializers.SlugRelatedField(many=True, read_only=True, slug_field='pk')
     class Meta:
         model = Post
-        fields = ['title', 'views_count', 'counts_views_simple', 'short_description',
+        fields = ['id', 'title', 'views_count', 'counts_views_simple', 'short_description',
                   'content', 'author', 'created_ad', 'photo',
                   'category', 'tags']
         # fields = '__all__'
