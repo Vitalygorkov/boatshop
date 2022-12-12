@@ -25,7 +25,7 @@ class PostsSerializer(ModelSerializer):
     views_count = serializers.SerializerMethodField()
     class Meta:
         model = Post
-        fields = ['title', 'views_count', 'views_simple', 'short_description',
+        fields = ['id','title', 'views_count', 'views_simple', 'short_description',
                   'author', 'created_ad', 'photo', 'category', 'tags']
 
     def get_views_count(self, obj):
