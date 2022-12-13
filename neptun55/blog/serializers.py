@@ -5,11 +5,12 @@ from .models import Post, CategoryBlog, Tag
 class PostSerializer(ModelSerializer):
     views_count = serializers.SerializerMethodField()
     counts_views_simple = serializers.SerializerMethodField()
+    author_name = serializers.SerializerMethodField()
     # views = serializers.SlugRelatedField(many=True, read_only=True, slug_field='pk')
     class Meta:
         model = Post
         fields = ['id', 'title', 'views_count', 'counts_views_simple', 'short_description',
-                  'content', 'author', 'created_ad', 'photo',
+                  'content', 'author', 'author_name', 'created_ad', 'photo',
                   'category', 'tags']
         # fields = '__all__'
 
@@ -21,15 +22,21 @@ class PostSerializer(ModelSerializer):
         obj.counter(self.context['request'].META['REMOTE_ADDR'])
         return obj.views.count()
 
+    def get_author_name(self, obj):
+        return obj.author.username
+
 class PostsSerializer(ModelSerializer):
     views_count = serializers.SerializerMethodField()
+    author_name = serializers.SerializerMethodField()
     class Meta:
         model = Post
         fields = ['id','title', 'views_count', 'views_simple', 'short_description',
-                  'author', 'created_ad', 'photo', 'category', 'tags']
+                  'author', 'author_name', 'created_ad', 'photo', 'category', 'tags']
 
     def get_views_count(self, obj):
         return obj.views.count()
+    def get_author_name(self, obj):
+        return obj.author.username
 
 class CategoryBlogSerializer(ModelSerializer):
     class Meta:
